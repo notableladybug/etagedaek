@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="da">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Objektiver — Produkter</title>
+		<link rel="stylesheet" href="stylesheet.css">
+	</head>
+	<body>
+		<header class="site-header">
+			<div class="wrap">
+				<h1>Objektiver</h1>
+				<p class="lead">Der kan stå noget fedt tekst her</p>
+			</div>
+		</header>
+
+		<main class="wrap container">
+			<aside class="filters" aria-label="Filtre">
+				<h2>Filtre</h2>
+
+				<div id="category-filters">
+					<h3>Brug til</h3>
+				</div>
+
+				<div id="weight-filters">
+					<h3>Vægt</h3>
+					<label><input type="radio" name="weight" value="all" checked> Alle</label>
+					<label><input type="radio" name="weight" value="under"> Under 1000g</label>
+					<label><input type="radio" name="weight" value="over"> Over 1000g</label>
+				</div>
+
+				<button id="clear-filters" type="button">Nulstil filtre</button>
+			</aside>
+
+			<section class="products" aria-live="polite">
+				<div class="toolbar">
+					<div id="product-count">0 produkter</div>
+				</div>
+				<div id="product-grid" class="grid"></div>
+			</section>
+		</main>
+
+			<script id="products-data" type="application/json">
+[
+	{
+		"id": 1,
+		"name": "Vildt 200-500mm f/4",
+		"madeFor": ["Vildtliv", "Sport"],
+		"weightGr": 1450,
+		"price": 12999,
+		"description": "Teleobjektiv designet til vildt- og sportsfotografering. Stabil optik og hurtig AF."
+	},
+	{
+		"id": 2,
+		"name": "Portræt 85mm f/1.8",
+		"madeFor": ["Portræt"],
+		"weightGr": 350,
+		"price": 2499,
+		"description": "Kompakt og lysstærkt portrætobjektiv med flot bokeh og god skarphed.",
+		"image": "https://pandasia.dk/wp-content/uploads/Produkter/Nudler/samyang-hot-chicken-flavor-ramen-2xspicy.jpg"
+	},
+	{
+		"id": 3,
+		"name": "Allround 24-70mm f/2.8",
+		"madeFor": ["Portræt", "Landskab"],
+		"weightGr": 805,
+		"price": 8999,
+		"description": "Alsidigt zoom til reportager, rejse og landskabsfotografering.",
+        "image": "https://www.kamerahuset.dk/media/catalog/product/cache/226dfe7c021a8eec8d7bd920b42a2c19/api/samyang_af_35mm_f1.8_sony_fe_front.jpg"
+	},
+	{
+		"id": 4,
+		"name": "Macro 100mm f/2.8",
+		"madeFor": ["Macro", "Landskab"],
+		"weightGr": 640,
+		"price": 4999,
+		"description": "Makro med 1:1 forstørrelse — perfekt til små motiver og detaljer.",
+		"image": "https://via.placeholder.com/600x350?text=Macro+100mm"
+	},
+	{
+		"id": 5,
+		"name": "Teleprime 400mm f/5.6",
+		"madeFor": ["Vildtliv"],
+		"weightGr": 2300,
+		"price": 14999,
+		"description": "Let prime-tele for seriøse vildt-fotografer — optimeret til afstand og kontrast."
+	},
+	{
+		"id": 6,
+		"name": "Vidvinkel 16-35mm f/4",
+		"madeFor": ["Landskab", "Arkitektur"],
+		"weightGr": 780,
+		"price": 6999,
+		"description": "Stabil vidvinkel, god til landskab og arkitektur. Kompakt og let.",
+		"image": "https://via.placeholder.com/600x350?text=Vidvinkel+16-35mm"
+	}
+]
+			</script>
+			<script src="script.js" defer></script>
+	</body>
+</html>

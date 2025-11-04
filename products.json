@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "name": "Vildt 200-500mm f/4",
+    "madeFor": ["Vildtliv", "Sport"],
+    "weightGr": 1450,
+    "price": 12999,
+    "description": "Teleobjektiv designet til vildt- og sportsfotografering. Stabil optik og hurtig AF."
+  },
+  {
+    "id": 2,
+    "name": "Portræt 85mm f/1.8",
+    "madeFor": ["Portræt"],
+    "weightGr": 350,
+    "price": 2499,
+    "description": "Kompakt og lysstærkt portrætobjektiv med flot bokeh og god skarphed.",
+    "image": "https://via.placeholder.com/600x350?text=Portr%C3%A6t+85mm"
+  },
+  {
+    "id": 3,
+    "name": "Allround 24-70mm f/2.8",
+    "madeFor": ["Portræt", "Landskab"],
+    "weightGr": 805,
+    "price": 8999,
+    "description": "Alsidigt zoom til reportager, rejse og landskabsfotografering."
+  },
+  {
+    "id": 4,
+    "name": "Macro 100mm f/2.8",
+    "madeFor": ["Macro", "Landskab"],
+    "weightGr": 640,
+    "price": 4999,
+    "description": "Makro med 1:1 forstørrelse — perfekt til små motiver og detaljer.",
+    "image": "https://via.placeholder.com/600x350?text=Macro+100mm"
+  },
+  {
+    "id": 5,
+    "name": "Teleprime 400mm f/5.6",
+    "madeFor": ["Vildtliv"],
+    "weightGr": 2300,
+    "price": 14999,
+    "description": "Let prime-tele for seriøse vildt-fotografer — optimeret til afstand og kontrast."
+  },
+  {
+    "id": 6,
+    "name": "Vidvinkel 16-35mm f/4",
+    "madeFor": ["Landskab", "Arkitektur"],
+    "weightGr": 780,
+    "price": 6999,
+    "description": "Stabil vidvinkel, god til landskab og arkitektur. Kompakt og let.",
+    "image": "https://via.placeholder.com/600x350?text=Vidvinkel+16-35mm"
+  }
+]
