@@ -14,7 +14,7 @@
     "weightGr": 350,
     "price": 2499,
     "description": "Kompakt og lysstærkt portrætobjektiv med flot bokeh og god skarphed.",
-    "image": "https://www.kamerahuset.dk/media/catalog/product/cache/226dfe7c021a8eec8d7bd920b42a2c19/api/samyang_af_35mm_f1.8_sony_fe_front.jpg"
+    "image": "https://via.placeholder.com/600x350?text=Portr%C3%A6t+85mm"
   },
   {
     "id": 3,
@@ -51,4 +51,3 @@
     "image": "https://via.placeholder.com/600x350?text=Vidvinkel+16-35mm"
   }
 ]
-

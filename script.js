@@ -185,13 +185,77 @@ document.addEventListener('DOMContentLoaded', () => {
 			card.appendChild(media);
 			card.appendChild(body);
 
-			productGrid.appendChild(card);
+					card.tabIndex = 0;
+					card.setAttribute('role', 'button');
+					card.setAttribute('aria-label', `${p.name}. Åbn detaljer`);
+					card.addEventListener('click', () => openModal(p));
+					card.addEventListener('keydown', (e) => {
+						if (e.key === 'Enter' || e.key === ' ') {
+							e.preventDefault();
+							openModal(p);
+						}
+					});
+
+					productGrid.appendChild(card);
 		});
 	}
 
+
+		const modal = document.getElementById('product-modal');
+		const modalTitle = modal && modal.querySelector('#modal-title');
+		const modalMeta = modal && modal.querySelector('.modal-meta');
+		const modalDesc = modal && modal.querySelector('.modal-desc');
+		const modalPrice = modal && modal.querySelector('.modal-price');
+		const modalMedia = modal && modal.querySelector('.modal-media');
+		const modalRaw = modal && modal.querySelector('.modal-raw');
+
+		function openModal(product) {
+			if (!modal) return;
+			modal.setAttribute('aria-hidden', 'false');
+			document.body.style.overflow = 'hidden';
+
+			modalTitle.innerHTML = escapeHtml(product.name || '');
+			modalMeta.textContent = (product.madeFor || []).join(', ') + ' • ' + (product.weightGr || '') + ' g';
+			modalDesc.innerHTML = escapeHtml(product.description || '');
+			modalPrice.textContent = formatPrice(product.price);
+
+			modalMedia.innerHTML = '';
+			if (product.image) {
+				const img = document.createElement('img');
+				img.src = product.image;
+				img.alt = product.name || '';
+				img.onerror = () => { img.remove(); modalMedia.innerHTML = '<div class="placeholder">📷</div>'; };
+				modalMedia.appendChild(img);
+			} else {
+				modalMedia.innerHTML = '<div class="placeholder">📷</div>';
+			}
+
+			modalRaw.textContent = JSON.stringify(product, null, 2);
+
+			const closeBtn = modal.querySelector('.modal-close');
+			if (closeBtn) closeBtn.focus();
+		}
+
+		function closeModal() {
+			if (!modal) return;
+			modal.setAttribute('aria-hidden', 'true');
+			document.body.style.overflow = '';
+		}
+
+		if (modal) {
+			modal.addEventListener('click', (e) => {
+				const close = e.target.closest('[data-close]');
+				if (close) closeModal();
+			});
+			document.addEventListener('keydown', (e) => {
+				if (e.key === 'Escape') closeModal();
+			});
+		}
+
+            // Price formatting
 	function formatPrice(p) {
 		if (!p && p !== 0) return '';
-		return new Intl.NumberFormat('da-DK', { style: 'currency', currency: 'DKK' }).format(p / 100);
+		return new Intl.NumberFormat('da-DK', { style: 'currency', currency: 'DKK' }).format(p / 1);
 	}
 
 	function escapeHtml(str) {
