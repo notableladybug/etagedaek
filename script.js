@@ -168,7 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			title.className = 'card-title';
 			title.innerHTML = escapeHtml(p.name);
 
-			// badges
 			const badges = document.createElement('div');
 			badges.className = 'badges';
 			(p.madeFor || []).forEach(tag => {
@@ -210,7 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
 						}
 					});
 
-					// stagger animation delay
 					card.style.animationDelay = `${filtered.indexOf(p) * 60}ms`;
 					productGrid.appendChild(card);
 		});
@@ -235,11 +233,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			modalDesc.innerHTML = escapeHtml(product.description || '');
 			modalPrice.textContent = formatPrice(product.price);
 
-			// technical specs (support both old-style fields and camera-specific fields)
 			const specs = [];
 			if (product.fullName) specs.push({label: 'Fulde navn', value: product.fullName});
 
-			// camera-specific
 			if (product.focalLength) specs.push({label: 'Brændvidde', value: product.focalLength});
 			if (product.maxAperture) specs.push({label: 'Max. blænde', value: product.maxAperture});
 			if (product.mount) specs.push({label: 'Mount', value: product.mount});
@@ -249,7 +245,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			if (product.filterSizeMm) specs.push({label: 'Filterstørrelse', value: product.filterSizeMm + ' mm'});
 			if (product.dimensions) specs.push({label: 'Dimensioner', value: product.dimensions});
 
-			// legacy / other fields
 			if (product.profileHeightMm) specs.push({label: 'Højde på profil', value: product.profileHeightMm + ' mm'});
 			if (product.totalHeightMm) specs.push({label: 'Samlet højde', value: product.totalHeightMm + ' mm'});
 			if (product.fireClass) specs.push({label: 'Brandklasse', value: product.fireClass});
@@ -268,7 +263,6 @@ document.addEventListener('DOMContentLoaded', () => {
 					});
 				}
 
-				// components / features / list fields
 				if (product.features && product.features.length) {
 					const title = document.createElement('div');
 					title.className = 'spec-row spec-title';
@@ -319,8 +313,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		function closeModal() {
 			if (!modal) return;
-			modal.setAttribute('aria-hidden', 'true');
-			document.body.style.overflow = '';
+			if (modal.classList.contains('closing')) return;
+
+			modal.classList.add('closing');
+
+			const finishClose = () => {
+				modal.classList.remove('closing');
+				modal.setAttribute('aria-hidden', 'true');
+				document.body.style.overflow = '';
+				modal.removeEventListener('animationend', onAnim);
+			};
+
+			let onAnim = (e) => {
+				finishClose();
+			};
+
+			modal.addEventListener('animationend', onAnim);
+
+			setTimeout(() => {
+				if (modal.classList.contains('closing')) finishClose();
+			}, 400);
 		}
 
 		if (modal) {
