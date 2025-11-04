@@ -134,6 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			const card = document.createElement('article');
 			card.className = 'card';
 
+			// animate entry with stagger
+			card.classList.add('pop');
+
 			const media = document.createElement('div');
 			media.className = 'card-media';
 			media.setAttribute('aria-hidden', 'true');
@@ -165,6 +168,16 @@ document.addEventListener('DOMContentLoaded', () => {
 			title.className = 'card-title';
 			title.innerHTML = escapeHtml(p.name);
 
+			// badges
+			const badges = document.createElement('div');
+			badges.className = 'badges';
+			(p.madeFor || []).forEach(tag => {
+				const b = document.createElement('span');
+				b.className = 'badge';
+				b.textContent = tag;
+				badges.appendChild(b);
+			});
+
 			const meta = document.createElement('div');
 			meta.className = 'meta';
 			meta.textContent = (p.madeFor || []).join(', ') + ' • ' + p.weightGr + ' g';
@@ -178,6 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			price.textContent = formatPrice(p.price);
 
 			body.appendChild(title);
+			if ((p.madeFor || []).length) body.appendChild(badges);
 			body.appendChild(meta);
 			body.appendChild(desc);
 			body.appendChild(price);
@@ -196,6 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
 						}
 					});
 
+					// stagger animation delay
+					card.style.animationDelay = `${filtered.indexOf(p) * 60}ms`;
 					productGrid.appendChild(card);
 		});
 	}
@@ -215,9 +231,74 @@ document.addEventListener('DOMContentLoaded', () => {
 			document.body.style.overflow = 'hidden';
 
 			modalTitle.innerHTML = escapeHtml(product.name || '');
-			modalMeta.textContent = (product.madeFor || []).join(', ') + ' • ' + (product.weightGr || '') + ' g';
+			modalMeta.textContent = (product.madeFor || []).join(', ') + (product.weightGr ? ' • ' + (product.weightGr + ' g') : '');
 			modalDesc.innerHTML = escapeHtml(product.description || '');
 			modalPrice.textContent = formatPrice(product.price);
+
+			// technical specs (support both old-style fields and camera-specific fields)
+			const specs = [];
+			if (product.fullName) specs.push({label: 'Fulde navn', value: product.fullName});
+
+			// camera-specific
+			if (product.focalLength) specs.push({label: 'Brændvidde', value: product.focalLength});
+			if (product.maxAperture) specs.push({label: 'Max. blænde', value: product.maxAperture});
+			if (product.mount) specs.push({label: 'Mount', value: product.mount});
+			if (product.imageStabilization) specs.push({label: 'Billedstabilisering', value: product.imageStabilization});
+			if (product.focusMotor) specs.push({label: 'Fokusmotor', value: product.focusMotor});
+			if (product.minFocusDistanceM) specs.push({label: 'Minimum fokusafstand', value: product.minFocusDistanceM + ' m'});
+			if (product.filterSizeMm) specs.push({label: 'Filterstørrelse', value: product.filterSizeMm + ' mm'});
+			if (product.dimensions) specs.push({label: 'Dimensioner', value: product.dimensions});
+
+			// legacy / other fields
+			if (product.profileHeightMm) specs.push({label: 'Højde på profil', value: product.profileHeightMm + ' mm'});
+			if (product.totalHeightMm) specs.push({label: 'Samlet højde', value: product.totalHeightMm + ' mm'});
+			if (product.fireClass) specs.push({label: 'Brandklasse', value: product.fireClass});
+			if (product.soundClass) specs.push({label: 'Lydklasse i dB', value: product.soundClass});
+			if (product.weightKgPerM2) specs.push({label: 'Vægt', value: product.weightKgPerM2 + ' kg/m²'});
+
+			const modalSpecs = modal.querySelector('.modal-specs');
+			if (modalSpecs) {
+				modalSpecs.innerHTML = '';
+				if (specs.length) {
+					specs.forEach(s => {
+						const row = document.createElement('div');
+						row.className = 'spec-row';
+						row.innerHTML = `<span class="spec-label">${escapeHtml(s.label)}:</span> ${escapeHtml(s.value)}`;
+						modalSpecs.appendChild(row);
+					});
+				}
+
+				// components / features / list fields
+				if (product.features && product.features.length) {
+					const title = document.createElement('div');
+					title.className = 'spec-row spec-title';
+					title.innerHTML = '<span class="spec-label">Funktioner:</span>';
+					modalSpecs.appendChild(title);
+					const ul = document.createElement('ul');
+					ul.className = 'spec-list';
+					product.features.forEach(item => {
+						const li = document.createElement('li');
+						li.textContent = item;
+						ul.appendChild(li);
+					});
+					modalSpecs.appendChild(ul);
+				}
+
+				if (product.components && product.components.length) {
+					const title = document.createElement('div');
+					title.className = 'spec-row spec-title';
+					title.innerHTML = '<span class="spec-label">Komponenter:</span>';
+					modalSpecs.appendChild(title);
+					const ul2 = document.createElement('ul');
+					ul2.className = 'spec-list';
+					product.components.forEach(comp => {
+						const li = document.createElement('li');
+						li.textContent = comp;
+						ul2.appendChild(li);
+					});
+					modalSpecs.appendChild(ul2);
+				}
+			}
 
 			modalMedia.innerHTML = '';
 			if (product.image) {
