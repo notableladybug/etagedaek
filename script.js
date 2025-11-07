@@ -1,364 +1,556 @@
 document.addEventListener('DOMContentLoaded', () => {
-	const DATA_URL = 'products.json';
+  // Constants
+  const DATA_URL = 'products.json';
+  let products = [];
 
-	let products = [];
-	let selectedCategories = new Set();
-	let selectedWeight = 'all'; // 'all' | 'under' | 'over'
+  // DOM Elements
+  const productGrid = document.getElementById('product-grid');
+  const productCount = document.getElementById('product-count');
+  const clearBtn = document.getElementById('clear-filters');
+  const filtersAside = document.querySelector('aside.filters');
+  const inline = document.getElementById('products-data');
+  const m2Input = document.getElementById('m2Input');
+  const modal = document.getElementById('product-modal');
+  const modalTitle = modal?.querySelector('#modal-title');
+  const modalMeta = modal?.querySelector('.modal-meta');
+  const modalDesc = modal?.querySelector('.modal-desc');
+  const modalPrice = modal?.querySelector('.modal-price');
+  const modalMedia = modal?.querySelector('.modal-media');
+  const modalSpecs = modal?.querySelector('.modal-specs');
 
-	const categoryContainer = document.getElementById('category-filters');
-	const weightContainer = document.getElementById('weight-filters');
-	const productGrid = document.getElementById('product-grid');
-	const productCount = document.getElementById('product-count');
-	const clearBtn = document.getElementById('clear-filters');
+  // Create floor slider elements
+  const floorSlider = document.createElement('input');
+  floorSlider.type = 'range';
+  floorSlider.min = '1';
+  floorSlider.max = '8';
+  floorSlider.value = '1';
+  floorSlider.className = 'floor-slider';
 
+  const floorValue = document.createElement('span');
+  floorValue.className = 'floor-value';
+  floorValue.textContent = '1 etage';
 
-	// Behavior:
-	// - If served via http(s): fetch products.json (preferred). If fetch fails, try inline fallback.
-	// - If opened via file://: parse inline JSON (required), otherwise show helpful error.
+  // Sorteringsfunktion
+  function sortProducts(products, sortBy) {
+    if (!sortBy) return products;
 
-	const inline = document.getElementById('products-data');
+    const [field, direction] = sortBy.split('-');
+    const multiplier = direction === 'desc' ? -1 : 1;
 
-	if (location.protocol === 'file:') {
-		if (inline && inline.textContent && inline.textContent.trim().length > 0) {
-			try {
-				const inlineData = JSON.parse(inline.textContent);
-				products = inlineData;
-				buildCategoryFilters(products);
-				attachWeightListeners();
-				render();
-			} catch (e) {
-				console.error('Kunne ikke parse inline products-data', e);
-				productGrid.innerHTML = '<p class="error">Kunne ikke læse den indbyggede produktdata i HTML. Se console for detaljer.</p>';
-			}
-		} else {
-			productGrid.innerHTML = '<p class="error">Ingen indbygget produktdata fundet — siden skal serviceres via en lokal webserver (http) eller du skal indlejre JSON i HTML.</p>';
-			console.error('Åbnet via file:// uden indlejret product-data. Indlej JSON i HTML eller kør en lokal webserver.');
-		}
-		return;
-	}
+    return [...products].sort((a, b) => {
+      let aValue, bValue;
 
-	fetch(DATA_URL)
-		.then(r => {
-			if (!r.ok) throw new Error('HTTP ' + r.status);
-			return r.json();
-		})
-		.then(data => {
-			products = data;
-			buildCategoryFilters(products);
-			attachWeightListeners();
-			render();
-		})
-		.catch(err => {
-			console.warn('Fetch fejlede — prøver fallback til indlejret JSON i HTML hvis tilgængelig', err);
-			if (inline && inline.textContent && inline.textContent.trim().length > 0) {
-				try {
-					const inlineData = JSON.parse(inline.textContent);
-					products = inlineData;
-					buildCategoryFilters(products);
-					attachWeightListeners();
-					render();
-					return;
-				} catch (e) {
-					console.error('Kunne ikke parse inline products-data under fallback', e);
-				}
-			}
-			productGrid.innerHTML = '<p class="error">Fejl ved hentning af products.json (se console). Sørg for at filen findes og at serveren kører.</p>';
-			console.error('Fejl ved hentning af products.json', err);
-		});
+      if (field === 'pris') {
+        aValue = parseFloat(a.pris?.replace(/[^0-9,]/g, '').replace(',', '.')) || 0;
+        bValue = parseFloat(b.pris?.replace(/[^0-9,]/g, '').replace(',', '.')) || 0;
+      } else if (field === 'vaegt') {
+        aValue = parseFloat(a.data?.['Vægt (kg/m2)']?.replace(/[^0-9,]/g, '').replace(',', '.')) || 0;
+        bValue = parseFloat(b.data?.['Vægt (kg/m2)']?.replace(/[^0-9,]/g, '').replace(',', '.')) || 0;
+      } else {
+        aValue = parseFloat(a.data?.[field]?.replace(',', '.')) || 0;
+        bValue = parseFloat(b.data?.[field]?.replace(',', '.')) || 0;
+      }
 
-	function buildCategoryFilters(items) {
-		const allCats = new Set();
-		items.forEach(p => (p.madeFor || []).forEach(tag => allCats.add(tag)));
+      return (aValue - bValue) * multiplier;
+    });
+  }
 
-		const list = document.createElement('div');
-		list.className = 'category-list';
+  // Initialize filters
+  function initializeFilters() {
+    // Setup etage filter med slider
+    const etageFilters = document.getElementById('etage-filters');
+    if (etageFilters) {
+      // Fjern eksisterende radio button
+      const oldLabel = etageFilters.querySelector('label');
+      if (oldLabel) oldLabel.remove();
 
-		Array.from(allCats).sort().forEach(cat => {
-			const id = `cat-${cat.replace(/\s+/g, '-')}`;
-			const label = document.createElement('label');
-			label.innerHTML = `<input type="checkbox" data-cat="${cat}" id="${id}"> ${cat}`;
-			list.appendChild(label);
-		});
+      // Tilføj slider efter summary
+      const summary = etageFilters.querySelector('.filter-summary');
+      if (summary) {
+        // Container til slider og værdi
+        const container = document.createElement('div');
+        container.className = 'slider-container';
+        
+        floorSlider.min = '1';
+        floorSlider.max = '8';
+        floorSlider.value = '1';
+        floorSlider.className = 'floor-slider';
+        
+        floorValue.className = 'floor-value';
+        floorValue.textContent = '1 etage';
+        
+        container.appendChild(floorSlider);
+        container.appendChild(floorValue);
+        summary.insertAdjacentElement('afterend', container);
+      }
 
-		categoryContainer.querySelector('.category-list')?.remove();
-		categoryContainer.appendChild(list);
+      floorSlider.addEventListener('input', () => {
+        floorValue.textContent = `${floorSlider.value} ${floorSlider.value === '1' ? 'etage' : 'etager'}`;
+        updateProducts();
+      });
+    }
 
-		list.addEventListener('change', (e) => {
-			const cb = e.target.closest('input[type="checkbox"]');
-			if (!cb) return;
-			const cat = cb.dataset.cat;
-			if (cb.checked) selectedCategories.add(cat); else selectedCategories.delete(cat);
-			render();
-		});
-	}
+    // Setup radio button event listeners
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', updateProducts);
+    });
 
-	function attachWeightListeners() {
-		weightContainer.addEventListener('change', (e) => {
-			const input = e.target.closest('input[name="weight"]');
-			if (!input) return;
-			selectedWeight = input.value;
-			render();
-		});
+    // Hold disse sektioner åbne som standard og forhindre lukning
+    const sectionsToOpen = ['anvendelse-filters', 'etage-filters', 'm2-filters'];
+    sectionsToOpen.forEach(id => {
+      const section = document.getElementById(id);
+      if (section) {
+        section.setAttribute('open', '');
+        section.open = true;
+        // Fjern standard details/summary adfærd
+        const summary = section.querySelector('summary');
+        if (summary) {
+          summary.style.pointerEvents = 'none';
+          summary.style.cursor = 'default';
+        }
+        // Forhindre at details elementet kan lukkes
+        section.addEventListener('click', (e) => {
+          if (e.target.tagName.toLowerCase() === 'summary') {
+            e.preventDefault();
+            section.setAttribute('open', '');
+            section.open = true;
+          }
+        }, true);
+        // Forhindre at keyboard events kan lukke details
+        section.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+          }
+        }, true);
+      }
+    });
 
-		clearBtn.addEventListener('click', () => {
-			selectedCategories.clear();
-			selectedWeight = 'all';
-			categoryContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-			weightContainer.querySelectorAll('input[name="weight"]').forEach(rb => rb.checked = rb.value === 'all');
-			render();
-		});
-	}
+    // Setup sortering
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) {
+      sortSelect.addEventListener('change', () => {
+        updateProducts();
+      });
+    }
 
-	function render() {
-		const filtered = products.filter(p => {
-			if (selectedCategories.size > 0) {
-				const has = (p.madeFor || []).some(tag => selectedCategories.has(tag));
-				if (!has) return false;
-			}
+    // Setup m2 input
+    if (m2Input) {
+      m2Input.value = ''; // Reset værdi
+      m2Input.addEventListener('input', () => {
+        updateProducts();
+      });
+      // Også opdater ved blur for at fange manuelle indtastninger
+      m2Input.addEventListener('blur', () => {
+        updateProducts();
+      });
+    }
 
-			if (selectedWeight === 'under' && !(p.weightGr < 1000)) return false;
-			if (selectedWeight === 'over' && !(p.weightGr >= 1000)) return false;
+    // Setup modal listeners
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        const close = e.target.closest('[data-close]');
+        if (close) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
+    }
+  }
 
-			return true;
-		});
+  // Update products based on filters
+  function updateProducts() {
+    const activeFilters = getActiveFilters();
+    console.log('Active filters:', activeFilters);
+    const filtered = products.filter(product => matchesFilters(product, activeFilters));
+    
+    // Sorter produkter hvis der er valgt en sortering
+    const sortSelect = document.getElementById('sort-select');
+    const sortedProducts = sortSelect && sortSelect.value 
+      ? sortProducts(filtered, sortSelect.value)
+      : filtered;
+    
+    console.log('Filtered and sorted products:', sortedProducts);
+    render(sortedProducts);
+  }
 
-		productCount.textContent = `${filtered.length} produkt${filtered.length !== 1 ? 'er' : ''}`;
+  // Get active filters
+  function getActiveFilters() {
+    const map = {};
+    if (!filtersAside) return map;
 
-		productGrid.innerHTML = '';
-		if (filtered.length === 0) {
-			productGrid.innerHTML = '<p class="empty">Ingen produkter matcher filtrene.</p>';
-			return;
-		}
+    const blocks = Array.from(filtersAside.querySelectorAll('[id$="-filters"]'));
+    blocks.forEach(block => {
+      const id = block.id || '';
+      const key = id.replace(/-filters$/, '') || null;
+      
+      if (key === 'etage') {
+        map[key] = floorSlider.value;
+        return;
+      }
+      
+      if (key === 'm2') {
+        // Vi ignorerer m2-input da vi ikke bruger det til filtrering
+        return;
+      }
+      
+      const checked = block.querySelector('input:checked');
+      if (!key || !checked) return;
+      const v = String(checked.value || '').trim();
+      if (v && v !== 'all') map[key] = v;
+    });
+    return map;
+  }
 
-		filtered.forEach(p => {
-			const card = document.createElement('article');
-			card.className = 'card';
+  // Error message display function
+  function showError(message) {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.innerHTML = `⚠️ ${message}`;
+    
+    // Remove any existing error messages
+    const existingErrors = document.querySelectorAll('.error-message');
+    existingErrors.forEach(el => el.remove());
+    
+    // Insert error message after the filters
+    if (filtersAside) {
+      filtersAside.appendChild(errorDiv);
+    }
+  }
 
-			// animate entry with stagger
-			card.classList.add('pop');
+  // Check if product matches filters and get any warnings
+  function getProductWarnings(product, active, isModal = false) {
+    const warnings = [];
+    const m2Value = parseInt(m2Input?.value || '0');
+    
+    // Tjek kun for D1-s2-d2 advarsler når vi er over 600m2 OG har etagebolig valgt
+    if (active.anvendelse === 'etagebolig' && m2Value >= 600 && product.specs.brandmodstand === 'D1-s2-d2') {
+      if (isModal) {
+        warnings.push('OBS: Dette produkt har brandmodstand D1-s2-d2. Ved brug i etagebolig over 600m² skal der tages særlige forholdsregler. Kontakt teknisk afdeling for yderligere information.');
+      } else {
+        warnings.push('OBS: Kræver særlig opmærksomhed ved brug i etagebolig over 600m²');
+      }
+    }
 
-			const media = document.createElement('div');
-			media.className = 'card-media';
-			media.setAttribute('aria-hidden', 'true');
+    return warnings;
+  }
 
-			const placeholder = document.createElement('div');
-			placeholder.className = 'placeholder';
-			placeholder.textContent = '📷';
+  function matchesFilters(product, active) {
+    if (!active || Object.keys(active).length === 0) {
+      return false; // Vis ingen produkter indtil anvendelse er valgt
+    }
+    
+    const specs = product.specs || {};
+    console.log('Checking product:', product.name);
+    console.log('Against filters:', active);
 
-			if (p.image) {
-				const img = document.createElement('img');
-				img.src = p.image;
-				img.alt = p.name || '';
-				img.onload = () => {
-					placeholder.style.display = 'none';
-				};
-				img.onerror = () => {
-					img.remove();
-					placeholder.style.display = '';
-				};
-				media.appendChild(img);
-			}
+    // Hvis anvendelse er tom, vis intet
+    if (!active.anvendelse || active.anvendelse === '') {
+      return false;
+    }
 
-			media.appendChild(placeholder);
+    // Tjek om produktet har den valgte anvendelse
+    if (active.anvendelse && !product.anvendelse.includes(active.anvendelse)) {
+      console.log(`Anvendelse mismatch: product has ${product.anvendelse}, filter wants ${active.anvendelse}`);
+      return false;
+    }
+    
+    // Regel 1: Etagebolig skal være minimum brandklasse 2
+    if (active.anvendelse === 'etagebolig' && active.brandklasse === 'BK1') {
+      showError('Etagebolig skal være minimum brandklasse 2');
+      return false;
+    }
 
-			const body = document.createElement('div');
-			body.className = 'card-body';
+    // Regel 2: Højde og brandmodstand restriktioner for BK2
+    if (active.brandklasse === 'BK2' && active.brandmodstand === 'D1-s2-d2') {
+      const height = active.hojdeOversteEtage;
+      if (height && height.startsWith('under-')) {
+        const meters = parseFloat(height.replace('under-', '').replace(',', '.'));
+        if (meters > 12) {
+          showError('Ved højde over 12 meter i brandklasse 2 må brandmodstand ikke være D1, s2-d2');
+          return false;
+        }
+      }
+    }
 
-			const title = document.createElement('h3');
-			title.className = 'card-title';
-			title.innerHTML = escapeHtml(p.name);
+    // Regel 3: m2 og brandmodstand restriktioner
+    if (active.m2Warning && active.m2Warning > 600) {
+      if (specs.brandmodstand === 'D1-s2-d2' || product.warnIfUsedForLargeSections) {
+        showError('Ved brandsektioner over 600 m² skal du vælge et A2, s1-d0 etagedæk');
+        return false;
+      }
+    }
 
-			const badges = document.createElement('div');
-			badges.className = 'badges';
-			(p.madeFor || []).forEach(tag => {
-				const b = document.createElement('span');
-				b.className = 'badge';
-				b.textContent = tag;
-				badges.appendChild(b);
-			});
+    // Tjek etager
+    if (active.etage) {
+      const etageValue = parseInt(active.etage);
+      if (isNaN(etageValue) || 
+          etageValue < (specs.minEtager || 1) || 
+          etageValue > (specs.maxEtager || 8)) {
+        console.log(`Etage mismatch: product supports ${specs.minEtager}-${specs.maxEtager}, filter wants ${active.etage}`);
+        return false;
+      }
+    }
 
-			const meta = document.createElement('div');
-			meta.className = 'meta';
-			meta.textContent = (p.madeFor || []).join(', ') + ' • ' + p.weightGr + ' g';
+    // Handle remaining filters
+    for (const [key, value] of Object.entries(active)) {
+      // Skip special filters that have their own handling
+      if (key === 'etage' || key === 'm2' || key === 'anvendelse') continue;
 
-			const desc = document.createElement('p');
-			desc.className = 'desc';
-			desc.innerHTML = escapeHtml(p.description || '');
+      // Map filter keys to spec keys
+      const specKey = key === 'luftlyd' ? 'luftlydKlasseC' :
+                     key === 'trinlyd' ? 'trinlydKlasseC' :
+                     key;
+                     
+      const currentSpecValue = specs[specKey];
+      console.log(`Checking ${key} (${specKey}): product has "${currentSpecValue}", filter wants "${value}"`);
+      
+      if (currentSpecValue === undefined) {
+        console.log(`Spec ${specKey} not found in product`);
+        continue; // Skip if spec doesn't exist
+      }
+      
+      // Special handling for brandkrav (minimum requirement)
+      if (key === 'brandkrav') {
+        const pNum = parseInt(String(currentSpecValue).replace(/[^0-9]/g, ''), 10);
+        const sNum = parseInt(String(value).replace(/[^0-9]/g, ''), 10);
+        if (!isNaN(pNum) && !isNaN(sNum) && pNum < sNum) {
+          console.log(`Brandkrav mismatch: product requires ${currentSpecValue}, filter wants ${value}`);
+          return false;
+        }
+        continue;
+      }
+      
+      // Default string comparison, men tjek kun hvis værdien findes
+      if (value && String(currentSpecValue).toLowerCase() !== String(value).toLowerCase()) {
+        console.log(`Mismatch for ${key}: product has "${currentSpecValue}", filter wants "${value}"`);
+        return false;
+      }
+    }
 
-			const price = document.createElement('div');
-			price.className = 'price';
-			price.textContent = formatPrice(p.price);
+    console.log('Product matches all filters');
+    return true;
+  }
 
-			body.appendChild(title);
-			if ((p.madeFor || []).length) body.appendChild(badges);
-			body.appendChild(meta);
-			body.appendChild(desc);
-			body.appendChild(price);
+  // Modal functions
+  function openModal(product) {
+    if (!modal) return;
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    
+    // Fjern eventuelle eksisterende advarsler
+    const existingWarnings = modal.querySelectorAll('.modal-warnings');
+    existingWarnings.forEach(warning => warning.remove());
 
-			card.appendChild(media);
-			card.appendChild(body);
+    if (modalTitle) modalTitle.textContent = product.name || '';
+    if (modalDesc) modalDesc.textContent = product.description || '';
+    if (modalPrice) modalPrice.textContent = product.pris || '';
 
-					card.tabIndex = 0;
-					card.setAttribute('role', 'button');
-					card.setAttribute('aria-label', `${p.name}. Åbn detaljer`);
-					card.addEventListener('click', () => openModal(p));
-					card.addEventListener('keydown', (e) => {
-						if (e.key === 'Enter' || e.key === ' ') {
-							e.preventDefault();
-							openModal(p);
-						}
-					});
+    if (modalMedia) {
+      modalMedia.innerHTML = '';
+      if (product.image) {
+        const img = document.createElement('img');
+        img.src = product.image;
+        img.alt = product.name || '';
+        img.onerror = () => {
+          img.remove();
+          modalMedia.innerHTML = '<div class="placeholder">📷</div>';
+        };
+        modalMedia.appendChild(img);
+      } else {
+        modalMedia.innerHTML = '<div class="placeholder">📷</div>';
+      }
+    }
 
-					card.style.animationDelay = `${filtered.indexOf(p) * 60}ms`;
-					productGrid.appendChild(card);
-		});
-	}
+    // Vis advarsler hvis nødvendigt under billedet
+    if (modalMedia) {
+      const warnings = getProductWarnings(product, getActiveFilters(), true); // true for modal warnings
+      if (warnings.length > 0) {
+        const warningsDiv = document.createElement('div');
+        warningsDiv.className = 'modal-warnings';
+        warnings.forEach(warning => {
+          const warningDiv = document.createElement('div');
+          warningDiv.className = 'warning-message';
+          warningDiv.textContent = warning;
+          warningsDiv.appendChild(warningDiv);
+        });
+        modalMedia.appendChild(warningsDiv);
+      }
+    }
 
+    if (modalSpecs) {
+      modalSpecs.innerHTML = '';
+      
+      const specs = product.specs || {};
+      
+      // Vis alle specs fra produktet
+      Object.entries(specs).forEach(([key, value]) => {
+        const row = document.createElement('div');
+        row.className = 'spec-row';
+        const label = key
+          .replace(/([A-Z])/g, ' $1') // Tilføj mellemrum før store bogstaver
+          .toLowerCase()
+          .replace(/^./, str => str.toUpperCase()); // Gør første bogstav stort
+        row.innerHTML = `<span class="spec-label">${label}:</span> ${value}`;
+        modalSpecs.appendChild(row);
+      });
 
-		const modal = document.getElementById('product-modal');
-		const modalTitle = modal && modal.querySelector('#modal-title');
-		const modalMeta = modal && modal.querySelector('.modal-meta');
-		const modalDesc = modal && modal.querySelector('.modal-desc');
-		const modalPrice = modal && modal.querySelector('.modal-price');
-		const modalMedia = modal && modal.querySelector('.modal-media');
-		const modalRaw = modal && modal.querySelector('.modal-raw');
+      // Tilføj features hvis de findes
+      if (product.features && product.features.length) {
+        const title = document.createElement('div');
+        title.className = 'spec-row spec-title';
+        title.innerHTML = '<span class="spec-label">Features:</span>';
+        modalSpecs.appendChild(title);
+        const ul = document.createElement('ul');
+        ul.className = 'spec-list';
+        product.features.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          ul.appendChild(li);
+        });
+        modalSpecs.appendChild(ul);
+      }
+    }
 
-		function openModal(product) {
-			if (!modal) return;
-			modal.setAttribute('aria-hidden', 'false');
-			document.body.style.overflow = 'hidden';
+    const closeBtn = modal.querySelector('.modal-close');
+    if (closeBtn) closeBtn.focus();
+  }
 
-			modalTitle.innerHTML = escapeHtml(product.name || '');
-			modalMeta.textContent = (product.madeFor || []).join(', ') + (product.weightGr ? ' • ' + (product.weightGr + ' g') : '');
-			modalDesc.innerHTML = escapeHtml(product.description || '');
-			modalPrice.textContent = formatPrice(product.price);
+  function closeModal() {
+    if (!modal) return;
+    if (modal.classList.contains('closing')) return;
 
-			const specs = [];
-			if (product.fullName) specs.push({label: 'Fulde navn', value: product.fullName});
+    modal.classList.add('closing');
+    
+    const finishClose = () => {
+      modal.classList.remove('closing');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      modal.removeEventListener('animationend', onAnimEnd);
+    };
 
-			if (product.focalLength) specs.push({label: 'Brændvidde', value: product.focalLength});
-			if (product.maxAperture) specs.push({label: 'Max. blænde', value: product.maxAperture});
-			if (product.mount) specs.push({label: 'Mount', value: product.mount});
-			if (product.imageStabilization) specs.push({label: 'Billedstabilisering', value: product.imageStabilization});
-			if (product.focusMotor) specs.push({label: 'Fokusmotor', value: product.focusMotor});
-			if (product.minFocusDistanceM) specs.push({label: 'Minimum fokusafstand', value: product.minFocusDistanceM + ' m'});
-			if (product.filterSizeMm) specs.push({label: 'Filterstørrelse', value: product.filterSizeMm + ' mm'});
-			if (product.dimensions) specs.push({label: 'Dimensioner', value: product.dimensions});
+    const onAnimEnd = () => finishClose();
+    modal.addEventListener('animationend', onAnimEnd);
 
-			if (product.profileHeightMm) specs.push({label: 'Højde på profil', value: product.profileHeightMm + ' mm'});
-			if (product.totalHeightMm) specs.push({label: 'Samlet højde', value: product.totalHeightMm + ' mm'});
-			if (product.fireClass) specs.push({label: 'Brandklasse', value: product.fireClass});
-			if (product.soundClass) specs.push({label: 'Lydklasse i dB', value: product.soundClass});
-			if (product.weightKgPerM2) specs.push({label: 'Vægt', value: product.weightKgPerM2 + ' kg/m²'});
+    // Backup timeout hvis animation ikke trigger
+    setTimeout(() => {
+      if (modal.classList.contains('closing')) finishClose();
+    }, 400);
+  }
 
-			const modalSpecs = modal.querySelector('.modal-specs');
-			if (modalSpecs) {
-				modalSpecs.innerHTML = '';
-				if (specs.length) {
-					specs.forEach(s => {
-						const row = document.createElement('div');
-						row.className = 'spec-row';
-						row.innerHTML = `<span class="spec-label">${escapeHtml(s.label)}:</span> ${escapeHtml(s.value)}`;
-						modalSpecs.appendChild(row);
-					});
-				}
+  // Render products
+  function render(filteredProducts) {
+    if (!productGrid || !productCount) return;
 
-				if (product.features && product.features.length) {
-					const title = document.createElement('div');
-					title.className = 'spec-row spec-title';
-					title.innerHTML = '<span class="spec-label">Funktioner:</span>';
-					modalSpecs.appendChild(title);
-					const ul = document.createElement('ul');
-					ul.className = 'spec-list';
-					product.features.forEach(item => {
-						const li = document.createElement('li');
-						li.textContent = item;
-						ul.appendChild(li);
-					});
-					modalSpecs.appendChild(ul);
-				}
+    productCount.textContent = `${filteredProducts.length} produkt${filteredProducts.length !== 1 ? 'er' : ''}`;
+    
+    if (filteredProducts.length === 0) {
+      productGrid.innerHTML = '<p class="empty">Ingen produkter matcher filtrene.</p>';
+      return;
+    }
 
-				if (product.components && product.components.length) {
-					const title = document.createElement('div');
-					title.className = 'spec-row spec-title';
-					title.innerHTML = '<span class="spec-label">Komponenter:</span>';
-					modalSpecs.appendChild(title);
-					const ul2 = document.createElement('ul');
-					ul2.className = 'spec-list';
-					product.components.forEach(comp => {
-						const li = document.createElement('li');
-						li.textContent = comp;
-						ul2.appendChild(li);
-					});
-					modalSpecs.appendChild(ul2);
-				}
-			}
+    productGrid.innerHTML = '';
+    filteredProducts.forEach((product, index) => {
+      const card = document.createElement('article');
+      card.className = 'card';
+      // Get any warnings for the product
+      const warnings = getProductWarnings(product, getActiveFilters());
+      const warningsHtml = warnings.length > 0 
+        ? `<div class="card-warnings">${warnings.map(w => `<div class="warning-message">${w}</div>`).join('')}</div>`
+        : '';
 
-			modalMedia.innerHTML = '';
-			if (product.image) {
-				const img = document.createElement('img');
-				img.src = product.image;
-				img.alt = product.name || '';
-				img.onerror = () => { img.remove(); modalMedia.innerHTML = '<div class="placeholder">📷</div>'; };
-				modalMedia.appendChild(img);
-			} else {
-				modalMedia.innerHTML = '<div class="placeholder">📷</div>';
-			}
+      card.innerHTML = `
+        <div class="card-media">
+          ${product.image ? `<img src="${product.image}" alt="${product.name}">` : '<div class="placeholder">📷</div>'}
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">${product.name || ''}</h3>
+          ${warningsHtml}
+          <p class="desc">${product.description || ''}</p>
+          <div class="price">${product.pris || ''}</div>
+        </div>
+      `;
+      
+      // Gør kortet klikbart
+      card.tabIndex = 0;
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', `${product.name}. Åbn detaljer`);
+      card.addEventListener('click', () => openModal(product));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal(product);
+        }
+      });
+      
+      card.style.animationDelay = `${index * 60}ms`;
+      productGrid.appendChild(card);
+    });
+  }
 
-			modalRaw.textContent = JSON.stringify(product, null, 2);
+  // Load data function
+  function loadData() {
+    return fetch(DATA_URL)
+      .then(r => {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .catch(() => {
+        if (inline?.textContent) {
+          try {
+            return JSON.parse(inline.textContent);
+          } catch (e) {
+            console.error('Kunne ikke parse inline products-data', e);
+            return null;
+          }
+        }
+        return null;
+      });
+  }
 
-			const closeBtn = modal.querySelector('.modal-close');
-			if (closeBtn) closeBtn.focus();
-		}
+  // Normalize data
+  function normalize(data) {
+    if (!data) return [];
+    if (Array.isArray(data)) return data;
+    if (Array.isArray(data.products)) return data.products;
+    for (const k of Object.keys(data)) {
+      if (Array.isArray(data[k])) return data[k];
+    }
+    return [];
+  }
 
-		function closeModal() {
-			if (!modal) return;
-			if (modal.classList.contains('closing')) return;
+  // Initialize everything
+  initializeFilters();
+  
+  // Load and render initial data
+  loadData()
+    .then(data => {
+      console.log('Loaded data:', data);
+      products = normalize(data);
+      console.log('Normalized products:', products);
+      render(products);
+    })
+    .catch(error => {
+      console.error('Fejl ved indlæsning af produkter:', error);
+      if (productGrid) {
+        productGrid.innerHTML = '<p class="empty">Kunne ikke indlæse produkter.</p>';
+      }
+    });
 
-			modal.classList.add('closing');
-
-			const finishClose = () => {
-				modal.classList.remove('closing');
-				modal.setAttribute('aria-hidden', 'true');
-				document.body.style.overflow = '';
-				modal.removeEventListener('animationend', onAnim);
-			};
-
-			let onAnim = (e) => {
-				finishClose();
-			};
-
-			modal.addEventListener('animationend', onAnim);
-
-			setTimeout(() => {
-				if (modal.classList.contains('closing')) finishClose();
-			}, 400);
-		}
-
-		if (modal) {
-			modal.addEventListener('click', (e) => {
-				const close = e.target.closest('[data-close]');
-				if (close) closeModal();
-			});
-			document.addEventListener('keydown', (e) => {
-				if (e.key === 'Escape') closeModal();
-			});
-		}
-
-            // Price formatting
-	function formatPrice(p) {
-		if (!p && p !== 0) return '';
-		return new Intl.NumberFormat('da-DK', { style: 'currency', currency: 'DKK' }).format(p / 1);
-	}
-
-	function escapeHtml(str) {
-		return String(str)
-			.replace(/&/g, '&amp;')
-			.replace(/</g, '&lt;')
-			.replace(/>/g, '&gt;')
-			.replace(/"/g, '&quot;')
-			.replace(/'/g, '&#39;');
-	}
-
+  // Setup clear filters button
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      const checks = filtersAside?.querySelectorAll('input');
+      if (checks) {
+        checks.forEach(input => {
+          if (input.type === 'radio') input.checked = (input.value === 'all');
+        });
+      }
+      if (m2Input) m2Input.value = '';
+      if (floorSlider) {
+        floorSlider.value = '1';
+        floorValue.textContent = '1 etage';
+      }
+      render(products);
+    });
+  }
 });
-

@@ -18,16 +18,93 @@
 			<aside class="filters" aria-label="Filtre">
 				<h2>Filtre</h2>
 
-				<div id="category-filters">
-					<h3>Brug til</h3>
-				</div>
+				<details id="anvendelse-filters">
+					<summary class="filter-summary"><span class="label">Anvendelses type</span><span class="chev" aria-hidden="false">▸</span></summary>
+					<label><input type="radio" name="anvendelse" value="enfamiliehus"> Enfamiliehuse</label>
+					<label><input type="radio" name="anvendelse" value="etagebolig"> Etagebolig</label>
+				</details>
 
-				<div id="weight-filters">
-					<h3>Vægt</h3>
-					<label><input type="radio" name="weight" value="all" checked> Alle</label>
-					<label><input type="radio" name="weight" value="under"> Under 1000g</label>
-					<label><input type="radio" name="weight" value="over"> Over 1000g</label>
-				</div>
+				<details id="etage-filters">
+					<summary class="filter-summary"><span class="label">Mængde af etager</span><span class="chev" aria-hidden="false">▸</span></summary>
+					<label><input type="radio" name="etage" value="etapeb"> Mængde af etager</label>
+				</details>
+
+				<details id="m2-filters">
+					<summary class="filter-summary"><span class="label">Opvarmet kvadratmeter</span><span class="chev" aria-hidden="false">▸</span></summary>
+					<div class="m2-input-container">
+						<input type="number" id="m2Input" min="0" placeholder="Indtast m²" class="m2-input">
+						<span class="m2-unit">m²</span>
+					</div>
+				</details>
+
+				<details id="brandkrav-filters">
+					<summary class="filter-summary"><span class="label">Brandkrav</span><span class="chev" aria-hidden="true">▸</span></summary>
+					<label><input type="radio" name="brandkrav" value="all" checked> Alle</label>
+					<label><input type="radio" name="brandkrav" value="R30"> R30</label>
+					<label><input type="radio" name="brandkrav" value="R60"> R60</label>
+					<label><input type="radio" name="brandkrav" value="R120"> R120</label>
+				</details>
+
+				<details id="brandsektion-filters">
+					<summary class="filter-summary"><span class="label">Brandsektion</span><span class="chev" aria-hidden="true">▸</span></summary>
+					<label><input type="radio" name="brandsektion" value="all" checked> Alle</label>
+					<label><input type="radio" name="brandsektion" value="under"> Under 600 m²</label>
+					<label><input type="radio" name="brandsektion" value="over"> Over 600 m²</label>
+				</details>
+
+				<details id="brandmodstand-filters">
+					<summary class="filter-summary"><span class="label">Brandmodstand</span><span class="chev" aria-hidden="true">▸</span></summary>
+					<label><input type="radio" name="brandmodstand" value="all" checked> Alle</label>
+					<label><input type="radio" name="brandmodstand" value="A2-s1-d0"> A2, s1-d0</label>
+					<label><input type="radio" name="brandmodstand" value="D1-s2-d2"> D1, s2-d2</label>
+				</details>
+
+				<details id="brandklasse-filters">
+					<summary class="filter-summary"><span class="label">Brandklasse</span><span class="chev" aria-hidden="true">▸</span></summary>
+					<label><input type="radio" name="brandklasse" value="all" checked> Alle</label>
+					<label><input type="radio" name="brandklasse" value="BK1"> BK1</label>
+					<label><input type="radio" name="brandklasse" value="BK2"> BK2</label>
+					<label><input type="radio" name="brandklasse" value="BK4"> BK4</label>
+				</details>
+
+				<details id="hojdeOversteEtage-filters">
+					<summary class="filter-summary"><span class="label">Højde på øverste etage</span><span class="chev" aria-hidden="true">▸</span></summary>
+					<label><input type="radio" name="hojdeOversteEtage" value="all" checked> Alle</label>
+					<label><input type="radio" name="hojdeOversteEtage" value="under-5,1"> Under 5,1</label>
+					<label><input type="radio" name="hojdeOversteEtage" value="under-12"> Under 12</label>
+					<label><input type="radio" name="hojdeOversteEtage" value="under-22"> Under 22</label>
+				</details>
+
+				<details id="luftlyd-filters">
+					<summary class="filter-summary"><span class="label">Luftlyd</span><span class="chev" aria-hidden="true">▸</span></summary>
+					<label><input type="radio" name="luftlydKlasseC" value="all" checked> Alle</label>
+					<label><input type="radio" name="luftlydKlasseC" value="Over-55dB"> Over 55 dB</label>
+				</details>
+
+				<details id="trinlyd-filters">
+					<summary class="filter-summary"><span class="label">Trinlyd</span><span class="chev" aria-hidden="true">▸</span></summary>
+					<label><input type="radio" name="trinlydKlasseC" value="all" checked> Alle</label>
+					<label><input type="radio" name="trinlydKlasseC" value="under-53dB"> Under 53 dB</label>
+				</details>
+
+				<details id="samlet-tykkelse-filters">
+					<summary class="filter-summary"><span class="label">Samlet tykkelse</span><span class="chev" aria-hidden="true">▸</span></summary>
+					<label><input type="radio" name="samletTykkelse" value="all" checked> Alle</label>
+					<label><input type="radio" name="samletTykkelse" value="0-300mm"> 0-300mm</label>
+					<label><input type="radio" name="samletTykkelse" value="300-400mm"> 300-400mm</label>
+					<label><input type="radio" name="samletTykkelse" value="400-500mm"> 400-500mm</label>
+					<label><input type="radio" name="samletTykkelse" value="500mm+"> 500mm+</label>
+				</details>
+
+				<details id="spaendvidde-filters">
+					<summary class="filter-summary"><span class="label">CC</span><span class="chev" aria-hidden="true">▸</span></summary>
+					<label><input type="radio" name="spaendvidde" value="all" checked> Alle</label>
+					<label><input type="radio" name="spaendvidde" value="CC300mm"> CC 300 mm</label>
+					<label><input type="radio" name="spaendvidde" value="CC600mm"> CC 600 mm</label>
+					<label><input type="radio" name="spaendvidde" value="CC810mm"> CC 810 mm</label>
+					<label><input type="radio" name="spaendvidde" value="CC1000mm"> CC 1000 mm</label>
+				</details>
+
 
 				<button id="clear-filters" type="button">Nulstil filtre</button>
 			</aside>
@@ -35,6 +112,20 @@
 			<section class="products" aria-live="polite">
 				<div class="toolbar">
 					<div id="product-count">0 produkter</div>
+					<div class="sort-controls">
+						<label for="sort-select">Sortér efter:</label>
+						<select id="sort-select">
+							<option value="">Vælg sortering...</option>
+							<option value="LCA-asc">LCA (Lavest først)</option>
+							<option value="LCA-desc">LCA (Højest først)</option>
+							<option value="prisindeks-asc">Prisindeks (Lavest først)</option>
+							<option value="prisindeks-desc">Prisindeks (Højest først)</option>
+							<option value="pris-asc">Pris (Lavest først)</option>
+							<option value="pris-desc">Pris (Højest først)</option>
+							<option value="vaegt-asc">Vægt (Lettest først)</option>
+							<option value="vaegt-desc">Vægt (Tungest først)</option>
+						</select>
+					</div>
 				</div>
 				<div id="product-grid" class="grid"></div>
 			</section>

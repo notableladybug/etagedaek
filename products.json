@@ -1,84 +1,37 @@
-	[
-		{
-			"id": 1,
-			"name": "Vildt 200-500mm f/4",
-			"fullName": "ES3 A1 C200-1,5 74/66 600 GF25/FF S45",
-			"madeFor": ["Vildtliv", "Sport"],
-			"weightGr": 1450,
-			"price": 12999,
-			"description": "Teleobjektiv designet til vildt- og sportsfotografering. Stabil optik og hurtig AF.",
-			"image": "",
-			"focalLength": "200-500 mm",
-			"maxAperture": "f/4",
-			"mount": "Canon EF",
-			"imageStabilization": "Optical IS",
-			"focusMotor": "Ring USM",
-			"minFocusDistanceM": 2.5,
-			"filterSizeMm": 95,
-			"dimensions": "ø110 x 300 mm",
-			"features": [
-				"Weather-sealed construction",
-				"Fluorine-coated front element",
-				"Fast and accurate AF",
-				"Tripod collar included"
-			]
-		},
-		{
-			"id": 2,
-			"name": "Portræt 85mm f/1.8",
-			"madeFor": ["Portræt"],
-			"weightGr": 350,
-			"price": 2499,
-			"description": "Kompakt og lysstærkt portrætobjektiv med flot bokeh og god skarphed.",
-			"image": "https://via.placeholder.com/600x350?text=Portr%C3%A6t+85mm"
-		},
-		{
-			"id": 3,
-			"name": "Allround 24-70mm f/2.8",
-			"madeFor": ["Portræt", "Landskab"],
-			"weightGr": 805,
-			"price": 8999,
-			"description": "Alsidigt zoom til reportager, rejse og landskabsfotografering.",
-            "image": "images/24-70.webp",
-            "focalLength": "24-70 mm",
-			"maxAperture": "f/2.8",
-			"mount": "Sony FE",
-			"imageStabilization": "Optical OSS",
-			"focusMotor": "Ring USM",
-			"minFocusDistanceM": 2.5,
-			"filterSizeMm": 95,
-			"dimensions": "ø110 x 300 mm",
-			"features": [
-				"Weather-sealed construction",
-				"Fluorine-coated front element",
-				"Fast and accurate AF",
-				"Tripod collar included"
-            ]
-		},
-		{
-			"id": 4,
-			"name": "Macro 100mm f/2.8",
-			"madeFor": ["Macro", "Landskab"],
-			"weightGr": 640,
-			"price": 4999,
-			"description": "Makro med 1:1 forstørrelse — perfekt til små motiver og detaljer.",
-			"image": "https://via.placeholder.com/600x350?text=Macro+100mm"
-		},
-		{
-			"id": 5,
-			"name": "Teleprime 400mm f/5.6",
-			"madeFor": ["Vildtliv"],
-			"weightGr": 2300,
-			"price": 14999,
-			"description": "Let prime-tele for seriøse vildt-fotografer — optimeret til afstand og kontrast."
-		},
-		{
-			"id": 6,
-			"name": "Vidvinkel 16-35mm f/4",
-			"madeFor": ["Landskab", "Arkitektur"],
-			"weightGr": 780,
-			"price": 6999,
-			"description": "Stabil vidvinkel, god til landskab og arkitektur. Kompakt og let.",
-			"image": "https://via.placeholder.com/600x350?text=Vidvinkel+16-35mm"
-		}
-	]
+{
+    "products": [
+        {
+            "id": "prod-001",
+            "name": "Posi Joist PS8 (95 mm gulvbjælke)",
+            "description": "Højtydende etagedæk system designet til moderne boligbyggeri med optimal kombination af brand- og lydegenskaber",
+            "image": "images/Posi-Joist-PS8.jpg",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "under",
+                "brandmodstand": "D1-s2-d2",
+                "brandklasse": "BK2",
+                "hojdeOversteEtage": "under-12",
+                "luftlydKlasseC": "Over-55dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": "CC600mm",
+                "Størrelse installation i dæk": "108",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+
+            "anvendelse": [
+                "etagebolig",
+                "enfamiliehus"
+            ],
+            "warnIfUsedForLargeSections": true,
+            "data": {
+                "LCA": "0,58",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "108",
+                "samletTykkelse": "372mm",
+                "Vægt (kg/m2)": "22 kg/m²"
+            },
+            "pris": "690 DKK/m²"
+        }
+    ]
+}
