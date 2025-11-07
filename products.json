@@ -4,7 +4,7 @@
             "id": "prod-001",
             "name": "Posi Joist PS8 (95 mm gulvbjælke)",
             "description": "Højtydende etagedæk system designet til moderne boligbyggeri med optimal kombination af brand- og lydegenskaber",
-            "image": "images/Posi-Joist-PS8.jpg",
+            "image": "images/posijoist.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -27,7 +27,6 @@
                 "etagebolig",
                 "enfamiliehus"
             ],
-            "warnIfUsedForLargeSections": true,
             "data": {
                 "LCA": "0,76",
                 "prisindeks": "",
@@ -41,7 +40,7 @@
             "id": "prod-002",
             "name": "Posi Joist PS8 (95 mm gulvbjælke)",
             "description": "Højtydende etagedæk system designet til moderne boligbyggeri med optimal kombination af brand- og lydegenskaber",
-            "image": "images/Posi-Joist-PS8.jpg",
+            "image": "images/posijoist.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -78,7 +77,7 @@
             "id": "prod-003",
             "name": "Posi Joist PS9 (95 mm gulvbjælke)",
             "description": "Højtydende etagedæk system designet til moderne boligbyggeri med optimal kombination af brand- og lydegenskaber",
-            "image": "images/Posi-Joist-PS8.jpg",
+            "image": "images/posijoist.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -115,7 +114,7 @@
             "id": "prod-004",
             "name": "Posi Joist PS9 (95 mm gulvbjælke)",
             "description": "Højtydende etagedæk system designet til moderne boligbyggeri med optimal kombination af brand- og lydegenskaber",
-            "image": "images/Posi-Joist-PS8.jpg",
+            "image": "images/posijoist.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -156,7 +155,7 @@
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
-                "brandmodstand": "A2, s1—d0",
+                "brandmodstand": "A2-s1-d0",
                 "hojdeOversteEtage": "under-22",
                 "luftlydKlasseC": "Over-63dB",
                 "trinlydKlasseC": "under-46dB",

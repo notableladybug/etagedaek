@@ -222,12 +222,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const warnings = [];
     const m2Value = parseInt(m2Input?.value || '0');
     
-    // Tjek kun for D1-s2-d2 advarsler når vi er over 600m2 OG har etagebolig valgt
-    if (active.anvendelse === 'etagebolig' && m2Value >= 600 && product.specs.brandmodstand === 'D1-s2-d2') {
+    // Vis advarsel for alle D1-s2-d2 produkter når sektionen er over 600m²
+    if (m2Value >= 600 && product.specs.brandmodstand === 'D1-s2-d2') {
       if (isModal) {
-        warnings.push('OBS: Dette produkt har brandmodstand D1-s2-d2. Ved brug i etagebolig over 600m² skal der tages særlige forholdsregler. Kontakt teknisk afdeling for yderligere information.');
+        warnings.push('OBS: Dette produkt har brandmodstand D1-s2-d2. Ved brug i sektioner over 600m² skal der tages særlige forholdsregler. Kontakt teknisk afdeling for yderligere information.');
       } else {
-        warnings.push('OBS: Kræver særlig opmærksomhed ved brug i etagebolig over 600m²');
+        warnings.push('OBS: Kræver særlig opmærksomhed ved brug i sektioner over 600m²');
       }
     }
 
@@ -343,6 +343,19 @@ document.addEventListener('DOMContentLoaded', () => {
           // For arrays, check if the selected value exists in the array
           if (!currentSpecValue.some(v => String(v).toLowerCase() === String(value).toLowerCase())) {
             console.log(`Mismatch for ${key}: product has "${currentSpecValue}", filter wants "${value}"`);
+            return false;
+          }
+        } else if (key === 'brandmodstand') {
+          // Special handling for brandmodstand where A2-s1-d0 also satisfies D1-s2-d2 requirement
+          if (value === 'D1-s2-d2') {
+            // If filter is D1-s2-d2, both D1-s2-d2 and A2-s1-d0 are acceptable
+            if (currentSpecValue !== 'D1-s2-d2' && currentSpecValue !== 'A2-s1-d0') {
+              console.log(`Brandmodstand mismatch: product has "${currentSpecValue}", filter wants "${value}"`);
+              return false;
+            }
+          } else if (value === 'A2-s1-d0' && currentSpecValue !== 'A2-s1-d0') {
+            // If filter is A2-s1-d0, only A2-s1-d0 is acceptable
+            console.log(`Brandmodstand mismatch: product has "${currentSpecValue}", filter wants "${value}"`);
             return false;
           }
         } else if (String(currentSpecValue).toLowerCase() !== String(value).toLowerCase()) {
