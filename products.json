@@ -12,7 +12,8 @@
                 "hojdeOversteEtage": "under-12",
                 "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
-                "spaendvidde": "CC600mm",
+                "spaendvidde": ["CC300mm"],
+                "Max længde": "4200mm",
                 "Størrelse installation i dæk": "108",
                 "minEtager": 1,
                 "maxEtager": 8
@@ -28,11 +29,157 @@
             ],
             "warnIfUsedForLargeSections": true,
             "data": {
-                "LCA": "0,58",
+                "LCA": "0,76",
                 "prisindeks": "",
                 "Størrelse installation i dæk": "108",
-                "samletTykkelse": "372mm",
+                "samletTykkelse": "384mm",
                 "Vægt (kg/m2)": "22 kg/m²"
+            },
+            "pris": "690 DKK/m²"
+        },
+        {
+            "id": "prod-002",
+            "name": "Posi Joist PS8 (95 mm gulvbjælke)",
+            "description": "Højtydende etagedæk system designet til moderne boligbyggeri med optimal kombination af brand- og lydegenskaber",
+            "image": "images/Posi-Joist-PS8.jpg",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "under",
+                "brandmodstand": "D1-s2-d2",
+                "hojdeOversteEtage": "under-12",
+                "luftlydKlasseC": "Over-55dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": ["CC600mm"],
+                "Max længde": "3600mm",
+                "Størrelse installation i dæk": "108",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+
+            "anvendelse": [
+                "etagebolig",
+                "enfamiliehus"
+            ],
+            "warnIfUsedForLargeSections": true,
+            "data": {
+                "LCA": "0,76",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "108",
+                "samletTykkelse": "384mm",
+                "Vægt (kg/m2)": "22 kg/m²"
+            },
+            "pris": "690 DKK/m²"
+        },
+        {
+            "id": "prod-003",
+            "name": "Posi Joist PS9 (95 mm gulvbjælke)",
+            "description": "Højtydende etagedæk system designet til moderne boligbyggeri med optimal kombination af brand- og lydegenskaber",
+            "image": "images/Posi-Joist-PS8.jpg",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "under",
+                "brandmodstand": "D1-s2-d2",
+                "hojdeOversteEtage": "under-12",
+                "luftlydKlasseC": "Over-55dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": ["CC300mm"],
+                "Max længde": "4650mm",
+                "Størrelse installation i dæk": "131",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+
+            "anvendelse": [
+                "etagebolig",
+                "enfamiliehus"
+            ],
+            "warnIfUsedForLargeSections": true,
+            "data": {
+                "LCA": "0,76",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "108",
+                "samletTykkelse": "384mm",
+                "Vægt (kg/m2)": "22 kg/m²"
+            },
+            "pris": "690 DKK/m²"
+        },
+        {
+            "id": "prod-004",
+            "name": "Posi Joist PS9 (95 mm gulvbjælke)",
+            "description": "Højtydende etagedæk system designet til moderne boligbyggeri med optimal kombination af brand- og lydegenskaber",
+            "image": "images/Posi-Joist-PS8.jpg",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "under",
+                "brandmodstand": "D1-s2-d2",
+                "hojdeOversteEtage": "under-12",
+                "luftlydKlasseC": "Over-55dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": ["CC600mm"],
+                "Max længde": "3900mm",
+                "Størrelse installation i dæk": "131",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+
+            "anvendelse": [
+                "etagebolig",
+                "enfamiliehus"
+            ],
+            "warnIfUsedForLargeSections": true,
+            "data": {
+                "LCA": "0,76",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "108",
+                "samletTykkelse": "384mm",
+                "Vægt (kg/m2)": "22 kg/m²"
+            },
+            "pris": "690 DKK/m²"
+        },
+        {
+            "id": "prod-005",
+            "name": "Nyt Huldæk 22/12",
+            "description": "Armeret betonhuldæk med høj trykstyrke",
+            "image": "images/huldæk.jpg",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "over",
+                "brandmodstand": "A2, s1—d0",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Over-63dB",
+                "trinlydKlasseC": "under-46dB",
+                "spaendvidde": ["CC1200mm"],
+                "Størrelse installation i dæk": "0",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "etagebolig",
+                "enfamiliehus"
+            ],
+            "warnIfUsedForLargeSections": false,
+            "data": {
+                "LCA": "1,56",
+                "prisindeks": "0,8",
+                "Størrelse installation i dæk": "0",
+                "samletTykkelse": "400mm",
+                "Vægt (kg/m2)": "368 kg/m²"
             },
             "pris": "690 DKK/m²"
         }

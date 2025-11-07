@@ -305,7 +305,16 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Special handling for brandklasse based on anvendelse
       if (key === 'brandklasse') {
-        currentSpecValue = product.brandklasser?.[active.anvendelse] || '';
+        // Få den korrekte brandklasse for den valgte anvendelse
+        const allowedBrandklasse = product.brandklasser?.[active.anvendelse];
+        currentSpecValue = allowedBrandklasse;
+
+        // Hvis der er valgt en specifik brandklasse (ikke 'all'), og den ikke matcher den tilladte, returner false
+        if (value !== 'all' && value !== allowedBrandklasse) {
+          return false;
+        }
+        // Skip videre behandling af brandklasse
+        continue;
       } else {
         currentSpecValue = specs[specKey];
       }
@@ -328,10 +337,18 @@ document.addEventListener('DOMContentLoaded', () => {
         continue;
       }
       
-      // Default string comparison, men tjek kun hvis værdien findes
-      if (value && String(currentSpecValue).toLowerCase() !== String(value).toLowerCase()) {
-        console.log(`Mismatch for ${key}: product has "${currentSpecValue}", filter wants "${value}"`);
-        return false;
+      // Default comparison, check for arrays and strings
+      if (value && value !== 'all') {
+        if (Array.isArray(currentSpecValue)) {
+          // For arrays, check if the selected value exists in the array
+          if (!currentSpecValue.some(v => String(v).toLowerCase() === String(value).toLowerCase())) {
+            console.log(`Mismatch for ${key}: product has "${currentSpecValue}", filter wants "${value}"`);
+            return false;
+          }
+        } else if (String(currentSpecValue).toLowerCase() !== String(value).toLowerCase()) {
+          console.log(`Mismatch for ${key}: product has "${currentSpecValue}", filter wants "${value}"`);
+          return false;
+        }
       }
     }
 
@@ -391,15 +408,29 @@ document.addEventListener('DOMContentLoaded', () => {
       const specs = product.specs || {};
       const activeFilters = getActiveFilters();
       
+      // Helper: format label keys (preserve acronyms like LCA)
+      const formatLabel = (raw) => {
+        if (typeof raw !== 'string') return raw;
+        // If key is an uppercase acronym (2+ uppercase letters), keep as-is
+        if (raw === raw.toUpperCase() && /[A-Z]{2,}/.test(raw)) return raw;
+        // Insert spaces before capitals and capitalize first letter
+        const withSpaces = raw.replace(/([A-Z])/g, ' $1').replace(/_/g, ' ');
+        return withSpaces.charAt(0).toUpperCase() + withSpaces.slice(1);
+      };
+
       // Vis alle specs fra produktet (undtagen brandklasse som håndteres særskilt)
       Object.entries(specs).forEach(([key, value]) => {
         const row = document.createElement('div');
         row.className = 'spec-row';
-        const label = key
-          .replace(/([A-Z])/g, ' $1') // Tilføj mellemrum før store bogstaver
-          .toLowerCase()
-          .replace(/^./, str => str.toUpperCase()); // Gør første bogstav stort
-        row.innerHTML = `<span class="spec-label">${label}:</span> ${value}`;
+        const label = formatLabel(key);
+        let displayValue = Array.isArray(value) ? value.join(' / ') : value;
+        // Map brandsektion values to human readable text
+        if (key === 'brandsektion') {
+          const v = String(displayValue).toLowerCase();
+          if (v === 'over') displayValue = 'Over 600m²';
+          else if (v === 'under') displayValue = 'Under 600m²';
+        }
+        row.innerHTML = `<span class="spec-label">${label}:</span> ${displayValue}`;
         modalSpecs.appendChild(row);
       });
 
@@ -426,6 +457,22 @@ document.addEventListener('DOMContentLoaded', () => {
           ul.appendChild(li);
         });
         modalSpecs.appendChild(ul);
+      }
+      
+      // Tilføj 'data' segment hvis det findes i produktet (LCA, prisindeks, vægt osv.)
+      if (product.data && Object.keys(product.data).length) {
+        const dataTitle = document.createElement('div');
+        dataTitle.className = 'spec-row spec-title';
+        dataTitle.innerHTML = '<span class="spec-label">Data:</span>';
+        modalSpecs.appendChild(dataTitle);
+
+        Object.entries(product.data).forEach(([k, v]) => {
+          const row = document.createElement('div');
+          row.className = 'spec-row';
+          const label = formatLabel(k);
+          row.innerHTML = `<span class="spec-label">${label}:</span> ${v}`;
+          modalSpecs.appendChild(row);
+        });
       }
     }
 
