@@ -9,7 +9,6 @@
                 "brandkrav": "R60",
                 "brandsektion": "under",
                 "brandmodstand": "D1-s2-d2",
-                "brandklasse": "BK2",
                 "hojdeOversteEtage": "under-12",
                 "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
@@ -17,6 +16,10 @@
                 "Størrelse installation i dæk": "108",
                 "minEtager": 1,
                 "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
             },
 
             "anvendelse": [

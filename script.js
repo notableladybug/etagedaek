@@ -301,7 +301,15 @@ document.addEventListener('DOMContentLoaded', () => {
                      key === 'trinlyd' ? 'trinlydKlasseC' :
                      key;
                      
-      const currentSpecValue = specs[specKey];
+      let currentSpecValue;
+      
+      // Special handling for brandklasse based on anvendelse
+      if (key === 'brandklasse') {
+        currentSpecValue = product.brandklasser?.[active.anvendelse] || '';
+      } else {
+        currentSpecValue = specs[specKey];
+      }
+      
       console.log(`Checking ${key} (${specKey}): product has "${currentSpecValue}", filter wants "${value}"`);
       
       if (currentSpecValue === undefined) {
@@ -381,8 +389,9 @@ document.addEventListener('DOMContentLoaded', () => {
       modalSpecs.innerHTML = '';
       
       const specs = product.specs || {};
+      const activeFilters = getActiveFilters();
       
-      // Vis alle specs fra produktet
+      // Vis alle specs fra produktet (undtagen brandklasse som håndteres særskilt)
       Object.entries(specs).forEach(([key, value]) => {
         const row = document.createElement('div');
         row.className = 'spec-row';
@@ -393,6 +402,15 @@ document.addEventListener('DOMContentLoaded', () => {
         row.innerHTML = `<span class="spec-label">${label}:</span> ${value}`;
         modalSpecs.appendChild(row);
       });
+
+      // Tilføj brandklasse baseret på anvendelse
+      if (activeFilters.anvendelse && product.brandklasser) {
+        const brandklasse = product.brandklasser[activeFilters.anvendelse];
+        const row = document.createElement('div');
+        row.className = 'spec-row';
+        row.innerHTML = `<span class="spec-label">Brandklasse:</span> ${brandklasse}`;
+        modalSpecs.appendChild(row);
+      }
 
       // Tilføj features hvis de findes
       if (product.features && product.features.length) {
