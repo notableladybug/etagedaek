@@ -379,11 +379,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const existingWarnings = modal.querySelectorAll('.modal-warnings');
     existingWarnings.forEach(warning => warning.remove());
 
-    if (modalTitle) modalTitle.textContent = product.name || '';
-    if (modalDesc) modalDesc.textContent = product.description || '';
+  if (modalTitle) modalTitle.textContent = product.name || '';
+  // Show shortDescription in modal header to keep modal compact; longDescription goes into a collapsed section
+  if (modalDesc) modalDesc.textContent = product.shortDescription || product.description || '';
     if (modalPrice) modalPrice.textContent = product.pris || '';
 
-    if (modalMedia) {
+      if (modalMedia) {
       modalMedia.innerHTML = '';
       if (product.image) {
         const img = document.createElement('img');
@@ -394,15 +395,28 @@ document.addEventListener('DOMContentLoaded', () => {
           modalMedia.innerHTML = '<div class="placeholder">📷</div>';
         };
         modalMedia.appendChild(img);
+
+        // CC badge: show first spaendvidde value (e.g. CC300mm -> CC300)
+        const ccVal = Array.isArray(product.specs?.spaendvidde) ? product.specs.spaendvidde[0] : product.specs?.spaendvidde;
+        if (ccVal) {
+          const ccText = String(ccVal).replace(/mm$/i, '');
+          const ccBadge = document.createElement('div');
+          ccBadge.className = 'badge';
+          ccBadge.textContent = ccText;
+          // make sure badge appears on top of media area
+          modalMedia.appendChild(ccBadge);
+        }
       } else {
         modalMedia.innerHTML = '<div class="placeholder">📷</div>';
       }
     }
 
-    // Vis advarsler hvis nødvendigt under billedet
-    if (modalMedia) {
-      const warnings = getProductWarnings(product, getActiveFilters(), true); // true for modal warnings
-      if (warnings.length > 0) {
+    // Vis advarsler i info-kolonnen (bedre brug af plads end under billedet)
+    // Place warnings in the modal meta area (compact) and prepare a scrollable inner spec container
+    const warnings = getProductWarnings(product, getActiveFilters(), true);
+    if (modalMeta) {
+      modalMeta.innerHTML = '';
+      if (warnings.length) {
         const warningsDiv = document.createElement('div');
         warningsDiv.className = 'modal-warnings';
         warnings.forEach(warning => {
@@ -411,82 +425,103 @@ document.addEventListener('DOMContentLoaded', () => {
           warningDiv.textContent = warning;
           warningsDiv.appendChild(warningDiv);
         });
-        modalMedia.appendChild(warningsDiv);
+        modalMeta.appendChild(warningsDiv);
       }
     }
 
     if (modalSpecs) {
+      // wrap specs into an inner scrollable container so the right column can scroll independently
+      modalSpecs.innerHTML = '<div class="modal-specs-inner"></div>';
+    }
+
+    if (modalSpecs) {
+      // Rebuild modal specs into clearer sections: primary grid, data, features, and collapsible details
       modalSpecs.innerHTML = '';
-      
+
       const specs = product.specs || {};
       const activeFilters = getActiveFilters();
-      
-      // Helper: format label keys (preserve acronyms like LCA)
+
       const formatLabel = (raw) => {
         if (typeof raw !== 'string') return raw;
-        // If key is an uppercase acronym (2+ uppercase letters), keep as-is
         if (raw === raw.toUpperCase() && /[A-Z]{2,}/.test(raw)) return raw;
-        // Insert spaces before capitals and capitalize first letter
         const withSpaces = raw.replace(/([A-Z])/g, ' $1').replace(/_/g, ' ');
         return withSpaces.charAt(0).toUpperCase() + withSpaces.slice(1);
       };
 
-      // Vis alle specs fra produktet (undtagen brandklasse som håndteres særskilt)
-      Object.entries(specs).forEach(([key, value]) => {
-        const row = document.createElement('div');
-        row.className = 'spec-row';
-        const label = formatLabel(key);
-        let displayValue = Array.isArray(value) ? value.join(' / ') : value;
-        // Map brandsektion values to human readable text
-        if (key === 'brandsektion') {
-          const v = String(displayValue).toLowerCase();
-          if (v === 'over') displayValue = 'Over 600m²';
-          else if (v === 'under') displayValue = 'Under 600m²';
+      const specValue = (k) => {
+        let v = specs[k];
+        if (v === undefined) return null;
+        if (Array.isArray(v)) return v.join(' / ');
+        if (k === 'brandsektion') {
+          const vv = String(v).toLowerCase();
+          if (vv === 'over') return 'Over 600m²';
+          if (vv === 'under') return 'Under 600m²';
         }
-        row.innerHTML = `<span class="spec-label">${label}:</span> ${displayValue}`;
-        modalSpecs.appendChild(row);
-      });
+        return v;
+      };
 
-      // Tilføj brandklasse baseret på anvendelse
+      const keyOrder = ['brandkrav','brandmodstand','brandsektion','hojdeOversteEtage','spaendvidde','minEtager','maxEtager','Max længde','samletTykkelse','Vægt (kg/m2)'];
+
+      // Primary specs grid
+      let html = '<div class="spec-section spec-primary">';
+      html += '<h3 class="spec-section-title">Nøglespecifikationer</h3>';
+      html += '<div class="spec-grid">';
+      for (const k of keyOrder) {
+        const val = specValue(k);
+        if (val !== null && val !== undefined && String(val) !== '') {
+          const label = formatLabel(k);
+          html += `<div class="spec-row"><div class="spec-label">${label}</div><div class="spec-value">${val}</div></div>`;
+        }
+      }
+
+      // Brandklasse based on anvendelse
       if (activeFilters.anvendelse && product.brandklasser) {
         const brandklasse = product.brandklasser[activeFilters.anvendelse];
-        const row = document.createElement('div');
-        row.className = 'spec-row';
-        row.innerHTML = `<span class="spec-label">Brandklasse:</span> ${brandklasse}`;
-        modalSpecs.appendChild(row);
+        if (brandklasse) {
+          html += `<div class="spec-row"><div class="spec-label">Brandklasse</div><div class="spec-value">${brandklasse}</div></div>`;
+        }
       }
 
-      // Tilføj features hvis de findes
-      if (product.features && product.features.length) {
-        const title = document.createElement('div');
-        title.className = 'spec-row spec-title';
-        title.innerHTML = '<span class="spec-label">Features:</span>';
-        modalSpecs.appendChild(title);
-        const ul = document.createElement('ul');
-        ul.className = 'spec-list';
-        product.features.forEach(item => {
-          const li = document.createElement('li');
-          li.textContent = item;
-          ul.appendChild(li);
-        });
-        modalSpecs.appendChild(ul);
-      }
-      
-      // Tilføj 'data' segment hvis det findes i produktet (LCA, prisindeks, vægt osv.)
+      html += '</div></div>';
+
+      // Data section (collapsed by default)
       if (product.data && Object.keys(product.data).length) {
-        const dataTitle = document.createElement('div');
-        dataTitle.className = 'spec-row spec-title';
-        dataTitle.innerHTML = '<span class="spec-label">Data:</span>';
-        modalSpecs.appendChild(dataTitle);
-
+        html += '<details class="spec-toggle"><summary>Data</summary><div class="spec-section spec-data">';
+        html += '<div class="spec-grid">';
         Object.entries(product.data).forEach(([k, v]) => {
-          const row = document.createElement('div');
-          row.className = 'spec-row';
           const label = formatLabel(k);
-          row.innerHTML = `<span class="spec-label">${label}:</span> ${v}`;
-          modalSpecs.appendChild(row);
+          html += `<div class="spec-row"><div class="spec-label">${label}</div><div class="spec-value">${v}</div></div>`;
         });
+        html += '</div></div></details>';
       }
+
+      // Features (collapsed by default)
+      if (product.features && product.features.length) {
+        html += '<details class="spec-toggle"><summary>Features</summary><div class="spec-section spec-features">';
+        html += '<ul class="spec-list">';
+        product.features.forEach(item => {
+          html += `<li>${item}</li>`;
+        });
+        html += '</ul></div></details>';
+      }
+
+      // Other specs in a collapsible details
+      const otherKeys = Object.keys(specs).filter(k => !keyOrder.includes(k));
+      if (otherKeys.length) {
+        html += '<details class="spec-more"><summary>Flere detaljer</summary><div class="spec-grid">';
+        otherKeys.forEach(k => {
+          const v = specValue(k);
+          if (v !== null && v !== undefined && String(v) !== '') {
+            const label = formatLabel(k);
+            html += `<div class="spec-row"><div class="spec-label">${label}</div><div class="spec-value">${v}</div></div>`;
+          }
+        });
+        html += '</div></details>';
+      }
+
+      const inner = modalSpecs.querySelector('.modal-specs-inner');
+      if (inner) inner.innerHTML = html;
+      else modalSpecs.innerHTML = html;
     }
 
     const closeBtn = modal.querySelector('.modal-close');
@@ -527,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     productGrid.innerHTML = '';
-    filteredProducts.forEach((product, index) => {
+  filteredProducts.forEach((product, index) => {
       const card = document.createElement('article');
       card.className = 'card';
       // Get any warnings for the product
@@ -539,11 +574,19 @@ document.addEventListener('DOMContentLoaded', () => {
       card.innerHTML = `
         <div class="card-media">
           ${product.image ? `<img src="${product.image}" alt="${product.name}">` : '<div class="placeholder">📷</div>'}
+          ${(() => {
+            const ccVal = Array.isArray(product.specs?.spaendvidde) ? product.specs.spaendvidde[0] : product.specs?.spaendvidde;
+            if (ccVal) {
+              const ccText = String(ccVal).replace(/mm$/i, '');
+              return `<div class="badge">${ccText}</div>`;
+            }
+            return '';
+          })()}
         </div>
         <div class="card-body">
           <h3 class="card-title">${product.name || ''}</h3>
           ${warningsHtml}
-          <p class="desc">${product.description || ''}</p>
+          <p class="desc">${product.shortDescription || product.description || ''}</p>
           <div class="price">${product.pris || ''}</div>
         </div>
       `;

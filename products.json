@@ -3,7 +3,8 @@
         {
             "id": "prod-001",
             "name": "Posi Joist PS8 (95 mm gulvbjælke)",
-            "description": "Højtydende etagedæk system designet til moderne boligbyggeri med optimal kombination af brand- og lydegenskaber",
+            "shortDescription": "Højtydende gulvbjælke - god lyd og brand",
+            "longDescription": "Posi Joist PS8 er et strukturelt etagedækssystem optimeret til boligbyggeri. Leverer god brandmodstand og støjreduktion, samtidig med at det er let at installere.",
             "image": "images/posijoist.jpg",
             "specs": {
                 "brandkrav": "R60",
@@ -33,13 +34,13 @@
                 "Størrelse installation i dæk": "108",
                 "samletTykkelse": "384mm",
                 "Vægt (kg/m2)": "22 kg/m²"
-            },
-            "pris": "690 DKK/m²"
+            }
         },
         {
             "id": "prod-002",
             "name": "Posi Joist PS8 (95 mm gulvbjælke)",
-            "description": "Højtydende etagedæk system designet til moderne boligbyggeri med optimal kombination af brand- og lydegenskaber",
+            "shortDescription": "Højtydende gulvbjælke - fleksibel længde",
+            "longDescription": "Posi Joist PS8 (varianter) tilbyder fleksible længder og god bæreevne til moderne boligkonstruktioner. Velegnet til både mindre og mellemstore sektioner.",
             "image": "images/posijoist.jpg",
             "specs": {
                 "brandkrav": "R60",
@@ -70,13 +71,13 @@
                 "Størrelse installation i dæk": "108",
                 "samletTykkelse": "384mm",
                 "Vægt (kg/m2)": "22 kg/m²"
-            },
-            "pris": "690 DKK/m²"
+            }
         },
         {
             "id": "prod-003",
             "name": "Posi Joist PS9 (95 mm gulvbjælke)",
-            "description": "Højtydende etagedæk system designet til moderne boligbyggeri med optimal kombination af brand- og lydegenskaber",
+            "shortDescription": "Effektiv gulvbjælke med lav vægt",
+            "longDescription": "Posi Joist PS9 er optimeret til længere spændvidder og reduceret vægt pr. m², hvilket gør den nyttig ved længere oplæg og renoveringsprojekter.",
             "image": "images/posijoist.jpg",
             "specs": {
                 "brandkrav": "R60",
@@ -107,13 +108,13 @@
                 "Størrelse installation i dæk": "108",
                 "samletTykkelse": "384mm",
                 "Vægt (kg/m2)": "22 kg/m²"
-            },
-            "pris": "690 DKK/m²"
+            }
         },
         {
             "id": "prod-004",
             "name": "Posi Joist PS9 (95 mm gulvbjælke)",
-            "description": "Højtydende etagedæk system designet til moderne boligbyggeri med optimal kombination af brand- og lydegenskaber",
+            "shortDescription": "Fleksibel gulvbjælke til længere spænd",
+            "longDescription": "PS9-varianten med CC600 giver mulighed for længere spændvidder og hurtig montage, samtidig med at lyd- og brandkrav opretholdes.",
             "image": "images/posijoist.jpg",
             "specs": {
                 "brandkrav": "R60",
@@ -144,13 +145,13 @@
                 "Størrelse installation i dæk": "108",
                 "samletTykkelse": "384mm",
                 "Vægt (kg/m2)": "22 kg/m²"
-            },
-            "pris": "690 DKK/m²"
+            }
         },
         {
             "id": "prod-005",
             "name": "Nyt Huldæk 22/12",
-            "description": "Armeret betonhuldæk med høj trykstyrke",
+            "shortDescription": "Robust armeret betonhuldæk",
+            "longDescription": "Nyt Huldæk 22/12 er et armeret betonhuldæk designet til tunge belastninger og over 600m² sektioner. Har høj trykstyrke og god brandmodstand (A2-s1-d0).",
             "image": "images/huldæk.jpg",
             "specs": {
                 "brandkrav": "R60",
@@ -179,8 +180,7 @@
                 "Størrelse installation i dæk": "0",
                 "samletTykkelse": "400mm",
                 "Vægt (kg/m2)": "368 kg/m²"
-            },
-            "pris": "690 DKK/m²"
+            }
         }
     ]
 }
