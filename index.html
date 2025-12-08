@@ -11,7 +11,6 @@
 			<div class="wrap">
 				<h1>Etagedæk</h1>
 				<p class="lead">Der kan stå noget fedt tekst her</p>
-				<button id="admin-toggle" class="admin-toggle" title="Skjul/Vis admin panel">⚙️</button>
 			</div>
 		</header>
 
@@ -165,6 +164,14 @@
 				<div class="modal-body">
 					<div class="modal-info">
 						<h2 id="admin-modal-title">Tilføj produkt</h2>
+						<div id="json-output-section" style="display:none; margin-bottom: 20px;">
+							<p style="margin-bottom: 10px; color: #666;">Kopier denne JSON og indsæt den i products.json:</p>
+							<textarea id="json-output" readonly style="width: 100%; height: 300px; padding: 10px; border: 1px solid #d0dce8; border-radius: 4px; font-family: monospace; font-size: 12px; background: #f5f5f5;"></textarea>
+							<div style="margin-top: 10px;">
+								<button type="button" id="copy-json-btn" class="btn btn-primary" style="margin-right: 8px;">📋 Kopier JSON</button>
+								<button type="button" class="btn btn-secondary" data-close="true">Luk</button>
+							</div>
+						</div>
 						<form id="product-form">
 							<div class="form-group">
 								<label for="product-id">Produkt ID:</label>
@@ -186,9 +193,20 @@
 								<label for="product-image">Billede URL:</label>
 								<input type="text" id="product-image">
 							</div>
+
+							<h3 style="margin-top: 15px; margin-bottom: 10px;">Brandspecifikationer</h3>
 							<div class="form-group">
 								<label for="product-brandkrav">Brandkrav:</label>
-								<input type="text" id="product-brandkrav" placeholder="f.eks. R60">
+								<select id="product-brandkrav">
+									<option value="">Vælg</option>
+									<option value="R30">R30</option>
+									<option value="R60">R60</option>
+									<option value="R120">R120</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="product-brandsektion">Brandsektion:</label>
+								<input type="text" id="product-brandsektion" placeholder="f.eks. under">
 							</div>
 							<div class="form-group">
 								<label for="product-brandmodstand">Brandmodstand:</label>
@@ -198,8 +216,88 @@
 									<option value="D1-s2-d2">D1-s2-d2</option>
 								</select>
 							</div>
+							<div class="form-group">
+								<label for="product-hojde">Højde øverste etage:</label>
+								<input type="text" id="product-hojde" placeholder="f.eks. under-12">
+							</div>
+							<div class="form-group">
+								<label for="product-luftlyd">Luftlyd:</label>
+								<input type="text" id="product-luftlyd" placeholder="f.eks. Over-55dB">
+							</div>
+							<div class="form-group">
+								<label for="product-trinlyd">Trinlyd:</label>
+								<input type="text" id="product-trinlyd" placeholder="f.eks. under-53dB">
+							</div>
+
+							<h3 style="margin-top: 15px; margin-bottom: 10px;">Dimensioner & Specifikationer</h3>
+							<div class="form-group">
+								<label for="product-spaendvidde">Spændvidde (CC - f.eks. CC300mm, CC600mm):</label>
+								<input type="text" id="product-spaendvidde" placeholder="f.eks. CC300mm, CC600mm, CC810mm">
+							</div>
+							<div class="form-group">
+								<label for="product-max-længde">Max længde:</label>
+								<input type="text" id="product-max-længde" placeholder="f.eks. 4200mm">
+							</div>
+							<div class="form-group">
+								<label for="product-installation-størrelse">Størrelse installation i dæk:</label>
+								<input type="text" id="product-installation-størrelse" placeholder="f.eks. 108">
+							</div>
+							<div class="form-group">
+								<label for="product-samlet-tykkelse">Samlet tykkelse:</label>
+								<input type="text" id="product-samlet-tykkelse" placeholder="f.eks. 384mm">
+							</div>
+							<div class="form-group">
+								<label for="product-vægt">Vægt (kg/m²):</label>
+								<input type="text" id="product-vægt" placeholder="f.eks. 22 kg/m²">
+							</div>
+
+							<h3 style="margin-top: 15px; margin-bottom: 10px;">Miljø & Økonomi</h3>
+							<div class="form-group">
+								<label for="product-lca">LCA:</label>
+								<input type="text" id="product-lca" placeholder="f.eks. 0,76">
+							</div>
+							<div class="form-group">
+								<label for="product-prisindeks">Prisindeks:</label>
+								<input type="text" id="product-prisindeks" placeholder="f.eks. 100">
+							</div>
+
+							<h3 style="margin-top: 15px; margin-bottom: 10px;">Anvendelse & Etager</h3>
+							<div class="form-group">
+								<label for="product-min-etager">Min etager:</label>
+								<input type="number" id="product-min-etager" min="1" placeholder="f.eks. 1">
+							</div>
+							<div class="form-group">
+								<label for="product-max-etager">Max etager:</label>
+								<input type="number" id="product-max-etager" min="1" placeholder="f.eks. 8">
+							</div>
+							<div class="form-group">
+								<label for="product-bk-enfamiliehus">Brandklasse Enfamiliehus:</label>
+								<select id="product-bk-enfamiliehus">
+									<option value="">Vælg</option>
+									<option value="BK1">BK1</option>
+									<option value="BK2">BK2</option>
+									<option value="BK4">BK4</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="product-bk-etagebolig">Brandklasse Etagebolig:</label>
+								<select id="product-bk-etagebolig">
+									<option value="">Vælg</option>
+									<option value="BK1">BK1</option>
+									<option value="BK2">BK2</option>
+									<option value="BK4">BK4</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label>Anvendelse typer (check alle der gælder):</label>
+								<div style="display: flex; gap: 15px; margin-top: 8px;">
+									<label style="flex: 1;"><input type="checkbox" id="app-enfamiliehus" value="enfamiliehus"> Enfamiliehus</label>
+									<label style="flex: 1;"><input type="checkbox" id="app-etagebolig" value="etagebolig"> Etagebolig</label>
+								</div>
+							</div>
+
 							<div class="form-controls">
-								<button type="submit" class="btn btn-primary">Gem produkt</button>
+								<button type="submit" class="btn btn-primary">Generer JSON</button>
 								<button type="button" class="btn btn-secondary" data-close="true">Annuller</button>
 								<button type="button" id="delete-product-btn" class="btn btn-danger" style="display:none;">Slet produkt</button>
 							</div>

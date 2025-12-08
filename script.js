@@ -1,22 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Constants
   const DATA_URL = 'products.json';
-  const ADMIN_ENABLED_KEY = 'admin-mode-enabled';
+  const ADMIN_MODE = true; // TÆND/SLUK ADMIN FUNKTIONALITET HER
   let products = [];
-  let adminMode = localStorage.getItem(ADMIN_ENABLED_KEY) === 'true';
 
   // DOM Elements
   const productGrid = document.getElementById('product-grid');
   const productCount = document.getElementById('product-count');
   const clearBtn = document.getElementById('clear-filters');
   const filtersAside = document.querySelector('aside.filters');
-  const adminToggleBtn = document.getElementById('admin-toggle');
   const addProductBtn = document.getElementById('add-product-btn');
   const adminModal = document.getElementById('admin-modal');
   const productForm = document.getElementById('product-form');
   const adminModalTitle = document.getElementById('admin-modal-title');
-  const deleteProductBtn = document.getElementById('delete-product-btn');
-  let currentEditingProduct = null;
   const inline = document.getElementById('products-data');
   const m2Input = document.getElementById('m2Input');
   const modal = document.getElementById('product-modal');
@@ -654,14 +650,28 @@ document.addEventListener('DOMContentLoaded', () => {
         return r.json();
       })
       .catch(() => {
+        console.log('Kunne ikke fetch products.json, prøver fallbacks...');
+        
+        // Try localStorage backup first
+        try {
+          const backup = localStorage.getItem('products_backup');
+          if (backup) {
+            console.log('Bruger localStorage backup');
+            return JSON.parse(backup);
+          }
+        } catch (e) {
+          console.warn('localStorage backup var ikke gyldig:', e);
+        }
+        
+        // Try inline data
         if (inline?.textContent) {
           try {
             return JSON.parse(inline.textContent);
           } catch (e) {
             console.error('Kunne ikke parse inline products-data', e);
-            return null;
           }
         }
+        
         return null;
       });
   }
@@ -720,27 +730,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== ADMIN FUNCTIONALITY =====
   
-  // Toggle admin mode
-  if (adminToggleBtn) {
-    adminToggleBtn.addEventListener('click', () => {
-      adminMode = !adminMode;
-      localStorage.setItem(ADMIN_ENABLED_KEY, adminMode);
-      addProductBtn.style.display = adminMode ? 'block' : 'none';
-      adminToggleBtn.style.opacity = adminMode ? '1' : '0.5';
-    });
-    // Set initial visibility
-    adminToggleBtn.style.opacity = adminMode ? '1' : '0.5';
-    addProductBtn.style.display = adminMode ? 'block' : 'none';
+  // Initialize admin mode - show/hide buttons based on ADMIN_MODE constant
+  if (ADMIN_MODE) {
+    addProductBtn.style.display = 'block';
+  } else {
+    addProductBtn.style.display = 'none';
   }
 
   // Open product form (add new)
-  if (addProductBtn) {
+  if (addProductBtn && ADMIN_MODE) {
     addProductBtn.addEventListener('click', () => {
-      currentEditingProduct = null;
       adminModalTitle.textContent = 'Tilføj nyt produkt';
       productForm.reset();
-      document.getElementById('product-id').disabled = false;
-      deleteProductBtn.style.display = 'none';
+      
+      // Show form, hide JSON output
+      productForm.style.display = 'flex';
+      if (document.getElementById('json-output-section')) {
+        document.getElementById('json-output-section').style.display = 'none';
+      }
+      
+      // Auto-generate next product ID
+      const nextId = getNextProductId();
+      document.getElementById('product-id').value = nextId;
+      document.getElementById('product-id').disabled = true;
+      
       adminModal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
     });
@@ -751,6 +764,17 @@ document.addEventListener('DOMContentLoaded', () => {
     productForm.addEventListener('submit', (e) => {
       e.preventDefault();
       
+      // Gather applied usage types
+      const anvendelse = [];
+      if (document.getElementById('app-enfamiliehus').checked) anvendelse.push('enfamiliehus');
+      if (document.getElementById('app-etagebolig').checked) anvendelse.push('etagebolig');
+      
+      // Parse spaendvidde as array
+      const spaendviddeInput = document.getElementById('product-spaendvidde').value.trim();
+      const spaendviddeArray = spaendviddeInput 
+        ? spaendviddeInput.split(',').map(s => s.trim()).filter(s => s) 
+        : [];
+      
       const formData = {
         id: document.getElementById('product-id').value,
         name: document.getElementById('product-name').value,
@@ -759,65 +783,58 @@ document.addEventListener('DOMContentLoaded', () => {
         image: document.getElementById('product-image').value,
         specs: {
           brandkrav: document.getElementById('product-brandkrav').value,
-          brandmodstand: document.getElementById('product-brandmodstand').value
+          brandsektion: document.getElementById('product-brandsektion').value,
+          brandmodstand: document.getElementById('product-brandmodstand').value,
+          hojdeOversteEtage: document.getElementById('product-hojde').value,
+          luftlydKlasseC: document.getElementById('product-luftlyd').value,
+          trinlydKlasseC: document.getElementById('product-trinlyd').value,
+          spaendvidde: spaendviddeArray,
+          'Max længde': document.getElementById('product-max-længde').value,
+          'Størrelse installation i dæk': document.getElementById('product-installation-størrelse').value,
+          minEtager: parseInt(document.getElementById('product-min-etager').value) || 1,
+          maxEtager: parseInt(document.getElementById('product-max-etager').value) || 8
         },
-        brandklasser: { enfamiliehus: 'BK1', etagebolig: 'BK2' },
-        anvendelse: ['etagebolig', 'enfamiliehus'],
-        data: { LCA: '', samletTykkelse: '', 'Vægt (kg/m2)': '' }
+        brandklasser: {
+          enfamiliehus: document.getElementById('product-bk-enfamiliehus').value || 'BK1',
+          etagebolig: document.getElementById('product-bk-etagebolig').value || 'BK2'
+        },
+        anvendelse: anvendelse.length > 0 ? anvendelse : ['etagebolig', 'enfamiliehus'],
+        data: {
+          LCA: document.getElementById('product-lca').value,
+          prisindeks: document.getElementById('product-prisindeks').value,
+          'Størrelse installation i dæk': document.getElementById('product-installation-størrelse').value,
+          samletTykkelse: document.getElementById('product-samlet-tykkelse').value,
+          'Vægt (kg/m2)': document.getElementById('product-vægt').value
+        }
       };
 
-      if (currentEditingProduct) {
-        // Update existing product
-        const index = products.findIndex(p => p.id === currentEditingProduct.id);
-        if (index > -1) {
-          products[index] = { ...products[index], ...formData };
-        }
-      } else {
-        // Add new product
-        products.push(formData);
-      }
-
-      saveProductsToFile();
-      closeAdminModal();
-      updateProducts();
+      // Generate JSON and display it
+      generateAndDisplayJSON(formData);
     });
   }
 
-  // Delete product
-  if (deleteProductBtn) {
-    deleteProductBtn.addEventListener('click', () => {
-      if (currentEditingProduct && confirm('Er du sikker på at du vil slette dette produkt?')) {
-        products = products.filter(p => p.id !== currentEditingProduct.id);
-        saveProductsToFile();
-        closeAdminModal();
-        updateProducts();
-      }
-    });
-  }
-
-  // Save products to file (simulated - requires backend endpoint)
-  function saveProductsToFile() {
-    const dataToSave = { products };
+  // Generate JSON and show it for copying
+  function generateAndDisplayJSON(productData) {
+    const jsonText = JSON.stringify(productData, null, 4);
+    const jsonOutputTextarea = document.getElementById('json-output');
+    const jsonOutputSection = document.getElementById('json-output-section');
+    const productFormSection = productForm;
     
-    // Send to a backend endpoint (requires server setup)
-    fetch('save-products.php', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(dataToSave)
-    })
-    .then(r => r.json())
-    .then(data => {
-      if (data.success) {
-        console.log('Produkter gemt til fil');
-        alert('Produkter gemt succesfuldt!');
-      } else {
-        alert('Fejl ved gemning: ' + data.message);
+    if (jsonOutputTextarea && jsonOutputSection) {
+      jsonOutputTextarea.value = jsonText;
+      productFormSection.style.display = 'none';
+      jsonOutputSection.style.display = 'block';
+      
+      // Copy button
+      const copyBtn = document.getElementById('copy-json-btn');
+      if (copyBtn) {
+        copyBtn.onclick = () => {
+          jsonOutputTextarea.select();
+          document.execCommand('copy');
+          alert('JSON koperet til udklipsholder!');
+        };
       }
-    })
-    .catch(err => {
-      console.error('Fejl ved gemning:', err);
-      alert('Kunne ikke gemme produkter. Tjek konsollen for detaljer.');
-    });
+    }
   }
 
   // Close admin modal
@@ -840,24 +857,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Edit product from card context menu (optional enhancement)
-  window.editProduct = function(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
-
-    currentEditingProduct = product;
-    adminModalTitle.textContent = 'Rediger produkt';
-    document.getElementById('product-id').value = product.id;
-    document.getElementById('product-id').disabled = true;
-    document.getElementById('product-name').value = product.name;
-    document.getElementById('product-short-desc').value = product.shortDescription || '';
-    document.getElementById('product-long-desc').value = product.longDescription || '';
-    document.getElementById('product-image').value = product.image || '';
-    document.getElementById('product-brandkrav').value = product.specs?.brandkrav || '';
-    document.getElementById('product-brandmodstand').value = product.specs?.brandmodstand || '';
-    deleteProductBtn.style.display = 'block';
-    
-    adminModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  };
+  // Get next product ID - used to auto-generate product IDs in add form
+  function getNextProductId() {
+    const ids = products.map(p => {
+      const match = p.id.match(/prod-(\d+)/);
+      return match ? parseInt(match[1]) : 0;
+    });
+    const maxId = Math.max(...ids, 0);
+    const nextNum = maxId + 1;
+    return `prod-${String(nextNum).padStart(3, '0')}`;
+  }
 });
