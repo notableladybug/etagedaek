@@ -404,7 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
     existingWarnings.forEach(warning => warning.remove());
 
   if (modalTitle) modalTitle.textContent = product.name || '';
-  // Show shortDescription in modal header to keep modal compact; longDescription goes into a collapsed section
+  // Show shortDescription in modal header
   if (modalDesc) modalDesc.textContent = product.shortDescription || product.description || '';
     if (modalPrice) modalPrice.textContent = product.pris || '';
 
@@ -507,6 +507,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       html += '</div></div>';
+
+      // Long description in a collapsible section
+      if (product.longDescription) {
+        html += '<details class="spec-toggle"><summary>Produktbeskrivelse</summary><div class="spec-section spec-desc"><p>' + product.longDescription + '</p></div></details>';
+      }
 
       // Data section (collapsed by default)
       if (product.data && Object.keys(product.data).length) {
