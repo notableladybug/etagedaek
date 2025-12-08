@@ -181,6 +181,414 @@
                 "samletTykkelse": "400mm",
                 "Vægt (kg/m2)": "368 kg/m²"
             }
+        },
+        {
+            "id": "prod-030",
+            "name": "Ståldæk 150 mm",
+            "shortDescription": "Højtydende ståldæk med CC300 spænding",
+            "longDescription": "Etagedæk - ES3 A1 C150-1,5 46/40 300 GF25/FF S45. Velegnetholdbar betonblanding med god brandmodstand og lyddæmpning.",
+            "image": "",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "over",
+                "brandmodstand": "A2-s1-d0",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Over-60dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": ["CC300mm"],
+                "Størrelse installation i dæk": "75",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+
+            "anvendelse": [
+                "etagebolig",
+                "enfamiliehus"
+            ],
+            "data": {
+                "LCA": "0,8486",
+                "Størrelse installation i dæk": "75",
+                "samletTykkelse": "270mm",
+                "Vægt (kg/m2)": "75,7 kg/m²"
+            }
+        },
+        {
+            "id": "prod-031",
+            "name": "Ståldæk 200 mm",
+            "shortDescription": "Ståldæk med øget bæreevne og CC300 spænding",
+            "longDescription": "Etagedæk - ES3 A1 C200-2,0 46/40 300 GF25/FF S45. Større kapacitet end 150mm varianten, velegnet til belastede etager.",
+            "image": "",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "over",
+                "brandmodstand": "A2-s1-d0",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Over-60dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": ["CC300mm"],
+                "Størrelse installation i dæk": "100",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+
+            "anvendelse": [
+                "etagebolig",
+                "enfamiliehus"
+            ],
+            "data": {
+                "LCA": "1,1812",
+                "Størrelse installation i dæk": "100",
+                "samletTykkelse": "320mm",
+                "Vægt (kg/m2)": "85,6 kg/m²"
+            }
+        },
+        {
+            "id": "prod-032",
+            "name": "Ståldæk 250 mm",
+            "shortDescription": "Robust ståldæk med CC300 spænding",
+            "longDescription": "Etagedæk - ES3 A1 C200-2,0 46/40 300 GF25/FF S45. Tykkere udgave med høj vægtbæreevne, velegnet til store belastninger.",
+            "image": "",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "over",
+                "brandmodstand": "A2-s1-d0",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Over-60dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": ["CC300mm"],
+                "Størrelse installation i dæk": "125",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+
+            "anvendelse": [
+                "etagebolig",
+                "enfamiliehus"
+            ],
+            "data": {
+                "LCA": "1,1812",
+                "Størrelse installation i dæk": "125",
+                "samletTykkelse": "370mm",
+                "Vægt (kg/m2)": "94,1 kg/m²"
+            }
+        },
+        {
+            "id": "prod-033",
+            "name": "Ståldæk 250 mm (stor)",
+            "shortDescription": "Stærkt ståldæk til tunge systemer",
+            "longDescription": "Etagedæk - ES3 A1 C200-2,0 46/40 300 GF25/FF S45. Svær udgave designet til ekstra belastet installation og større sektioner.",
+            "image": "",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "over",
+                "brandmodstand": "A2-s1-d0",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Over-60dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": ["CC300mm"],
+                "Størrelse installation i dæk": "150",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+
+            "anvendelse": [
+                "etagebolig",
+                "enfamiliehus"
+            ],
+            "data": {
+                "LCA": "1,5128",
+                "Størrelse installation i dæk": "150",
+                "samletTykkelse": "420 mm",
+                "Vægt (kg/m2)": "94,5 kg/m²"
+            }
+        },
+        {
+            "id": "prod-040",
+            "name": "Ståldæk 150 mm (CC600)",
+            "shortDescription": "Ståldæk med større CC600 spænding",
+            "longDescription": "Etagedæk - ES3 A1 C150-1,5 46/40 600 GF25/FF S45. Standardstørrelse med større spændvidde for mere fleksible installationer.",
+            "image": "",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "over",
+                "brandmodstand": "A2-s1-d0",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Over-60dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": ["CC600mm"],
+                "Størrelse installation i dæk": "75",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+
+            "anvendelse": [
+                "etagebolig",
+                "enfamiliehus"
+            ],
+            "data": {
+                "LCA": "0,85",
+                "Størrelse installation i dæk": "75",
+                "samletTykkelse": "259",
+                "Vægt (kg/m2)": "70,8 kg/m²"
+            }
+        },
+        {
+            "id": "prod-041",
+            "name": "Ståldæk 200 mm (CC600)",
+            "shortDescription": "Mellemstørrelse ståldæk med CC600 spænding",
+            "longDescription": "Etagedæk - ES3 A1 C200-2,0 46/40 600 GF25/FF S45. Større kapacitet med udvidet spændvidde for fleksible konstruktioner.",
+            "image": "",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "over",
+                "brandmodstand": "A2-s1-d0",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Over-60dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": ["CC600mm"],
+                "Størrelse installation i dæk": "100",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+
+            "anvendelse": [
+                "etagebolig",
+                "enfamiliehus"
+            ],
+            "data": {
+                "LCA": "0,8284",
+                "Størrelse installation i dæk": "100",
+                "samletTykkelse": "309 mm",
+                "Vægt (kg/m2)": "76 kg/m²"
+            }
+        },
+        {
+            "id": "prod-042",
+            "name": "Ståldæk 250 mm (CC600)",
+            "shortDescription": "Tyk ståldæk med høj kapacitet",
+            "longDescription": "Etagedæk - ES3 A1 C250-2,5 74/66 600 GF25/FF S45. Robust konstruktion med øget vægtbæreevne og større spændvidde.",
+            "image": "",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "over",
+                "brandmodstand": "A2-s1-d0",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Over-60dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": ["CC600mm"],
+                "Størrelse installation i dæk": "125",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+
+            "anvendelse": [
+                "etagebolig",
+                "enfamiliehus"
+            ],
+            "data": {
+                "LCA": "0,9804",
+                "Størrelse installation i dæk": "125",
+                "samletTykkelse": "359 mm",
+                "Vægt (kg/m2)": "80,2 kg/m²"
+            }
+        },
+        {
+            "id": "prod-043",
+            "name": "Ståldæk 300 mm (CC600)",
+            "shortDescription": "Premium ståldæk med maksimal kapacitet",
+            "longDescription": "Etagedæk - ES3 A1 C300-2,0 97/88 600 GF25/FF S45. Ekstra tyk udgave til de mest krævende belastningsmæssige scenarier.",
+            "image": "",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "over",
+                "brandmodstand": "A2-s1-d0",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Over-60dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": ["CC600mm"],
+                "Størrelse installation i dæk": "150",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+
+            "anvendelse": [
+                "etagebolig",
+                "enfamiliehus"
+            ],
+            "data": {
+                "LCA": "0,989",
+                "Størrelse installation i dæk": "150",
+                "samletTykkelse": "409 mm",
+                "Vægt (kg/m2)": "80,4 kg/m²"
+            }
+        },
+        {
+            "id": "prod-044",
+            "name": "Ståldæk 150 mm (CC900)",
+            "shortDescription": "Ståldæk med stor CC900 spænding",
+            "longDescription": "Etagedæk - ES1 A1 C150-1,5 46/40 900 GF25-TZ45/FF S45. Standardstørrelse med betydelig spændvidde for store åbne flader.",
+            "image": "",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "over",
+                "brandmodstand": "A2-s1-d0",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Over-60dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": ["CC900mm"],
+                "Størrelse installation i dæk": "75",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+
+            "anvendelse": [
+                "etagebolig",
+                "enfamiliehus"
+            ],
+            "data": {
+                "LCA": "1,02",
+                "Størrelse installation i dæk": "75",
+                "samletTykkelse": "302",
+                "Vægt (kg/m2)": "77,8 kg/m²"
+            }
+        },
+        {
+            "id": "prod-045",
+            "name": "Ståldæk 200 mm (CC900)",
+            "shortDescription": "Mellemstørrelse med stor spændvidde",
+            "longDescription": "Etagedæk - ES1 A1 C200-2,0 46/40 900 GF25-TZ45/FF S45. Større kapacitet med maksimal spændvidde for fleksible layouts.",
+            "image": "",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "over",
+                "brandmodstand": "A2-s1-d0",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Over-60dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": ["CC900mm"],
+                "Størrelse installation i dæk": "100",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+
+            "anvendelse": [
+                "etagebolig",
+                "enfamiliehus"
+            ],
+            "data": {
+                "LCA": "1,1064",
+                "Størrelse installation i dæk": "100",
+                "samletTykkelse": "352 mm",
+                "Vægt (kg/m2)": "81 kg/m²"
+            }
+        },
+        {
+            "id": "prod-046",
+            "name": "Ståldæk 250 mm (CC900)",
+            "shortDescription": "Tyk udgave med stor spændvidde",
+            "longDescription": "Etagedæk - ES3 A1 C250-2,5 74/66 900 GF25/FF S45. Robust konstruktion til store sektioner med høj vægtbæreevne.",
+            "image": "",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "over",
+                "brandmodstand": "A2-s1-d0",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Over-60dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": ["CC900mm"],
+                "Størrelse installation i dæk": "125",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+
+            "anvendelse": [
+                "etagebolig",
+                "enfamiliehus"
+            ],
+            "data": {
+                "LCA": "1,2546",
+                "Størrelse installation i dæk": "125",
+                "samletTykkelse": "402 mm",
+                "Vægt (kg/m2)": "85,2 kg/m²"
+            }
+        },
+        {
+            "id": "prod-047",
+            "name": "Ståldæk 300 mm (CC900)",
+            "shortDescription": "Premium udgave med maksimal kapacitet",
+            "longDescription": "Etagedæk - ES1 A1 C300-2,0 97/88 900 GF25-TZ45/FF S45. Top-tier konstruktion til ekstraordinært krævende projekter.",
+            "image": "",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "over",
+                "brandmodstand": "A2-s1-d0",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Over-60dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": ["CC900mm"],
+                "Størrelse installation i dæk": "150",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+
+            "anvendelse": [
+                "etagebolig",
+                "enfamiliehus"
+            ],
+            "data": {
+                "LCA": "1,215",
+                "Størrelse installation i dæk": "150",
+                "samletTykkelse": "452 mm",
+                "Vægt (kg/m2)": "84 kg/m²"
+            }
         }
     ]
 }
