@@ -1,13 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Constants
   const DATA_URL = 'products.json';
+  const ADMIN_ENABLED_KEY = 'admin-mode-enabled';
   let products = [];
+  let adminMode = localStorage.getItem(ADMIN_ENABLED_KEY) === 'true';
 
   // DOM Elements
   const productGrid = document.getElementById('product-grid');
   const productCount = document.getElementById('product-count');
   const clearBtn = document.getElementById('clear-filters');
   const filtersAside = document.querySelector('aside.filters');
+  const adminToggleBtn = document.getElementById('admin-toggle');
+  const addProductBtn = document.getElementById('add-product-btn');
+  const adminModal = document.getElementById('admin-modal');
+  const productForm = document.getElementById('product-form');
+  const adminModalTitle = document.getElementById('admin-modal-title');
+  const deleteProductBtn = document.getElementById('delete-product-btn');
+  let currentEditingProduct = null;
   const inline = document.getElementById('products-data');
   const m2Input = document.getElementById('m2Input');
   const modal = document.getElementById('product-modal');
@@ -708,4 +717,147 @@ document.addEventListener('DOMContentLoaded', () => {
       productGrid.innerHTML = '<p class="empty">Vælg venligst en anvendelsestype for at se produkter.</p>';
     });
   }
+
+  // ===== ADMIN FUNCTIONALITY =====
+  
+  // Toggle admin mode
+  if (adminToggleBtn) {
+    adminToggleBtn.addEventListener('click', () => {
+      adminMode = !adminMode;
+      localStorage.setItem(ADMIN_ENABLED_KEY, adminMode);
+      addProductBtn.style.display = adminMode ? 'block' : 'none';
+      adminToggleBtn.style.opacity = adminMode ? '1' : '0.5';
+    });
+    // Set initial visibility
+    adminToggleBtn.style.opacity = adminMode ? '1' : '0.5';
+    addProductBtn.style.display = adminMode ? 'block' : 'none';
+  }
+
+  // Open product form (add new)
+  if (addProductBtn) {
+    addProductBtn.addEventListener('click', () => {
+      currentEditingProduct = null;
+      adminModalTitle.textContent = 'Tilføj nyt produkt';
+      productForm.reset();
+      document.getElementById('product-id').disabled = false;
+      deleteProductBtn.style.display = 'none';
+      adminModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+
+  // Handle product form submission
+  if (productForm) {
+    productForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const formData = {
+        id: document.getElementById('product-id').value,
+        name: document.getElementById('product-name').value,
+        shortDescription: document.getElementById('product-short-desc').value,
+        longDescription: document.getElementById('product-long-desc').value,
+        image: document.getElementById('product-image').value,
+        specs: {
+          brandkrav: document.getElementById('product-brandkrav').value,
+          brandmodstand: document.getElementById('product-brandmodstand').value
+        },
+        brandklasser: { enfamiliehus: 'BK1', etagebolig: 'BK2' },
+        anvendelse: ['etagebolig', 'enfamiliehus'],
+        data: { LCA: '', samletTykkelse: '', 'Vægt (kg/m2)': '' }
+      };
+
+      if (currentEditingProduct) {
+        // Update existing product
+        const index = products.findIndex(p => p.id === currentEditingProduct.id);
+        if (index > -1) {
+          products[index] = { ...products[index], ...formData };
+        }
+      } else {
+        // Add new product
+        products.push(formData);
+      }
+
+      saveProductsToFile();
+      closeAdminModal();
+      updateProducts();
+    });
+  }
+
+  // Delete product
+  if (deleteProductBtn) {
+    deleteProductBtn.addEventListener('click', () => {
+      if (currentEditingProduct && confirm('Er du sikker på at du vil slette dette produkt?')) {
+        products = products.filter(p => p.id !== currentEditingProduct.id);
+        saveProductsToFile();
+        closeAdminModal();
+        updateProducts();
+      }
+    });
+  }
+
+  // Save products to file (simulated - requires backend endpoint)
+  function saveProductsToFile() {
+    const dataToSave = { products };
+    
+    // Send to a backend endpoint (requires server setup)
+    fetch('save-products.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dataToSave)
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        console.log('Produkter gemt til fil');
+        alert('Produkter gemt succesfuldt!');
+      } else {
+        alert('Fejl ved gemning: ' + data.message);
+      }
+    })
+    .catch(err => {
+      console.error('Fejl ved gemning:', err);
+      alert('Kunne ikke gemme produkter. Tjek konsollen for detaljer.');
+    });
+  }
+
+  // Close admin modal
+  function closeAdminModal() {
+    if (adminModal) {
+      adminModal.classList.add('closing');
+      setTimeout(() => {
+        adminModal.classList.remove('closing');
+        adminModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }, 300);
+    }
+  }
+
+  // Admin modal close handlers
+  if (adminModal) {
+    adminModal.addEventListener('click', (e) => {
+      const close = e.target.closest('[data-close]');
+      if (close) closeAdminModal();
+    });
+  }
+
+  // Edit product from card context menu (optional enhancement)
+  window.editProduct = function(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    currentEditingProduct = product;
+    adminModalTitle.textContent = 'Rediger produkt';
+    document.getElementById('product-id').value = product.id;
+    document.getElementById('product-id').disabled = true;
+    document.getElementById('product-name').value = product.name;
+    document.getElementById('product-short-desc').value = product.shortDescription || '';
+    document.getElementById('product-long-desc').value = product.longDescription || '';
+    document.getElementById('product-image').value = product.image || '';
+    document.getElementById('product-brandkrav').value = product.specs?.brandkrav || '';
+    document.getElementById('product-brandmodstand').value = product.specs?.brandmodstand || '';
+    deleteProductBtn.style.display = 'block';
+    
+    adminModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
 });

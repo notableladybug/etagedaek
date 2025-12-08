@@ -11,12 +11,16 @@
 			<div class="wrap">
 				<h1>Etagedæk</h1>
 				<p class="lead">Der kan stå noget fedt tekst her</p>
+				<button id="admin-toggle" class="admin-toggle" title="Skjul/Vis admin panel">⚙️</button>
 			</div>
 		</header>
 
 		<main class="wrap container">
 			<aside class="filters" aria-label="Filtre">
 				<h2>Filtre</h2>
+				<div class="filter-controls">
+					<button id="add-product-btn" class="btn btn-primary" style="display:none;">+ Tilføj produkt</button>
+				</div>
 
 				<details id="anvendelse-filters">
 					<summary class="filter-summary"><span class="label">Anvendelses type</span><span class="chev" aria-hidden="false">▸</span></summary>
@@ -149,8 +153,60 @@
 				</div>
 			</div>
 
-				<script id="products-data" type="application/json">
-				</script>
-			<script src="script.js" defer></script>
+			<script id="products-data" type="application/json">
+			</script>
+		<script src="script.js" defer></script>
+
+		<!-- Admin Product Modal -->
+		<div id="admin-modal" class="modal" aria-hidden="true">
+			<div class="modal-overlay" data-close="true"></div>
+			<div class="modal-content" role="dialog" aria-modal="true">
+				<button class="modal-close" aria-label="Luk" data-close="true">✕</button>
+				<div class="modal-body">
+					<div class="modal-info">
+						<h2 id="admin-modal-title">Tilføj produkt</h2>
+						<form id="product-form">
+							<div class="form-group">
+								<label for="product-id">Produkt ID:</label>
+								<input type="text" id="product-id" required>
+							</div>
+							<div class="form-group">
+								<label for="product-name">Navn:</label>
+								<input type="text" id="product-name" required>
+							</div>
+							<div class="form-group">
+								<label for="product-short-desc">Kort beskrivelse:</label>
+								<textarea id="product-short-desc" required></textarea>
+							</div>
+							<div class="form-group">
+								<label for="product-long-desc">Lang beskrivelse:</label>
+								<textarea id="product-long-desc" required></textarea>
+							</div>
+							<div class="form-group">
+								<label for="product-image">Billede URL:</label>
+								<input type="text" id="product-image">
+							</div>
+							<div class="form-group">
+								<label for="product-brandkrav">Brandkrav:</label>
+								<input type="text" id="product-brandkrav" placeholder="f.eks. R60">
+							</div>
+							<div class="form-group">
+								<label for="product-brandmodstand">Brandmodstand:</label>
+								<select id="product-brandmodstand">
+									<option value="">Vælg</option>
+									<option value="A2-s1-d0">A2-s1-d0</option>
+									<option value="D1-s2-d2">D1-s2-d2</option>
+								</select>
+							</div>
+							<div class="form-controls">
+								<button type="submit" class="btn btn-primary">Gem produkt</button>
+								<button type="button" class="btn btn-secondary" data-close="true">Annuller</button>
+								<button type="button" id="delete-product-btn" class="btn btn-danger" style="display:none;">Slet produkt</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
