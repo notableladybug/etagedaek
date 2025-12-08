@@ -85,6 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       floorSlider.addEventListener('input', () => {
+        const activeFilters = getActiveFilters();
+        // Restrict enfamiliehus to max 3 floors
+        if (activeFilters.anvendelse === 'enfamiliehus' && parseInt(floorSlider.value) > 3) {
+          floorSlider.value = '3';
+        }
         floorValue.textContent = `${floorSlider.value} ${floorSlider.value === '1' ? 'etage' : 'etager'}`;
         updateProducts();
       });
@@ -161,6 +166,25 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateProducts() {
     const activeFilters = getActiveFilters();
     console.log('Active filters:', activeFilters);
+    
+    // If no usage type selected, show empty state and don't load products
+    if (!activeFilters.anvendelse) {
+      productCount.textContent = '0 produkter';
+      productGrid.innerHTML = '<p class="empty">Vælg venligst en anvendelsestype for at se produkter.</p>';
+      return;
+    }
+    
+    // Adjust floor slider max based on usage type
+    if (activeFilters.anvendelse === 'enfamiliehus') {
+      floorSlider.max = '3';
+      if (parseInt(floorSlider.value) > 3) {
+        floorSlider.value = '3';
+        floorValue.textContent = '3 etager';
+      }
+    } else {
+      floorSlider.max = '8';
+    }
+    
     const filtered = products.filter(product => matchesFilters(product, activeFilters));
     
     // Sorter produkter hvis der er valgt en sortering
@@ -642,13 +666,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize everything
   initializeFilters();
   
-  // Load and render initial data
+  // Load product data but don't render until usage type is selected
   loadData()
     .then(data => {
       console.log('Loaded data:', data);
       products = normalize(data);
       console.log('Normalized products:', products);
-      render(products);
+      // Show empty state instead of rendering all products
+      productCount.textContent = '0 produkter';
+      productGrid.innerHTML = '<p class="empty">Vælg venligst en anvendelsestype for at se produkter.</p>';
     })
     .catch(error => {
       console.error('Fejl ved indlæsning af produkter:', error);
@@ -669,9 +695,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (m2Input) m2Input.value = '';
       if (floorSlider) {
         floorSlider.value = '1';
+        floorSlider.max = '8';
         floorValue.textContent = '1 etage';
       }
-      render(products);
+      // Show empty state after clearing
+      productCount.textContent = '0 produkter';
+      productGrid.innerHTML = '<p class="empty">Vælg venligst en anvendelsestype for at se produkter.</p>';
     });
   }
 });
