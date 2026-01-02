@@ -35,6 +35,19 @@ document.addEventListener('DOMContentLoaded', () => {
   floorValue.className = 'floor-value';
   floorValue.textContent = '1 etage';
 
+  // Create Max længde (spændvidde) slider elements
+  const maxLengthSlider = document.createElement('input');
+  maxLengthSlider.type = 'range';
+  maxLengthSlider.min = '1000';
+  maxLengthSlider.max = '7000';
+  maxLengthSlider.value = '1000';
+  maxLengthSlider.step = '100';
+  maxLengthSlider.className = 'maxlength-slider';
+
+  const maxLengthValue = document.createElement('span');
+  maxLengthValue.className = 'maxlength-value';
+  maxLengthValue.textContent = '0 mm';
+
   // Sorteringsfunktion
   function sortProducts(products, sortBy) {
     if (!sortBy) return products;
@@ -100,13 +113,42 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    // Setup Max længde (spændvidde) slider
+    const maxLengthSection = document.getElementById('spaendvidde-slider-filters');
+    if (maxLengthSection) {
+      const summary = maxLengthSection.querySelector('.filter-summary');
+      if (summary) {
+        const container = document.createElement('div');
+        container.className = 'slider-container';
+
+        // default attributes will be adjusted after products are loaded
+        maxLengthSlider.className = 'maxlength-slider';
+        // keep sensible defaults: min 1000mm, step 100mm
+        maxLengthSlider.min = '1000';
+        maxLengthSlider.max = '7000';
+        maxLengthSlider.value = '1000';
+        maxLengthSlider.step = '100';
+        maxLengthValue.className = 'maxlength-value';
+        maxLengthValue.textContent = '1000 mm';
+
+        container.appendChild(maxLengthSlider);
+        container.appendChild(maxLengthValue);
+        summary.insertAdjacentElement('afterend', container);
+      }
+
+      maxLengthSlider.addEventListener('input', () => {
+        maxLengthValue.textContent = `${maxLengthSlider.value} mm`;
+        updateProducts();
+      });
+    }
+
     // Setup radio button event listeners
     document.querySelectorAll('input[type="radio"]').forEach(radio => {
       radio.addEventListener('change', updateProducts);
     });
 
     // Hold disse sektioner åbne som standard og forhindre lukning
-    const sectionsToOpen = ['anvendelse-filters', 'etage-filters', 'm2-filters'];
+    const sectionsToOpen = ['anvendelse-filters', 'etage-filters', 'm2-filters', 'spaendvidde-slider-filters'];
     sectionsToOpen.forEach(id => {
       const section = document.getElementById(id);
       if (section) {
@@ -214,6 +256,12 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (key === 'etage') {
         map[key] = floorSlider.value;
+        return;
+      }
+
+      if (key === 'spaendvidde-slider') {
+        // Map slider value to the JSON field 'Max længde'
+        map['Max længde'] = maxLengthSlider.value;
         return;
       }
       
@@ -324,6 +372,17 @@ document.addEventListener('DOMContentLoaded', () => {
     for (const [key, value] of Object.entries(active)) {
       // Skip special filters that have their own handling
       if (key === 'etage' || key === 'm2' || key === 'anvendelse') continue;
+
+      // Special handling for Max længde: treat as minimum required length (mm)
+      if (key === 'Max længde') {
+        const prodLen = parseInt(String(specs['Max længde'] || '').replace(/\D/g, ''), 10);
+        const reqLen = parseInt(String(value || '').replace(/\D/g, ''), 10);
+        if (isNaN(prodLen) || isNaN(reqLen) || prodLen < reqLen) {
+          console.log(`Max længde mismatch: product ${product.name} has ${prodLen}, required ${reqLen}`);
+          return false;
+        }
+        continue;
+      }
 
       // Map filter keys to spec keys
       const specKey = key === 'luftlyd' ? 'luftlydKlasseC' :
@@ -696,6 +755,31 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Loaded data:', data);
       products = normalize(data);
       console.log('Normalized products:', products);
+      // Setup max length slider range based on loaded products
+      try {
+        const lengths = products.map(p => parseInt(String(p.specs?.['Max længde'] || '').replace(/\D/g, ''), 10))
+          .filter(n => !isNaN(n));
+          if (lengths.length) {
+            const minL = Math.min(...lengths);
+            const maxL = Math.max(...lengths);
+            const minRounded = Math.max(0, Math.floor(minL / 100) * 100);
+            let maxRounded = Math.ceil(maxL / 100) * 100;
+            // Ensure slider range always allows at least 1000mm minimum
+            if (maxRounded < 1000) maxRounded = 1000;
+            const minEnforced = 1000; // force minimum to 1000mm as requested
+            maxLengthSlider.min = String(minEnforced);
+            maxLengthSlider.max = String(maxRounded);
+            // sørg for step på 100mm
+            maxLengthSlider.step = '100';
+            // start value should be 1000mm by default, but clamp to available range
+            const desiredStart = 1000;
+            const startValue = Math.min(Math.max(desiredStart, minEnforced), maxRounded);
+            maxLengthSlider.value = String(startValue);
+            maxLengthValue.textContent = `${maxLengthSlider.value} mm`;
+          }
+      } catch (e) {
+        console.warn('Kunne ikke initialisere Max længde slider', e);
+      }
       // Show empty state instead of rendering all products
       productCount.textContent = '0 produkter';
       productGrid.innerHTML = '<p class="empty">Vælg venligst en anvendelsestype for at se produkter.</p>';
@@ -721,6 +805,22 @@ document.addEventListener('DOMContentLoaded', () => {
         floorSlider.value = '1';
         floorSlider.max = '8';
         floorValue.textContent = '1 etage';
+      }
+      if (maxLengthSlider) {
+        // reset to default start (1000mm) clamped to slider range
+        try {
+          const desiredStart = 1000;
+          const minV = parseInt(maxLengthSlider.min || String(desiredStart), 10);
+          const maxV = parseInt(maxLengthSlider.max || String(desiredStart), 10);
+          // ensure the slider's min is at least 1000
+          if (minV < 1000) maxLengthSlider.min = String(1000);
+          const start = String(Math.min(Math.max(desiredStart, parseInt(maxLengthSlider.min, 10)), maxV));
+          maxLengthSlider.value = start;
+          maxLengthSlider.step = '100';
+        } catch (e) {
+          maxLengthSlider.value = '1000';
+        }
+        maxLengthValue.textContent = `${maxLengthSlider.value} mm`;
       }
       // Show empty state after clearing
       productCount.textContent = '0 produkter';
