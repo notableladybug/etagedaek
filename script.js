@@ -308,6 +308,20 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    // Additional height + brand warning: show short on cards, long in modal
+    try {
+      const heightFilter = active?.hojdeOversteEtage;
+      if (product.specs.brandmodstand === 'D1-s2-d2' && (heightFilter === 'under-12' || heightFilter === 'under-22')) {
+        if (isModal) {
+          warnings.push('For bygninger, hvor gulv i øverste etage er mere end 5,1 m over terræn, med isoleringsmateriale ringere end materiale klasse B-s1,d0 [klasse A materiale], skal de bærende konstruktioner udføres af materiale mindst klasse A2-s1,d0 [ubrændbart materiale]. Kapitel 3.2.3 i “Bilag 1a - fritliggende og sammenbyggede enfamiliehuse - Version 2.0 (03.01.2022)”');
+        } else {
+          warnings.push('OBS: Ved visse højder kræves A2-s1,d0 materialer — se kap. 3.2.3');
+        }
+      }
+    } catch (e) {
+      console.warn('Fejl ved beregning af højde/brand advarsel', e);
+    }
+
     return warnings;
   }
 
@@ -427,7 +441,33 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Default comparison, check for arrays and strings
       if (value && value !== 'all') {
-        if (Array.isArray(currentSpecValue)) {
+        if (key === 'spaendvidde') {
+          // Compare numeric part (e.g. CC300mm, CC3000 or CC3000mm) to be robust
+          const reqNum = parseInt(String(value).replace(/\D/g, ''), 10);
+          if (isNaN(reqNum)) {
+            // fallback to string compare
+            if (Array.isArray(currentSpecValue)) {
+              if (!currentSpecValue.some(v => String(v).toLowerCase() === String(value).toLowerCase())) {
+                console.log(`Mismatch for ${key}: product has "${currentSpecValue}", filter wants "${value}"`);
+                return false;
+              }
+            } else if (String(currentSpecValue).toLowerCase() !== String(value).toLowerCase()) {
+              console.log(`Mismatch for ${key}: product has "${currentSpecValue}", filter wants "${value}"`);
+              return false;
+            }
+          } else {
+            // check numbers in spec (array or single)
+            const specVals = Array.isArray(currentSpecValue) ? currentSpecValue : [currentSpecValue];
+            const hasMatch = specVals.some(v => {
+              const n = parseInt(String(v).replace(/\D/g, ''), 10);
+              return !isNaN(n) && n === reqNum;
+            });
+            if (!hasMatch) {
+              console.log(`spaendvidde mismatch: product has "${currentSpecValue}", filter wants "${value}"`);
+              return false;
+            }
+          }
+        } else if (Array.isArray(currentSpecValue)) {
           // For arrays, check if the selected value exists in the array
           if (!currentSpecValue.some(v => String(v).toLowerCase() === String(value).toLowerCase())) {
             console.log(`Mismatch for ${key}: product has "${currentSpecValue}", filter wants "${value}"`);

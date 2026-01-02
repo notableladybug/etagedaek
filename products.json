@@ -751,9 +751,7 @@
         "hojdeOversteEtage": "under-12",
         "luftlydKlasseC": "Over-53dB",
         "trinlydKlasseC": "Under-51dB",
-        "spaendvidde": [
-            "CC3000"
-        ],
+        "spaendvidde": ["CC3000"],
         "Max længde": "7000",
         "Størrelse installation i dæk": "0",
         "minEtager": 1,
@@ -788,9 +786,7 @@
         "hojdeOversteEtage": "under-12",
         "luftlydKlasseC": "Over-53dB",
         "trinlydKlasseC": "Under-51dB",
-        "spaendvidde": [
-            "CC3000"
-        ],
+        "spaendvidde": ["CC3000"],
         "Max længde": "7000",
         "Størrelse installation i dæk": "0",
         "minEtager": 1,
@@ -825,9 +821,7 @@
         "hojdeOversteEtage": "under-12",
         "luftlydKlasseC": "Over-53dB",
         "trinlydKlasseC": "Under-51dB",
-        "spaendvidde": [
-            "CC3000"
-        ],
+        "spaendvidde": ["CC3000"],
         "Max længde": "7000",
         "Størrelse installation i dæk": "0",
         "minEtager": 1,
@@ -862,9 +856,7 @@
         "hojdeOversteEtage": "under-12",
         "luftlydKlasseC": "Over-55dB",
         "trinlydKlasseC": "under-53dB",
-        "spaendvidde": [
-            "CC3000"
-        ],
+        "spaendvidde": ["CC3000"],
         "Max længde": "7000",
         "Størrelse installation i dæk": "0",
         "minEtager": 1,
