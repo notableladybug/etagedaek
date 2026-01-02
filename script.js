@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const maxLengthSlider = document.createElement('input');
   maxLengthSlider.type = 'range';
   maxLengthSlider.min = '1000';
-  maxLengthSlider.max = '7000';
+  maxLengthSlider.max = '8000';
   maxLengthSlider.value = '1000';
   maxLengthSlider.step = '100';
   maxLengthSlider.className = 'maxlength-slider';
@@ -1008,3 +1008,4 @@ document.addEventListener('DOMContentLoaded', () => {
     return `prod-${String(nextNum).padStart(3, '0')}`;
   }
 });
+
