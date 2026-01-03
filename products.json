@@ -591,292 +591,477 @@
             }
         },
         {
-    "id": "prod-049",
-    "name": "Nyt Huldæk 18/7",
-    "shortDescription": "Huldæk med trægulv",
-    "longDescription": "22 mm trægulv\n40x63 mm strøer\nLydkiler\n45 mm isolering, mineraluld\nHuldæk 0,18/7",
-    "image": "",
-    "specs": {
-        "brandkrav": "R120",
-        "brandsektion": "over",
-        "brandmodstand": "A2-s1-d0",
-        "hojdeOversteEtage": "Under-22",
-        "luftlydKlasseC": "Over-55dB",
-        "trinlydKlasseC": "under-53dB",
-        "spaendvidde": [
-            "CC1200"
-        ],
-        "Max længde": "7000",
-        "Størrelse installation i dæk": "0",
-        "minEtager": 1,
-        "maxEtager": 8
-    },
-    "brandklasser": {
-        "enfamiliehus": "BK2",
-        "etagebolig": "BK2"
-    },
-    "anvendelse": [
-        "enfamiliehus",
-        "etagebolig"
-    ],
-    "data": {
-        "LCA": "1,298",
-        "prisindeks": "",
-        "Størrelse installation i dæk": "0",
-        "samletTykkelse": "360",
-        "Vægt (kg/m2)": "343"
-    }
-},
-{
-    "id": "prod-050",
-    "name": "Massivt betondæk",
-    "shortDescription": "Massivt betondæk",
-    "longDescription": "22 mm trægulv\n40x63 mm strøer\nLydkiler\n45 mm isolering, mineraluld\nMassivt C20/25 betondæk m. armering\nLydbøjleloft\n45 mm isolering, mineraluld\n2 x gips",
-    "image": "",
-    "specs": {
-        "brandkrav": "R120",
-        "brandsektion": "over",
-        "brandmodstand": "A2-s1-d0",
-        "hojdeOversteEtage": "Under-22",
-        "luftlydKlasseC": "Over-55dB",
-        "trinlydKlasseC": "under-53dB",
-        "spaendvidde": [
-            "CC1200"
-        ],
-        "Max længde": "5000",
-        "Størrelse installation i dæk": "0",
-        "minEtager": 1,
-        "maxEtager": 8
-    },
-    "brandklasser": {
-        "enfamiliehus": "BK1",
-        "etagebolig": "BK2"
-    },
-    "anvendelse": [
-        "enfamiliehus",
-        "etagebolig"
-    ],
-    "data": {
-        "LCA": "1,797232749",
-        "prisindeks": "",
-        "Størrelse installation i dæk": "0",
-        "samletTykkelse": "401",
-        "Vægt (kg/m2)": "400"
-    }
-},
-{
-    "id": "prod-051",
-    "name": "Genanvendte betondæk",
-    "shortDescription": "Genanvendte betondæk fra tidligere byggerier",
-    "longDescription": "22 mm trægulv\n40x63 mm strøer\nLydkiler\n45 mm isolering, mineraluld\nGenbrugt huldæk",
-    "image": "",
-    "specs": {
-        "brandkrav": "R120",
-        "brandsektion": "over",
-        "brandmodstand": "A2-s1-d0",
-        "hojdeOversteEtage": "under-22",
-        "luftlydKlasseC": "Over-55db",
-        "trinlydKlasseC": "under-53db",
-        "spaendvidde": [
-            "CC1200"
-        ],
-        "Max længde": "7000",
-        "Størrelse installation i dæk": "0",
-        "minEtager": 1,
-        "maxEtager": 8
-    },
-    "brandklasser": {
-        "enfamiliehus": "BK1",
-        "etagebolig": "BK2"
-    },
-    "anvendelse": [
-        "enfamiliehus",
-        "etagebolig"
-    ],
-    "data": {
-        "LCA": "0,25",
-        "prisindeks": "",
-        "Størrelse installation i dæk": "0",
-        "samletTykkelse": "400",
-        "Vægt (kg/m2)": "368"
-    }
-},
-{
-    "id": "prod-052",
-    "name": "Nyt huldæk med tilslag ",
-    "shortDescription": "Et nyproduceret betondæk med tilslag fra knuste betondæk. ",
-    "longDescription": "22 mm trægulv\n40x63 mm strøer\nLydkiler\n45 mm isolering, mineraluld\nGenbrugt huldæk",
-    "image": "",
-    "specs": {
-        "brandkrav": "R120",
-        "brandsektion": "over",
-        "brandmodstand": "A2-s1-d0",
-        "hojdeOversteEtage": "under-22",
-        "luftlydKlasseC": "over-55dB",
-        "trinlydKlasseC": "under-53dB",
-        "spaendvidde": [
-            "CC1200"
-        ],
-        "Max længde": "7000",
-        "Størrelse installation i dæk": "0",
-        "minEtager": 1,
-        "maxEtager": 8
-    },
-    "brandklasser": {
-        "enfamiliehus": "BK1",
-        "etagebolig": "BK2"
-    },
-    "anvendelse": [
-        "enfamiliehus",
-        "etagebolig"
-    ],
-    "data": {
-        "LCA": "1,43",
-        "prisindeks": "",
-        "Størrelse installation i dæk": "0",
-        "samletTykkelse": "400",
-        "Vægt (kg/m2)": "343"
-    }
-},
-{
-    "id": "prod-053",
-    "name": "CLT 1",
-    "shortDescription": "CLT dæk",
-    "longDescription": "13 mm trægulv\n1 mm gulvpap\n10 mm sandwichpanel med pap-sand-pap\n2x20 mm trinlydsplade 140 kg/m3\n94 mm tørler\n90 mm bikuesystem\n240 mm CLT\nLydbøjleloft CC 450 mm\n45 mm isolering, glasuld\n15+18 mm fibergips",
-    "image": "",
-    "specs": {
-        "brandkrav": "R60",
-        "brandsektion": "under",
-        "brandmodstand": "D1-s2-d2",
-        "hojdeOversteEtage": "under-12",
-        "luftlydKlasseC": "Over-53dB",
-        "trinlydKlasseC": "Under-51dB",
-        "spaendvidde": ["CC3000"],
-        "Max længde": "7000",
-        "Størrelse installation i dæk": "0",
-        "minEtager": 1,
-        "maxEtager": 5
-    },
-    "brandklasser": {
-        "enfamiliehus": "BK1",
-        "etagebolig": "BK2"
-    },
-    "anvendelse": [
-        "enfamiliehus",
-        "etagebolig"
-    ],
-    "data": {
-        "LCA": "0,75",
-        "prisindeks": "",
-        "Størrelse installation i dæk": "0",
-        "samletTykkelse": "481",
-        "Vægt (kg/m2)": "368"
-    }
-},
-{
-    "id": "prod-054",
-    "name": "CLT 2",
-    "shortDescription": "CLT dæk",
-    "longDescription": "13 mm trægulv\n1 mm gulvpap\n10 mm sandwichpanel med pap-sand-pap\n2x20 mm trinlydsplade 140 kg/m3\n94 mm tørler\n90 mm bikuesystem\n240 mm CLT\n70x100 trælægter\n45x70 CC600 trælægter\n45 mm isolering, glasuld\n15+18 mm fibergips",
-    "image": "",
-    "specs": {
-        "brandkrav": "R60",
-        "brandsektion": "under",
-        "brandmodstand": "D1-s2-d2",
-        "hojdeOversteEtage": "under-12",
-        "luftlydKlasseC": "Over-53dB",
-        "trinlydKlasseC": "Under-51dB",
-        "spaendvidde": ["CC3000"],
-        "Max længde": "7000",
-        "Størrelse installation i dæk": "0",
-        "minEtager": 1,
-        "maxEtager": 5
-    },
-    "brandklasser": {
-        "enfamiliehus": "BK1",
-        "etagebolig": "BK2"
-    },
-    "anvendelse": [
-        "enfamiliehus",
-        "etagebolig"
-    ],
-    "data": {
-        "LCA": "0,59",
-        "prisindeks": "",
-        "Størrelse installation i dæk": "0",
-        "samletTykkelse": "546",
-        "Vægt (kg/m2)": "368"
-    }
-},
-{
-    "id": "prod-055",
-    "name": "CLT 3",
-    "shortDescription": "CLT dæk",
-    "longDescription": "13 mm trægulv\n1 mm gulvpap\n10 mm sandwichpanel med pap-sand-pap\n2x20 mm trinlydsplade 140 kg/m3\n94 mm tørler\n90 mm bikuesystem\n240 mm CLT\n70x100 CC600m Vikas LOH-VB\n45x70 CC600 træreglar\n45 mm isolering, glasuld\n15+18 mm fibergips",
-    "image": "",
-    "specs": {
-        "brandkrav": "R60",
-        "brandsektion": "under",
-        "brandmodstand": "D1-s2-d2",
-        "hojdeOversteEtage": "under-12",
-        "luftlydKlasseC": "Over-53dB",
-        "trinlydKlasseC": "Under-51dB",
-        "spaendvidde": ["CC3000"],
-        "Max længde": "7000",
-        "Størrelse installation i dæk": "0",
-        "minEtager": 1,
-        "maxEtager": 5
-    },
-    "brandklasser": {
-        "enfamiliehus": "BK1",
-        "etagebolig": "BK2"
-    },
-    "anvendelse": [
-        "enfamiliehus",
-        "etagebolig"
-    ],
-    "data": {
-        "LCA": "0,58",
-        "prisindeks": "",
-        "Størrelse installation i dæk": "0",
-        "samletTykkelse": "546",
-        "Vægt (kg/m2)": "368"
-    }
-},
-{
-    "id": "prod-048",
-    "name": "CLT 8",
-    "shortDescription": "CLT 8",
-    "longDescription": "13 mm trægulv\n1 mm gulvpap\n22 mm gulvspånplade\n2x12,5 mm fibergips\n2x20 mm trinlydsplade, træfiber\n77 mm sand\n240 mm CLT\n15+18 mm fibergips",
-    "image": "",
-    "specs": {
-        "brandkrav": "R60",
-        "brandsektion": "under",
-        "brandmodstand": "D1-s2-d2",
-        "hojdeOversteEtage": "under-12",
-        "luftlydKlasseC": "Over-55dB",
-        "trinlydKlasseC": "under-53dB",
-        "spaendvidde": ["CC3000"],
-        "Max længde": "7000",
-        "Størrelse installation i dæk": "0",
-        "minEtager": 1,
-        "maxEtager": 5
-    },
-    "brandklasser": {
-        "enfamiliehus": "BK1",
-        "etagebolig": "BK2"
-    },
-    "anvendelse": [
-        "enfamiliehus",
-        "etagebolig"
-    ],
-    "data": {
-        "LCA": "0,78",
-        "prisindeks": "",
-        "Størrelse installation i dæk": "0",
-        "samletTykkelse": "451",
-        "Vægt (kg/m2)": "330"
-    }
-}
+            "id": "prod-049",
+            "name": "Nyt Huldæk 18/7",
+            "shortDescription": "Huldæk med trægulv",
+            "longDescription": "22 mm trægulv\n40x63 mm strøer\nLydkiler\n45 mm isolering, mineraluld\nHuldæk 0,18/7",
+            "image": "",
+            "specs": {
+                "brandkrav": "R120",
+                "brandsektion": "over",
+                "brandmodstand": "A2-s1-d0",
+                "hojdeOversteEtage": "Under-22",
+                "luftlydKlasseC": "Over-55dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": [
+                    "CC1200"
+                ],
+                "Max længde": "7000",
+                "Størrelse installation i dæk": "0",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK2",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "enfamiliehus",
+                "etagebolig"
+            ],
+            "data": {
+                "LCA": "1,298",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "0",
+                "samletTykkelse": "360",
+                "Vægt (kg/m2)": "343"
+            }
+        },
+        {
+            "id": "prod-050",
+            "name": "Massivt betondæk",
+            "shortDescription": "Massivt betondæk",
+            "longDescription": "22 mm trægulv\n40x63 mm strøer\nLydkiler\n45 mm isolering, mineraluld\nMassivt C20/25 betondæk m. armering\nLydbøjleloft\n45 mm isolering, mineraluld\n2 x gips",
+            "image": "images/massivt-betondæk.png",
+            "specs": {
+                "brandkrav": "R120",
+                "brandsektion": "over",
+                "brandmodstand": "A2-s1-d0",
+                "hojdeOversteEtage": "Under-22",
+                "luftlydKlasseC": "Over-55dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": [
+                    "CC1200"
+                ],
+                "Max længde": "5000",
+                "Størrelse installation i dæk": "0",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "enfamiliehus",
+                "etagebolig"
+            ],
+            "data": {
+                "LCA": "1,797232749",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "0",
+                "samletTykkelse": "401",
+                "Vægt (kg/m2)": "400"
+            }
+        },
+        {
+            "id": "prod-051",
+            "name": "Genanvendte betondæk",
+            "shortDescription": "Genanvendte betondæk fra tidligere byggerier",
+            "longDescription": "22 mm trægulv\n40x63 mm strøer\nLydkiler\n45 mm isolering, mineraluld\nGenbrugt huldæk",
+            "image": "images/huldæk.jpg",
+            "specs": {
+                "brandkrav": "R120",
+                "brandsektion": "over",
+                "brandmodstand": "A2-s1-d0",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Over-55db",
+                "trinlydKlasseC": "under-53db",
+                "spaendvidde": [
+                    "CC1200"
+                ],
+                "Max længde": "7000",
+                "Størrelse installation i dæk": "0",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "enfamiliehus",
+                "etagebolig"
+            ],
+            "data": {
+                "LCA": "0,25",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "0",
+                "samletTykkelse": "400",
+                "Vægt (kg/m2)": "368"
+            }
+        },
+        {
+            "id": "prod-052",
+            "name": "Nyt huldæk med tilslag ",
+            "shortDescription": "Et nyproduceret betondæk med tilslag fra knuste betondæk. ",
+            "longDescription": "22 mm trægulv\n40x63 mm strøer\nLydkiler\n45 mm isolering, mineraluld\nGenbrugt huldæk",
+            "image": "images/huldæk.jpg",
+            "specs": {
+                "brandkrav": "R120",
+                "brandsektion": "over",
+                "brandmodstand": "A2-s1-d0",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "over-55dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": [
+                    "CC1200"
+                ],
+                "Max længde": "7000",
+                "Størrelse installation i dæk": "0",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "enfamiliehus",
+                "etagebolig"
+            ],
+            "data": {
+                "LCA": "1,43",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "0",
+                "samletTykkelse": "400",
+                "Vægt (kg/m2)": "343"
+            }
+        },
+        {
+            "id": "prod-053",
+            "name": "CLT 1",
+            "shortDescription": "CLT dæk",
+            "longDescription": "13 mm trægulv\n1 mm gulvpap\n10 mm sandwichpanel med pap-sand-pap\n2x20 mm trinlydsplade 140 kg/m3\n94 mm tørler\n90 mm bikuesystem\n240 mm CLT\nLydbøjleloft CC 450 mm\n45 mm isolering, glasuld\n15+18 mm fibergips",
+            "image": "images/CLT.png",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "under",
+                "brandmodstand": "D1-s2-d2",
+                "hojdeOversteEtage": "under-12",
+                "luftlydKlasseC": "Over-53dB",
+                "trinlydKlasseC": "Under-51dB",
+                "spaendvidde": ["CC3000"],
+                "Max længde": "7000",
+                "Størrelse installation i dæk": "0",
+                "minEtager": 1,
+                "maxEtager": 5
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "enfamiliehus",
+                "etagebolig"
+            ],
+            "data": {
+                "LCA": "0,75",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "0",
+                "samletTykkelse": "481",
+                "Vægt (kg/m2)": "368"
+            }
+        },
+        {
+            "id": "prod-054",
+            "name": "CLT 2",
+            "shortDescription": "CLT dæk",
+            "longDescription": "13 mm trægulv\n1 mm gulvpap\n10 mm sandwichpanel med pap-sand-pap\n2x20 mm trinlydsplade 140 kg/m3\n94 mm tørler\n90 mm bikuesystem\n240 mm CLT\n70x100 trælægter\n45x70 CC600 trælægter\n45 mm isolering, glasuld\n15+18 mm fibergips",
+            "image": "images/CLT.png",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "under",
+                "brandmodstand": "D1-s2-d2",
+                "hojdeOversteEtage": "under-12",
+                "luftlydKlasseC": "Over-53dB",
+                "trinlydKlasseC": "Under-51dB",
+                "spaendvidde": ["CC3000"],
+                "Max længde": "7000",
+                "Størrelse installation i dæk": "0",
+                "minEtager": 1,
+                "maxEtager": 5
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "enfamiliehus",
+                "etagebolig"
+            ],
+            "data": {
+                "LCA": "0,59",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "0",
+                "samletTykkelse": "546",
+                "Vægt (kg/m2)": "368"
+            }
+        },
+        {
+            "id": "prod-055",
+            "name": "CLT 3",
+            "shortDescription": "CLT dæk",
+            "longDescription": "13 mm trægulv\n1 mm gulvpap\n10 mm sandwichpanel med pap-sand-pap\n2x20 mm trinlydsplade 140 kg/m3\n94 mm tørler\n90 mm bikuesystem\n240 mm CLT\n70x100 CC600m Vikas LOH-VB\n45x70 CC600 træreglar\n45 mm isolering, glasuld\n15+18 mm fibergips",
+            "image": "images/CLT.png",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "under",
+                "brandmodstand": "D1-s2-d2",
+                "hojdeOversteEtage": "under-12",
+                "luftlydKlasseC": "Over-53dB",
+                "trinlydKlasseC": "Under-51dB",
+                "spaendvidde": ["CC3000"],
+                "Max længde": "7000",
+                "Størrelse installation i dæk": "0",
+                "minEtager": 1,
+                "maxEtager": 5
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "enfamiliehus",
+                "etagebolig"
+            ],
+            "data": {
+                "LCA": "0,58",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "0",
+                "samletTykkelse": "546",
+                "Vægt (kg/m2)": "368"
+            }
+        },
+        {
+            "id": "prod-048",
+            "name": "CLT 8",
+            "shortDescription": "CLT 8",
+            "longDescription": "13 mm trægulv\n1 mm gulvpap\n22 mm gulvspånplade\n2x12,5 mm fibergips\n2x20 mm trinlydsplade, træfiber\n77 mm sand\n240 mm CLT\n15+18 mm fibergips",
+            "image": "images/CLT.png",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "under",
+                "brandmodstand": "D1-s2-d2",
+                "hojdeOversteEtage": "under-12",
+                "luftlydKlasseC": "Over-55dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": ["CC3000"],
+                "Max længde": "7000",
+                "Størrelse installation i dæk": "0",
+                "minEtager": 1,
+                "maxEtager": 5
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "enfamiliehus",
+                "etagebolig"
+            ],
+            "data": {
+                "LCA": "0,78",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "0",
+                "samletTykkelse": "451",
+                "Vægt (kg/m2)": "330"
+            }
+        },
+        {
+            "id": "prod-057",
+            "name": "Ribbe 1",
+            "shortDescription": "Ribbe element 1",
+            "longDescription": "60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60 mm træregler\n15+18 mm fibergips",
+            "image": "images/ribbe.png",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "under",
+                "brandmodstand": "D1-s2-d2",
+                "hojdeOversteEtage": "under-12",
+                "luftlydKlasseC": "under-55dB",
+                "trinlydKlasseC": "Over-53dB",
+                "spaendvidde": [
+                    "CC1200"
+                ],
+                "Max længde": "8000",
+                "Størrelse installation i dæk": "0",
+                "minEtager": 1,
+                "maxEtager": 5
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "enfamiliehus",
+                "etagebolig"
+            ],
+            "data": {
+                "LCA": "0,32",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "0",
+                "samletTykkelse": "451",
+                "Vægt (kg/m2)": "330"
+            }
+        },
+        {
+            "id": "prod-056",
+            "name": "Ribbe 2",
+            "shortDescription": "Ribbe element 2",
+            "longDescription": "13 mm trægulv\n1 mm gulvpap\n22 mm gulvspånplade\n2x12,5 mm fibergips\n30 mm trinlydsplade, stenuld\n77 mm sand\n60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60 mm træregler\n15+18 mm fibergips",
+            "image": "images/ribbe.png",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "under",
+                "brandmodstand": "D1-s2-d2",
+                "hojdeOversteEtage": "under-12",
+                "luftlydKlasseC": "Over-55dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": [
+                    "CC1200"
+                ],
+                "Max længde": "8000",
+                "Størrelse installation i dæk": "0",
+                "minEtager": 1,
+                "maxEtager": 5
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "enfamiliehus",
+                "etagebolig"
+            ],
+            "data": {
+                "LCA": "0,78",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "0",
+                "samletTykkelse": "468",
+                "Vægt (kg/m2)": "275"
+            }
+        },
+        {
+            "id": "prod-056",
+            "name": "Ribbe 3",
+            "shortDescription": "Ribbe element 3",
+            "longDescription": "13 mm trægulv\n1 mm gulvpap\n22 mm gulvspånplade\n2x12,5 mm fibergips\n2x20 mm trinlydsplade, stenuld\n77 mm sand\n60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60 mm træregler\n15+18 mm fibergips",
+            "image": "images/ribbe.png",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "under",
+                "brandmodstand": "D1-s2-d2",
+                "hojdeOversteEtage": "under-12",
+                "luftlydKlasseC": "Over-55dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": [
+                    "CC1200"
+                ],
+                "Max længde": "8000",
+                "Størrelse installation i dæk": "",
+                "minEtager": 1,
+                "maxEtager": 5
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "enfamiliehus",
+                "etagebolig"
+            ],
+            "data": {
+                "LCA": "0,77",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "",
+                "samletTykkelse": "478",
+                "Vægt (kg/m2)": "280"
+            }
+        },
+        {
+            "id": "prod-056",
+            "name": "Ribbe 4",
+            "shortDescription": "Ribbe element 4",
+            "longDescription": "13 mm trægulv\n1 mm gulvpap\n2x12,5 mm fibergips\n2x20 mm trinlydsplade, stenuld\n77 mm sand\n60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60 mm træregler\n15+18 mm fibergips",
+            "image": "images/ribbe.png",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "under",
+                "brandmodstand": "D1-s2-d2",
+                "hojdeOversteEtage": "under-12",
+                "luftlydKlasseC": "Over-55dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": [
+                    "CC1200"
+                ],
+                "Max længde": "8000",
+                "Størrelse installation i dæk": "0",
+                "minEtager": 1,
+                "maxEtager": 5
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "enfamiliehus",
+                "etagebolig"
+            ],
+            "data": {
+                "LCA": "0,68",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "0",
+                "samletTykkelse": "456",
+                "Vægt (kg/m2)": "265"
+            }
+        },
+        {
+            "id": "prod-056",
+            "name": "Ribbe 7",
+            "shortDescription": "Ribbe element 7",
+            "longDescription": "13 mm trægulv\n1 mm gulvpap\n22 mm gulvspånplade\n2x12,5 mm fibergips\n2x20 mm trinlydsplade, træfiber\n12 mm krydsfinerplade\n77 mm sand\n45x77 mm træreglar CC600\n60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60mm træreglar CC450\n15+18 mm fibergips",
+            "image": "images/ribbe.png",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "under",
+                "brandmodstand": "D1-s2-d2",
+                "hojdeOversteEtage": "under-12",
+                "luftlydKlasseC": "Over-55dB",
+                "trinlydKlasseC": "under-53dB",
+                "spaendvidde": [
+                    "CC1200"
+                ],
+                "Max længde": "8000",
+                "Størrelse installation i dæk": "0",
+                "minEtager": 1,
+                "maxEtager": 5
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "enfamiliehus",
+                "etagebolig"
+            ],
+            "data": {
+                "LCA": "0,82",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "0",
+                "samletTykkelse": "490",
+                "Vægt (kg/m2)": "280"
+            }
+        }
     ]
 }
