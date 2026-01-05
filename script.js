@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Konstanter
+  // Constants
   const DATA_URL = 'products.json';
   const ADMIN_MODE = false; // TÆND/SLUK ADMIN FUNKTIONALITET HER
-  let produkter = [];
+  let products = [];
 
-  // DOM-elementer
-  const produktGrid = document.getElementById('product-grid');
-  const produktTæller = document.getElementById('product-count');
-  const nulstilKnap = document.getElementById('clear-filters');
+  // DOM Elements
+  const productGrid = document.getElementById('product-grid');
+  const productCount = document.getElementById('product-count');
+  const clearBtn = document.getElementById('clear-filters');
   const filtersAside = document.querySelector('aside.filters');
   const addProductBtn = document.getElementById('add-product-btn');
   const adminModal = document.getElementById('admin-modal');
@@ -232,16 +232,16 @@ document.addEventListener('DOMContentLoaded', () => {
       floorSlider.max = '8';
     }
     
-    const filtered = produkter.filter(produkt => matchesFilters(produkt, activeFilters));
+    const filtered = products.filter(product => matchesFilters(product, activeFilters));
     
     // Sorter produkter hvis der er valgt en sortering
     const sortSelect = document.getElementById('sort-select');
-    const sorteredeProdukter = sortSelect && sortSelect.value 
+    const sortedProducts = sortSelect && sortSelect.value 
       ? sortProducts(filtered, sortSelect.value)
       : filtered;
     
-    console.log('Filtered and sorted products:', sorteredeProdukter);
-    visProdukter(sorteredeProdukter);
+    console.log('Filtered and sorted products:', sortedProducts);
+    render(sortedProducts);
   }
 
   // Get active filters
@@ -295,13 +295,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Check if product matches filters and get any warnings
-  function getProductWarnings(produkt, aktiveFiltre, erModal = false) {
+  function getProductWarnings(product, active, isModal = false) {
     const warnings = [];
     const m2Value = parseInt(m2Input?.value || '0');
     
     // Vis advarsel for alle D1-s2-d2 produkter når sektionen er over 600m²
-    if (m2Value >= 600 && produkt.specs.brandmodstand === 'D1-s2-d2') {
-      if (erModal) {
+    if (m2Value >= 600 && product.specs.brandmodstand === 'D1-s2-d2') {
+      if (isModal) {
         warnings.push('OBS: Dette produkt har brandmodstand D1-s2-d2. Ved brug i sektioner over 600m² skal der tages særlige forholdsregler. Kontakt teknisk afdeling for yderligere information.');
       } else {
         warnings.push('OBS: Kræver særlig opmærksomhed ved brug i sektioner over 600m²');
@@ -310,12 +310,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Additional height + brand warning: show short on cards, long in modal
     try {
-      const heightFilter = aktiveFiltre?.hojdeOversteEtage;
-      if (produkt.specs.brandmodstand === 'D1-s2-d2' && (heightFilter === 'under-12' || heightFilter === 'under-22')) {
-        if (erModal) {
+      const heightFilter = active?.hojdeOversteEtage;
+      if (product.specs.brandmodstand === 'D1-s2-d2' && (heightFilter === 'under-12' || heightFilter === 'under-22')) {
+        if (isModal) {
           warnings.push('For bygninger, hvor gulv i øverste etage er mere end 5,1 m over terræn, med isoleringsmateriale ringere end materiale klasse B-s1,d0 [klasse A materiale], skal de bærende konstruktioner udføres af materiale mindst klasse A2-s1,d0 [ubrændbart materiale]. Kapitel 3.2.3 i “Bilag 1a - fritliggende og sammenbyggede enfamiliehuse - Version 2.0 (03.01.2022)”');
         } else {
-          warnings.push('OBS: Ved visse højder kræves A2,s1-d0 materialer — se kap. 3.2.3');
+          warnings.push('OBS: Ved visse højder kræves A2-s1,d0 materialer — se kap. 3.2.3');
         }
       }
     } catch (e) {
@@ -325,34 +325,34 @@ document.addEventListener('DOMContentLoaded', () => {
     return warnings;
   }
 
-  function matchesFilters(produkt, aktiveFiltre) {
-    if (!aktiveFiltre || Object.keys(aktiveFiltre).length === 0) {
+  function matchesFilters(product, active) {
+    if (!active || Object.keys(active).length === 0) {
       return false; // Vis ingen produkter indtil anvendelse er valgt
     }
     
-    const specs = produkt.specs || {};
-    console.log('Checking product:', produkt.name);
-    console.log('Against filters:', aktiveFiltre);
+    const specs = product.specs || {};
+    console.log('Checking product:', product.name);
+    console.log('Against filters:', active);
 
     // Hvis anvendelse er tom, vis intet
-    if (!aktiveFiltre.anvendelse || aktiveFiltre.anvendelse === '') {
+    if (!active.anvendelse || active.anvendelse === '') {
       return false;
     }
 
     // Tjek om produktet har den valgte anvendelse
-    if (aktiveFiltre.anvendelse && !produkt.anvendelse.includes(aktiveFiltre.anvendelse)) {
-      console.log(`Anvendelse mismatch: product has ${produkt.anvendelse}, filter wants ${aktiveFiltre.anvendelse}`);
+    if (active.anvendelse && !product.anvendelse.includes(active.anvendelse)) {
+      console.log(`Anvendelse mismatch: product has ${product.anvendelse}, filter wants ${active.anvendelse}`);
       return false;
     }
     
     // Regel 1: Etagebolig skal være minimum brandklasse 2
-    if (aktiveFiltre.anvendelse === 'etagebolig' && aktiveFiltre.brandklasse === 'BK1') {
+    if (active.anvendelse === 'etagebolig' && active.brandklasse === 'BK1') {
       showError('Etagebolig skal være minimum brandklasse 2');
       return false;
     }
 
     // Regel 2: Højde og brandmodstand restriktioner for BK2
-    if (aktiveFiltre.brandklasse === 'BK2' && aktiveFiltre.brandmodstand === 'D1-s2-d2') {
+    if (active.brandklasse === 'BK2' && active.brandmodstand === 'D1-s2-d2') {
       const height = active.hojdeOversteEtage;
       if (height && height.startsWith('under-')) {
         const meters = parseFloat(height.replace('under-', '').replace(',', '.'));
@@ -684,31 +684,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Render products
-  function visProdukter(filtreredeProdukter) {
-    if (!produktGrid || !produktTæller) return;
+  function render(filteredProducts) {
+    if (!productGrid || !productCount) return;
 
-    produktTæller.textContent = `${filtreredeProdukter.length} produkt${filtreredeProdukter.length !== 1 ? 'er' : ''}`;
+    productCount.textContent = `${filteredProducts.length} produkt${filteredProducts.length !== 1 ? 'er' : ''}`;
     
-    if (filtreredeProdukter.length === 0) {
-      produktGrid.innerHTML = '<p class="empty">Ingen produkter matcher filtrene.</p>';
+    if (filteredProducts.length === 0) {
+      productGrid.innerHTML = '<p class="empty">Ingen produkter matcher filtrene.</p>';
       return;
     }
 
-    produktGrid.innerHTML = '';
-  filtreredeProdukter.forEach((produkt, indeks) => {
+    productGrid.innerHTML = '';
+  filteredProducts.forEach((product, index) => {
       const card = document.createElement('article');
       card.className = 'card';
       // Get any warnings for the product
-      const warnings = getProductWarnings(produkt, getActiveFilters());
+      const warnings = getProductWarnings(product, getActiveFilters());
       const warningsHtml = warnings.length > 0 
         ? `<div class="card-warnings">${warnings.map(w => `<div class="warning-message">${w}</div>`).join('')}</div>`
         : '';
 
       card.innerHTML = `
         <div class="card-media">
-          ${produkt.image ? `<img src="${produkt.image}" alt="${produkt.name}">` : '<div class="placeholder">📷</div>'}
+          ${product.image ? `<img src="${product.image}" alt="${product.name}">` : '<div class="placeholder">📷</div>'}
           ${(() => {
-            const ccVal = Array.isArray(produkt.specs?.spaendvidde) ? produkt.specs.spaendvidde[0] : produkt.specs?.spaendvidde;
+            const ccVal = Array.isArray(product.specs?.spaendvidde) ? product.specs.spaendvidde[0] : product.specs?.spaendvidde;
             if (ccVal) {
               const ccText = String(ccVal).replace(/mm$/i, '');
               return `<div class="badge">${ccText}</div>`;
@@ -717,27 +717,27 @@ document.addEventListener('DOMContentLoaded', () => {
           })()}
         </div>
         <div class="card-body">
-          <h3 class="card-title">${produkt.name || ''}</h3>
+          <h3 class="card-title">${product.name || ''}</h3>
           ${warningsHtml}
-          <p class="desc">${produkt.shortDescription || produkt.description || ''}</p>
-          <div class="price">${produkt.pris || ''}</div>
+          <p class="desc">${product.shortDescription || product.description || ''}</p>
+          <div class="price">${product.pris || ''}</div>
         </div>
       `;
       
       // Gør kortet klikbart
       card.tabIndex = 0;
       card.setAttribute('role', 'button');
-      card.setAttribute('aria-label', `${produkt.name}. Åbn detaljer`);
-      card.addEventListener('click', () => openModal(produkt));
+      card.setAttribute('aria-label', `${product.name}. Åbn detaljer`);
+      card.addEventListener('click', () => openModal(product));
       card.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          openModal(produkt);
+          openModal(product);
         }
       });
       
-      card.style.animationDelay = `${indeks * 60}ms`;
-      produktGrid.appendChild(card);
+      card.style.animationDelay = `${index * 60}ms`;
+      productGrid.appendChild(card);
     });
   }
 
@@ -789,15 +789,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize everything
   initializeFilters();
   
-  // Indlæs produktdata men vis ikke før anvendelsestype er valgt
+  // Load product data but don't render until usage type is selected
   loadData()
     .then(data => {
       console.log('Loaded data:', data);
-      produkter = normalize(data);
-      console.log('Normalized products:', produkter);
-      // Opsæt max længde slider område baseret på indlæste produkter
+      products = normalize(data);
+      console.log('Normalized products:', products);
+      // Setup max length slider range based on loaded products
       try {
-        const lengths = produkter.map(p => parseInt(String(p.specs?.['Max længde'] || '').replace(/\D/g, ''), 10))
+        const lengths = products.map(p => parseInt(String(p.specs?.['Max længde'] || '').replace(/\D/g, ''), 10))
           .filter(n => !isNaN(n));
           if (lengths.length) {
             const minL = Math.min(...lengths);
@@ -999,7 +999,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Get next product ID - used to auto-generate product IDs in add form
   function getNextProductId() {
-    const ids = produkter.map(p => {
+    const ids = products.map(p => {
       const match = p.id.match(/prod-(\d+)/);
       return match ? parseInt(match[1]) : 0;
     });
