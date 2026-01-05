@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Constants
   const DATA_URL = 'products.json';
-  const ADMIN_MODE = false; // TÆND/SLUK ADMIN FUNKTIONALITET HER
+  const ADMIN_MODE = true; // TÆND/SLUK ADMIN FUNKTIONALITET HER
   let products = [];
 
   // DOM Elements
@@ -1008,4 +1008,5 @@ document.addEventListener('DOMContentLoaded', () => {
     return `prod-${String(nextNum).padStart(3, '0')}`;
   }
 });
+
 
