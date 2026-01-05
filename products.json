@@ -663,7 +663,7 @@
             "name": "Massivt betondæk",
             "shortDescription": "Massivt betondæk",
             "longDescription": "22 mm trægulv\n40x63 mm strøer\nLydkiler\n45 mm isolering, mineraluld\nMassivt C20/25 betondæk m. armering\nLydbøjleloft\n45 mm isolering, mineraluld\n2 x gips",
-            "image": "./images/massivt-betondaek.jpg",
+            "image": "./images/Massivt-betondaek.jpg",
             "specs": {
                 "brandkrav": "R120",
                 "brandsektion": "over",
@@ -922,7 +922,7 @@
             "name": "Ribbe 1",
             "shortDescription": "Ribbe element 1",
             "longDescription": "60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60 mm træregler\n15+18 mm fibergips",
-            "image": "./images/ribbe.jpg",
+            "image": "./images/Ribbe.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -959,7 +959,7 @@
             "name": "Ribbe 2",
             "shortDescription": "Ribbe element 2",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n22 mm gulvspånplade\n2x12,5 mm fibergips\n30 mm trinlydsplade, stenuld\n77 mm sand\n60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60 mm træregler\n15+18 mm fibergips",
-            "image": "./images/ribbe.jpg",
+            "image": "./images/Ribbe.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -996,7 +996,7 @@
             "name": "Ribbe 3",
             "shortDescription": "Ribbe element 3",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n22 mm gulvspånplade\n2x12,5 mm fibergips\n2x20 mm trinlydsplade, stenuld\n77 mm sand\n60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60 mm træregler\n15+18 mm fibergips",
-            "image": "./images/ribbe.jpg",
+            "image": "./images/Ribbe.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -1033,7 +1033,7 @@
             "name": "Ribbe 4",
             "shortDescription": "Ribbe element 4",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n2x12,5 mm fibergips\n2x20 mm trinlydsplade, stenuld\n77 mm sand\n60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60 mm træregler\n15+18 mm fibergips",
-            "image": "./images/ribbe.jpg",
+            "image": "./images/Ribbe.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -1070,7 +1070,7 @@
             "name": "Ribbe 7",
             "shortDescription": "Ribbe element 7",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n22 mm gulvspånplade\n2x12,5 mm fibergips\n2x20 mm trinlydsplade, træfiber\n12 mm krydsfinerplade\n77 mm sand\n45x77 mm træreglar CC600\n60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60mm træreglar CC450\n15+18 mm fibergips",
-            "image": "./images/ribbe.jpg",
+            "image": "./images/Ribbe.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
