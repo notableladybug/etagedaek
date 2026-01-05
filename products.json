@@ -152,7 +152,7 @@
             "name": "Nyt Huldæk 22/12",
             "shortDescription": "Robust armeret betonhuldæk",
             "longDescription": "Nyt Huldæk 22/12 er et armeret betonhuldæk designet til tunge belastninger og over 600m² sektioner. Har høj trykstyrke og god brandmodstand (A2-s1-d0).",
-            "image": "images/huldæk.jpg",
+            "image": "images/huldaek.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -595,7 +595,7 @@
             "name": "Nyt Huldæk 18/7",
             "shortDescription": "Huldæk med trægulv",
             "longDescription": "22 mm trægulv\n40x63 mm strøer\nLydkiler\n45 mm isolering, mineraluld\nHuldæk 0,18/7",
-            "image": "",
+            "image": "images/huldaek.jpg",
             "specs": {
                 "brandkrav": "R120",
                 "brandsektion": "over",
@@ -632,7 +632,7 @@
             "name": "Massivt betondæk",
             "shortDescription": "Massivt betondæk",
             "longDescription": "22 mm trægulv\n40x63 mm strøer\nLydkiler\n45 mm isolering, mineraluld\nMassivt C20/25 betondæk m. armering\nLydbøjleloft\n45 mm isolering, mineraluld\n2 x gips",
-            "image": "images/massivt-betondæk.png",
+            "image": "images/massivt-betondaek.jpg",
             "specs": {
                 "brandkrav": "R120",
                 "brandsektion": "over",
@@ -669,7 +669,7 @@
             "name": "Genanvendte betondæk",
             "shortDescription": "Genanvendte betondæk fra tidligere byggerier",
             "longDescription": "22 mm trægulv\n40x63 mm strøer\nLydkiler\n45 mm isolering, mineraluld\nGenbrugt huldæk",
-            "image": "images/huldæk.jpg",
+            "image": "images/huldaek.jpg",
             "specs": {
                 "brandkrav": "R120",
                 "brandsektion": "over",
@@ -706,7 +706,7 @@
             "name": "Nyt huldæk med tilslag ",
             "shortDescription": "Et nyproduceret betondæk med tilslag fra knuste betondæk. ",
             "longDescription": "22 mm trægulv\n40x63 mm strøer\nLydkiler\n45 mm isolering, mineraluld\nGenbrugt huldæk",
-            "image": "images/huldæk.jpg",
+            "image": "images/huldaek.jpg",
             "specs": {
                 "brandkrav": "R120",
                 "brandsektion": "over",
@@ -743,7 +743,7 @@
             "name": "CLT 1",
             "shortDescription": "CLT dæk",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n10 mm sandwichpanel med pap-sand-pap\n2x20 mm trinlydsplade 140 kg/m3\n94 mm tørler\n90 mm bikuesystem\n240 mm CLT\nLydbøjleloft CC 450 mm\n45 mm isolering, glasuld\n15+18 mm fibergips",
-            "image": "images/CLT.png",
+            "image": "images/CLT.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -778,7 +778,7 @@
             "name": "CLT 2",
             "shortDescription": "CLT dæk",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n10 mm sandwichpanel med pap-sand-pap\n2x20 mm trinlydsplade 140 kg/m3\n94 mm tørler\n90 mm bikuesystem\n240 mm CLT\n70x100 trælægter\n45x70 CC600 trælægter\n45 mm isolering, glasuld\n15+18 mm fibergips",
-            "image": "images/CLT.png",
+            "image": "images/CLT.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -813,7 +813,7 @@
             "name": "CLT 3",
             "shortDescription": "CLT dæk",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n10 mm sandwichpanel med pap-sand-pap\n2x20 mm trinlydsplade 140 kg/m3\n94 mm tørler\n90 mm bikuesystem\n240 mm CLT\n70x100 CC600m Vikas LOH-VB\n45x70 CC600 træreglar\n45 mm isolering, glasuld\n15+18 mm fibergips",
-            "image": "images/CLT.png",
+            "image": "images/CLT.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -848,7 +848,7 @@
             "name": "CLT 8",
             "shortDescription": "CLT 8",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n22 mm gulvspånplade\n2x12,5 mm fibergips\n2x20 mm trinlydsplade, træfiber\n77 mm sand\n240 mm CLT\n15+18 mm fibergips",
-            "image": "images/CLT.png",
+            "image": "images/CLT.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -883,7 +883,7 @@
             "name": "Ribbe 1",
             "shortDescription": "Ribbe element 1",
             "longDescription": "60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60 mm træregler\n15+18 mm fibergips",
-            "image": "images/ribbe.png",
+            "image": "images/ribbe.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -916,11 +916,11 @@
             }
         },
         {
-            "id": "prod-056",
+            "id": "prod-058",
             "name": "Ribbe 2",
             "shortDescription": "Ribbe element 2",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n22 mm gulvspånplade\n2x12,5 mm fibergips\n30 mm trinlydsplade, stenuld\n77 mm sand\n60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60 mm træregler\n15+18 mm fibergips",
-            "image": "images/ribbe.png",
+            "image": "images/ribbe.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -953,11 +953,11 @@
             }
         },
         {
-            "id": "prod-056",
+            "id": "prod-059",
             "name": "Ribbe 3",
             "shortDescription": "Ribbe element 3",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n22 mm gulvspånplade\n2x12,5 mm fibergips\n2x20 mm trinlydsplade, stenuld\n77 mm sand\n60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60 mm træregler\n15+18 mm fibergips",
-            "image": "images/ribbe.png",
+            "image": "images/ribbe.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -990,11 +990,11 @@
             }
         },
         {
-            "id": "prod-056",
+            "id": "prod-060",
             "name": "Ribbe 4",
             "shortDescription": "Ribbe element 4",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n2x12,5 mm fibergips\n2x20 mm trinlydsplade, stenuld\n77 mm sand\n60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60 mm træregler\n15+18 mm fibergips",
-            "image": "images/ribbe.png",
+            "image": "images/ribbe.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -1027,11 +1027,11 @@
             }
         },
         {
-            "id": "prod-056",
+            "id": "prod-061",
             "name": "Ribbe 7",
             "shortDescription": "Ribbe element 7",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n22 mm gulvspånplade\n2x12,5 mm fibergips\n2x20 mm trinlydsplade, træfiber\n12 mm krydsfinerplade\n77 mm sand\n45x77 mm træreglar CC600\n60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60mm træreglar CC450\n15+18 mm fibergips",
-            "image": "images/ribbe.png",
+            "image": "images/ribbe.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
