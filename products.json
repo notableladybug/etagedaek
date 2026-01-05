@@ -194,7 +194,7 @@
             "name": "Ståldæk 150 mm",
             "shortDescription": "Højtydende ståldæk med CC300 spænding",
             "longDescription": "Etagedæk - ES3 A1 C150-1,5 46/40 300 GF25/FF S45. Velegnetholdbar betonblanding med god brandmodstand og lyddæmpning.",
-            "image": "",
+            "image": "./images/Ståldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -230,7 +230,7 @@
             "name": "Ståldæk 200 mm",
             "shortDescription": "Ståldæk med øget bæreevne og CC300 spænding",
             "longDescription": "Etagedæk - ES3 A1 C200-2,0 46/40 300 GF25/FF S45. Større kapacitet end 150mm varianten, velegnet til belastede etager.",
-            "image": "",
+            "image": "./images/Ståldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -266,7 +266,7 @@
             "name": "Ståldæk 250 mm",
             "shortDescription": "Robust ståldæk med CC300 spænding",
             "longDescription": "Etagedæk - ES3 A1 C200-2,0 46/40 300 GF25/FF S45. Tykkere udgave med høj vægtbæreevne, velegnet til store belastninger.",
-            "image": "",
+            "image": "./images/Ståldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -302,7 +302,7 @@
             "name": "Ståldæk 250 mm (stor)",
             "shortDescription": "Stærkt ståldæk til tunge systemer",
             "longDescription": "Etagedæk - ES3 A1 C200-2,0 46/40 300 GF25/FF S45. Svær udgave designet til ekstra belastet installation og større sektioner.",
-            "image": "",
+            "image": "./images/Ståldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -338,7 +338,7 @@
             "name": "Ståldæk 150 mm (CC600)",
             "shortDescription": "Ståldæk med større CC600 spænding",
             "longDescription": "Etagedæk - ES3 A1 C150-1,5 46/40 600 GF25/FF S45. Standardstørrelse med større spændvidde for mere fleksible installationer.",
-            "image": "",
+            "image": "./images/Ståldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -374,7 +374,7 @@
             "name": "Ståldæk 200 mm (CC600)",
             "shortDescription": "Mellemstørrelse ståldæk med CC600 spænding",
             "longDescription": "Etagedæk - ES3 A1 C200-2,0 46/40 600 GF25/FF S45. Større kapacitet med udvidet spændvidde for fleksible konstruktioner.",
-            "image": "",
+            "image": "./images/Ståldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -410,7 +410,7 @@
             "name": "Ståldæk 250 mm (CC600)",
             "shortDescription": "Tyk ståldæk med høj kapacitet",
             "longDescription": "Etagedæk - ES3 A1 C250-2,5 74/66 600 GF25/FF S45. Robust konstruktion med øget vægtbæreevne og større spændvidde.",
-            "image": "",
+            "image": "./images/Ståldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -446,7 +446,7 @@
             "name": "Ståldæk 300 mm (CC600)",
             "shortDescription": "Premium ståldæk med maksimal kapacitet",
             "longDescription": "Etagedæk - ES3 A1 C300-2,0 97/88 600 GF25/FF S45. Ekstra tyk udgave til de mest krævende belastningsmæssige scenarier.",
-            "image": "",
+            "image": "./images/Ståldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -482,7 +482,7 @@
             "name": "Ståldæk 150 mm (CC900)",
             "shortDescription": "Ståldæk med stor CC900 spænding",
             "longDescription": "Etagedæk - ES1 A1 C150-1,5 46/40 900 GF25-TZ45/FF S45. Standardstørrelse med betydelig spændvidde for store åbne flader.",
-            "image": "",
+            "image": "./images/Ståldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -518,7 +518,7 @@
             "name": "Ståldæk 200 mm (CC900)",
             "shortDescription": "Mellemstørrelse med stor spændvidde",
             "longDescription": "Etagedæk - ES1 A1 C200-2,0 46/40 900 GF25-TZ45/FF S45. Større kapacitet med maksimal spændvidde for fleksible layouts.",
-            "image": "",
+            "image": "./images/Ståldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -554,7 +554,7 @@
             "name": "Ståldæk 250 mm (CC900)",
             "shortDescription": "Tyk udgave med stor spændvidde",
             "longDescription": "Etagedæk - ES3 A1 C250-2,5 74/66 900 GF25/FF S45. Robust konstruktion til store sektioner med høj vægtbæreevne.",
-            "image": "",
+            "image": "./images/Ståldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -590,7 +590,7 @@
             "name": "Ståldæk 300 mm (CC900)",
             "shortDescription": "Premium udgave med maksimal kapacitet",
             "longDescription": "Etagedæk - ES1 A1 C300-2,0 97/88 900 GF25-TZ45/FF S45. Top-tier konstruktion til ekstraordinært krævende projekter.",
-            "image": "",
+            "image": "./images/Ståldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
