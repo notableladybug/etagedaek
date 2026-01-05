@@ -5,7 +5,7 @@
             "name": "Posi Joist PS8 (95 mm gulvbjælke)",
             "shortDescription": "Højtydende gulvbjælke - god lyd og brand",
             "longDescription": "Posi Joist PS8 er et strukturelt etagedækssystem optimeret til boligbyggeri. Leverer god brandmodstand og støjreduktion, samtidig med at det er let at installere.",
-            "image": "images/posijoist.jpg",
+            "image": "./images/posijoist.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -13,7 +13,9 @@
                 "hojdeOversteEtage": "under-12",
                 "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
-                "spaendvidde": ["CC300mm"],
+                "spaendvidde": [
+                    "CC300mm"
+                ],
                 "Max længde": "4200mm",
                 "Størrelse installation i dæk": "108",
                 "minEtager": 1,
@@ -23,7 +25,6 @@
                 "enfamiliehus": "BK1",
                 "etagebolig": "BK2"
             },
-
             "anvendelse": [
                 "etagebolig",
                 "enfamiliehus"
@@ -41,7 +42,7 @@
             "name": "Posi Joist PS8 (95 mm gulvbjælke)",
             "shortDescription": "Højtydende gulvbjælke - fleksibel længde",
             "longDescription": "Posi Joist PS8 (varianter) tilbyder fleksible længder og god bæreevne til moderne boligkonstruktioner. Velegnet til både mindre og mellemstore sektioner.",
-            "image": "images/posijoist.jpg",
+            "image": "./images/posijoist.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -49,7 +50,9 @@
                 "hojdeOversteEtage": "under-12",
                 "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
-                "spaendvidde": ["CC600mm"],
+                "spaendvidde": [
+                    "CC600mm"
+                ],
                 "Max længde": "3600mm",
                 "Størrelse installation i dæk": "108",
                 "minEtager": 1,
@@ -59,7 +62,6 @@
                 "enfamiliehus": "BK1",
                 "etagebolig": "BK2"
             },
-
             "anvendelse": [
                 "etagebolig",
                 "enfamiliehus"
@@ -78,7 +80,7 @@
             "name": "Posi Joist PS9 (95 mm gulvbjælke)",
             "shortDescription": "Effektiv gulvbjælke med lav vægt",
             "longDescription": "Posi Joist PS9 er optimeret til længere spændvidder og reduceret vægt pr. m², hvilket gør den nyttig ved længere oplæg og renoveringsprojekter.",
-            "image": "images/posijoist.jpg",
+            "image": "./images/posijoist.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -86,7 +88,9 @@
                 "hojdeOversteEtage": "under-12",
                 "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
-                "spaendvidde": ["CC300mm"],
+                "spaendvidde": [
+                    "CC300mm"
+                ],
                 "Max længde": "4650mm",
                 "Størrelse installation i dæk": "131",
                 "minEtager": 1,
@@ -96,7 +100,6 @@
                 "enfamiliehus": "BK1",
                 "etagebolig": "BK2"
             },
-
             "anvendelse": [
                 "etagebolig",
                 "enfamiliehus"
@@ -115,7 +118,7 @@
             "name": "Posi Joist PS9 (95 mm gulvbjælke)",
             "shortDescription": "Fleksibel gulvbjælke til længere spænd",
             "longDescription": "PS9-varianten med CC600 giver mulighed for længere spændvidder og hurtig montage, samtidig med at lyd- og brandkrav opretholdes.",
-            "image": "images/posijoist.jpg",
+            "image": "./images/posijoist.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -123,7 +126,9 @@
                 "hojdeOversteEtage": "under-12",
                 "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
-                "spaendvidde": ["CC600mm"],
+                "spaendvidde": [
+                    "CC600mm"
+                ],
                 "Max længde": "3900mm",
                 "Størrelse installation i dæk": "131",
                 "minEtager": 1,
@@ -133,7 +138,6 @@
                 "enfamiliehus": "BK1",
                 "etagebolig": "BK2"
             },
-
             "anvendelse": [
                 "etagebolig",
                 "enfamiliehus"
@@ -152,7 +156,7 @@
             "name": "Nyt Huldæk 22/12",
             "shortDescription": "Robust armeret betonhuldæk",
             "longDescription": "Nyt Huldæk 22/12 er et armeret betonhuldæk designet til tunge belastninger og over 600m² sektioner. Har høj trykstyrke og god brandmodstand (A2-s1-d0).",
-            "image": "images/huldaek.jpg",
+            "image": "./images/huldaek.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -160,7 +164,10 @@
                 "hojdeOversteEtage": "under-22",
                 "luftlydKlasseC": "Over-63dB",
                 "trinlydKlasseC": "under-46dB",
-                "spaendvidde": ["CC1200mm"],
+                "spaendvidde": [
+                    "CC1200mm"
+                ],
+                "Max længde": "12000mm",
                 "Størrelse installation i dæk": "0",
                 "minEtager": 1,
                 "maxEtager": 8
@@ -195,7 +202,10 @@
                 "hojdeOversteEtage": "under-22",
                 "luftlydKlasseC": "Over-60dB",
                 "trinlydKlasseC": "under-53dB",
-                "spaendvidde": ["CC300mm"],
+                "spaendvidde": [
+                    "CC300mm"
+                ],
+                "Max længde": "3200mm",
                 "Størrelse installation i dæk": "75",
                 "minEtager": 1,
                 "maxEtager": 8
@@ -204,7 +214,6 @@
                 "enfamiliehus": "BK1",
                 "etagebolig": "BK2"
             },
-
             "anvendelse": [
                 "etagebolig",
                 "enfamiliehus"
@@ -229,7 +238,10 @@
                 "hojdeOversteEtage": "under-22",
                 "luftlydKlasseC": "Over-60dB",
                 "trinlydKlasseC": "under-53dB",
-                "spaendvidde": ["CC300mm"],
+                "spaendvidde": [
+                    "CC300mm"
+                ],
+                "Max længde": "5400mm",
                 "Størrelse installation i dæk": "100",
                 "minEtager": 1,
                 "maxEtager": 8
@@ -238,7 +250,6 @@
                 "enfamiliehus": "BK1",
                 "etagebolig": "BK2"
             },
-
             "anvendelse": [
                 "etagebolig",
                 "enfamiliehus"
@@ -263,7 +274,10 @@
                 "hojdeOversteEtage": "under-22",
                 "luftlydKlasseC": "Over-60dB",
                 "trinlydKlasseC": "under-53dB",
-                "spaendvidde": ["CC300mm"],
+                "spaendvidde": [
+                    "CC300mm"
+                ],
+                "Max længde": "6400mm",
                 "Størrelse installation i dæk": "125",
                 "minEtager": 1,
                 "maxEtager": 8
@@ -272,7 +286,6 @@
                 "enfamiliehus": "BK1",
                 "etagebolig": "BK2"
             },
-
             "anvendelse": [
                 "etagebolig",
                 "enfamiliehus"
@@ -297,7 +310,10 @@
                 "hojdeOversteEtage": "under-22",
                 "luftlydKlasseC": "Over-60dB",
                 "trinlydKlasseC": "under-53dB",
-                "spaendvidde": ["CC300mm"],
+                "spaendvidde": [
+                    "CC300mm"
+                ],
+                "Max længde": "7500mm",
                 "Størrelse installation i dæk": "150",
                 "minEtager": 1,
                 "maxEtager": 8
@@ -306,7 +322,6 @@
                 "enfamiliehus": "BK1",
                 "etagebolig": "BK2"
             },
-
             "anvendelse": [
                 "etagebolig",
                 "enfamiliehus"
@@ -331,7 +346,10 @@
                 "hojdeOversteEtage": "under-22",
                 "luftlydKlasseC": "Over-60dB",
                 "trinlydKlasseC": "under-53dB",
-                "spaendvidde": ["CC600mm"],
+                "spaendvidde": [
+                    "CC600mm"
+                ],
+                "Max længde": "2900mm",
                 "Størrelse installation i dæk": "75",
                 "minEtager": 1,
                 "maxEtager": 8
@@ -340,7 +358,6 @@
                 "enfamiliehus": "BK1",
                 "etagebolig": "BK2"
             },
-
             "anvendelse": [
                 "etagebolig",
                 "enfamiliehus"
@@ -365,7 +382,10 @@
                 "hojdeOversteEtage": "under-22",
                 "luftlydKlasseC": "Over-60dB",
                 "trinlydKlasseC": "under-53dB",
-                "spaendvidde": ["CC600mm"],
+                "spaendvidde": [
+                    "CC600mm"
+                ],
+                "Max længde": "4800mm",
                 "Størrelse installation i dæk": "100",
                 "minEtager": 1,
                 "maxEtager": 8
@@ -374,7 +394,6 @@
                 "enfamiliehus": "BK1",
                 "etagebolig": "BK2"
             },
-
             "anvendelse": [
                 "etagebolig",
                 "enfamiliehus"
@@ -399,7 +418,10 @@
                 "hojdeOversteEtage": "under-22",
                 "luftlydKlasseC": "Over-60dB",
                 "trinlydKlasseC": "under-53dB",
-                "spaendvidde": ["CC600mm"],
+                "spaendvidde": [
+                    "CC600mm"
+                ],
+                "Max længde": "5500mm",
                 "Størrelse installation i dæk": "125",
                 "minEtager": 1,
                 "maxEtager": 8
@@ -408,7 +430,6 @@
                 "enfamiliehus": "BK1",
                 "etagebolig": "BK2"
             },
-
             "anvendelse": [
                 "etagebolig",
                 "enfamiliehus"
@@ -433,7 +454,10 @@
                 "hojdeOversteEtage": "under-22",
                 "luftlydKlasseC": "Over-60dB",
                 "trinlydKlasseC": "under-53dB",
-                "spaendvidde": ["CC600mm"],
+                "spaendvidde": [
+                    "CC600mm"
+                ],
+                "Max længde": "6500mm",
                 "Størrelse installation i dæk": "150",
                 "minEtager": 1,
                 "maxEtager": 8
@@ -442,7 +466,6 @@
                 "enfamiliehus": "BK1",
                 "etagebolig": "BK2"
             },
-
             "anvendelse": [
                 "etagebolig",
                 "enfamiliehus"
@@ -467,7 +490,10 @@
                 "hojdeOversteEtage": "under-22",
                 "luftlydKlasseC": "Over-60dB",
                 "trinlydKlasseC": "under-53dB",
-                "spaendvidde": ["CC900mm"],
+                "spaendvidde": [
+                    "CC900mm"
+                ],
+                "Max længde": "2500mm",
                 "Størrelse installation i dæk": "75",
                 "minEtager": 1,
                 "maxEtager": 8
@@ -476,7 +502,6 @@
                 "enfamiliehus": "BK1",
                 "etagebolig": "BK2"
             },
-
             "anvendelse": [
                 "etagebolig",
                 "enfamiliehus"
@@ -501,7 +526,10 @@
                 "hojdeOversteEtage": "under-22",
                 "luftlydKlasseC": "Over-60dB",
                 "trinlydKlasseC": "under-53dB",
-                "spaendvidde": ["CC900mm"],
+                "spaendvidde": [
+                    "CC900mm"
+                ],
+                "Max længde": "4300mm",
                 "Størrelse installation i dæk": "100",
                 "minEtager": 1,
                 "maxEtager": 8
@@ -510,7 +538,6 @@
                 "enfamiliehus": "BK1",
                 "etagebolig": "BK2"
             },
-
             "anvendelse": [
                 "etagebolig",
                 "enfamiliehus"
@@ -535,7 +562,10 @@
                 "hojdeOversteEtage": "under-22",
                 "luftlydKlasseC": "Over-60dB",
                 "trinlydKlasseC": "under-53dB",
-                "spaendvidde": ["CC900mm"],
+                "spaendvidde": [
+                    "CC900mm"
+                ],
+                "Max længde": "5000mm",
                 "Størrelse installation i dæk": "125",
                 "minEtager": 1,
                 "maxEtager": 8
@@ -544,7 +574,6 @@
                 "enfamiliehus": "BK1",
                 "etagebolig": "BK2"
             },
-
             "anvendelse": [
                 "etagebolig",
                 "enfamiliehus"
@@ -569,7 +598,10 @@
                 "hojdeOversteEtage": "under-22",
                 "luftlydKlasseC": "Over-60dB",
                 "trinlydKlasseC": "under-53dB",
-                "spaendvidde": ["CC900mm"],
+                "spaendvidde": [
+                    "CC900mm"
+                ],
+                "Max længde": "5900mm",
                 "Størrelse installation i dæk": "150",
                 "minEtager": 1,
                 "maxEtager": 8
@@ -578,7 +610,6 @@
                 "enfamiliehus": "BK1",
                 "etagebolig": "BK2"
             },
-
             "anvendelse": [
                 "etagebolig",
                 "enfamiliehus"
@@ -595,7 +626,7 @@
             "name": "Nyt Huldæk 18/7",
             "shortDescription": "Huldæk med trægulv",
             "longDescription": "22 mm trægulv\n40x63 mm strøer\nLydkiler\n45 mm isolering, mineraluld\nHuldæk 0,18/7",
-            "image": "images/huldaek.jpg",
+            "image": "./images/huldaek.jpg",
             "specs": {
                 "brandkrav": "R120",
                 "brandsektion": "over",
@@ -632,7 +663,7 @@
             "name": "Massivt betondæk",
             "shortDescription": "Massivt betondæk",
             "longDescription": "22 mm trægulv\n40x63 mm strøer\nLydkiler\n45 mm isolering, mineraluld\nMassivt C20/25 betondæk m. armering\nLydbøjleloft\n45 mm isolering, mineraluld\n2 x gips",
-            "image": "images/massivt-betondaek.jpg",
+            "image": "./images/massivt-betondaek.jpg",
             "specs": {
                 "brandkrav": "R120",
                 "brandsektion": "over",
@@ -669,7 +700,7 @@
             "name": "Genanvendte betondæk",
             "shortDescription": "Genanvendte betondæk fra tidligere byggerier",
             "longDescription": "22 mm trægulv\n40x63 mm strøer\nLydkiler\n45 mm isolering, mineraluld\nGenbrugt huldæk",
-            "image": "images/huldaek.jpg",
+            "image": "./images/huldaek.jpg",
             "specs": {
                 "brandkrav": "R120",
                 "brandsektion": "over",
@@ -706,7 +737,7 @@
             "name": "Nyt huldæk med tilslag ",
             "shortDescription": "Et nyproduceret betondæk med tilslag fra knuste betondæk. ",
             "longDescription": "22 mm trægulv\n40x63 mm strøer\nLydkiler\n45 mm isolering, mineraluld\nGenbrugt huldæk",
-            "image": "images/huldaek.jpg",
+            "image": "./images/huldaek.jpg",
             "specs": {
                 "brandkrav": "R120",
                 "brandsektion": "over",
@@ -743,7 +774,7 @@
             "name": "CLT 1",
             "shortDescription": "CLT dæk",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n10 mm sandwichpanel med pap-sand-pap\n2x20 mm trinlydsplade 140 kg/m3\n94 mm tørler\n90 mm bikuesystem\n240 mm CLT\nLydbøjleloft CC 450 mm\n45 mm isolering, glasuld\n15+18 mm fibergips",
-            "image": "images/CLT.jpg",
+            "image": "./images/CLT.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -751,7 +782,9 @@
                 "hojdeOversteEtage": "under-12",
                 "luftlydKlasseC": "Over-53dB",
                 "trinlydKlasseC": "Under-51dB",
-                "spaendvidde": ["CC3000"],
+                "spaendvidde": [
+                    "CC3000"
+                ],
                 "Max længde": "7000",
                 "Størrelse installation i dæk": "0",
                 "minEtager": 1,
@@ -778,7 +811,7 @@
             "name": "CLT 2",
             "shortDescription": "CLT dæk",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n10 mm sandwichpanel med pap-sand-pap\n2x20 mm trinlydsplade 140 kg/m3\n94 mm tørler\n90 mm bikuesystem\n240 mm CLT\n70x100 trælægter\n45x70 CC600 trælægter\n45 mm isolering, glasuld\n15+18 mm fibergips",
-            "image": "images/CLT.jpg",
+            "image": "./images/CLT.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -786,7 +819,9 @@
                 "hojdeOversteEtage": "under-12",
                 "luftlydKlasseC": "Over-53dB",
                 "trinlydKlasseC": "Under-51dB",
-                "spaendvidde": ["CC3000"],
+                "spaendvidde": [
+                    "CC3000"
+                ],
                 "Max længde": "7000",
                 "Størrelse installation i dæk": "0",
                 "minEtager": 1,
@@ -813,7 +848,7 @@
             "name": "CLT 3",
             "shortDescription": "CLT dæk",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n10 mm sandwichpanel med pap-sand-pap\n2x20 mm trinlydsplade 140 kg/m3\n94 mm tørler\n90 mm bikuesystem\n240 mm CLT\n70x100 CC600m Vikas LOH-VB\n45x70 CC600 træreglar\n45 mm isolering, glasuld\n15+18 mm fibergips",
-            "image": "images/CLT.jpg",
+            "image": "./images/CLT.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -821,7 +856,9 @@
                 "hojdeOversteEtage": "under-12",
                 "luftlydKlasseC": "Over-53dB",
                 "trinlydKlasseC": "Under-51dB",
-                "spaendvidde": ["CC3000"],
+                "spaendvidde": [
+                    "CC3000"
+                ],
                 "Max længde": "7000",
                 "Størrelse installation i dæk": "0",
                 "minEtager": 1,
@@ -848,7 +885,7 @@
             "name": "CLT 8",
             "shortDescription": "CLT 8",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n22 mm gulvspånplade\n2x12,5 mm fibergips\n2x20 mm trinlydsplade, træfiber\n77 mm sand\n240 mm CLT\n15+18 mm fibergips",
-            "image": "images/CLT.jpg",
+            "image": "./images/CLT.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -856,7 +893,9 @@
                 "hojdeOversteEtage": "under-12",
                 "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
-                "spaendvidde": ["CC3000"],
+                "spaendvidde": [
+                    "CC3000"
+                ],
                 "Max længde": "7000",
                 "Størrelse installation i dæk": "0",
                 "minEtager": 1,
@@ -883,7 +922,7 @@
             "name": "Ribbe 1",
             "shortDescription": "Ribbe element 1",
             "longDescription": "60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60 mm træregler\n15+18 mm fibergips",
-            "image": "images/ribbe.jpg",
+            "image": "./images/ribbe.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -920,7 +959,7 @@
             "name": "Ribbe 2",
             "shortDescription": "Ribbe element 2",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n22 mm gulvspånplade\n2x12,5 mm fibergips\n30 mm trinlydsplade, stenuld\n77 mm sand\n60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60 mm træregler\n15+18 mm fibergips",
-            "image": "images/ribbe.jpg",
+            "image": "./images/ribbe.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -957,7 +996,7 @@
             "name": "Ribbe 3",
             "shortDescription": "Ribbe element 3",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n22 mm gulvspånplade\n2x12,5 mm fibergips\n2x20 mm trinlydsplade, stenuld\n77 mm sand\n60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60 mm træregler\n15+18 mm fibergips",
-            "image": "images/ribbe.jpg",
+            "image": "./images/ribbe.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -994,7 +1033,7 @@
             "name": "Ribbe 4",
             "shortDescription": "Ribbe element 4",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n2x12,5 mm fibergips\n2x20 mm trinlydsplade, stenuld\n77 mm sand\n60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60 mm træregler\n15+18 mm fibergips",
-            "image": "images/ribbe.jpg",
+            "image": "./images/ribbe.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -1031,7 +1070,7 @@
             "name": "Ribbe 7",
             "shortDescription": "Ribbe element 7",
             "longDescription": "13 mm trægulv\n1 mm gulvpap\n22 mm gulvspånplade\n2x12,5 mm fibergips\n2x20 mm trinlydsplade, træfiber\n12 mm krydsfinerplade\n77 mm sand\n45x77 mm træreglar CC600\n60 mm CLT\n240x240 mm limtræssøjler CC1150\n157 mm papirisolering\n60x60mm træreglar CC450\n15+18 mm fibergips",
-            "image": "images/ribbe.jpg",
+            "image": "./images/ribbe.jpg",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
