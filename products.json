@@ -194,7 +194,7 @@
             "name": "Ståldæk 150 mm",
             "shortDescription": "Højtydende ståldæk med CC300 spænding",
             "longDescription": "Etagedæk - ES3 A1 C150-1,5 46/40 300 GF25/FF S45. Velegnetholdbar betonblanding med god brandmodstand og lyddæmpning.",
-            "image": "./images/Ståldæk.png",
+            "image": "./images/Staeldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -230,7 +230,7 @@
             "name": "Ståldæk 200 mm",
             "shortDescription": "Ståldæk med øget bæreevne og CC300 spænding",
             "longDescription": "Etagedæk - ES3 A1 C200-2,0 46/40 300 GF25/FF S45. Større kapacitet end 150mm varianten, velegnet til belastede etager.",
-            "image": "./images/Ståldæk.png",
+            "image": "./images/Staeldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -266,7 +266,7 @@
             "name": "Ståldæk 250 mm",
             "shortDescription": "Robust ståldæk med CC300 spænding",
             "longDescription": "Etagedæk - ES3 A1 C200-2,0 46/40 300 GF25/FF S45. Tykkere udgave med høj vægtbæreevne, velegnet til store belastninger.",
-            "image": "./images/Ståldæk.png",
+            "image": "./images/Staeldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -302,7 +302,7 @@
             "name": "Ståldæk 250 mm (stor)",
             "shortDescription": "Stærkt ståldæk til tunge systemer",
             "longDescription": "Etagedæk - ES3 A1 C200-2,0 46/40 300 GF25/FF S45. Svær udgave designet til ekstra belastet installation og større sektioner.",
-            "image": "./images/Ståldæk.png",
+            "image": "./images/Staeldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -338,7 +338,7 @@
             "name": "Ståldæk 150 mm (CC600)",
             "shortDescription": "Ståldæk med større CC600 spænding",
             "longDescription": "Etagedæk - ES3 A1 C150-1,5 46/40 600 GF25/FF S45. Standardstørrelse med større spændvidde for mere fleksible installationer.",
-            "image": "./images/Ståldæk.png",
+            "image": "./images/Staeldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -374,7 +374,7 @@
             "name": "Ståldæk 200 mm (CC600)",
             "shortDescription": "Mellemstørrelse ståldæk med CC600 spænding",
             "longDescription": "Etagedæk - ES3 A1 C200-2,0 46/40 600 GF25/FF S45. Større kapacitet med udvidet spændvidde for fleksible konstruktioner.",
-            "image": "./images/Ståldæk.png",
+            "image": "./images/Staeldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -410,7 +410,7 @@
             "name": "Ståldæk 250 mm (CC600)",
             "shortDescription": "Tyk ståldæk med høj kapacitet",
             "longDescription": "Etagedæk - ES3 A1 C250-2,5 74/66 600 GF25/FF S45. Robust konstruktion med øget vægtbæreevne og større spændvidde.",
-            "image": "./images/Ståldæk.png",
+            "image": "./images/Staeldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -446,7 +446,7 @@
             "name": "Ståldæk 300 mm (CC600)",
             "shortDescription": "Premium ståldæk med maksimal kapacitet",
             "longDescription": "Etagedæk - ES3 A1 C300-2,0 97/88 600 GF25/FF S45. Ekstra tyk udgave til de mest krævende belastningsmæssige scenarier.",
-            "image": "./images/Ståldæk.png",
+            "image": "./images/Staeldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -482,7 +482,7 @@
             "name": "Ståldæk 150 mm (CC900)",
             "shortDescription": "Ståldæk med stor CC900 spænding",
             "longDescription": "Etagedæk - ES1 A1 C150-1,5 46/40 900 GF25-TZ45/FF S45. Standardstørrelse med betydelig spændvidde for store åbne flader.",
-            "image": "./images/Ståldæk.png",
+            "image": "./images/Staeldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -518,7 +518,7 @@
             "name": "Ståldæk 200 mm (CC900)",
             "shortDescription": "Mellemstørrelse med stor spændvidde",
             "longDescription": "Etagedæk - ES1 A1 C200-2,0 46/40 900 GF25-TZ45/FF S45. Større kapacitet med maksimal spændvidde for fleksible layouts.",
-            "image": "./images/Ståldæk.png",
+            "image": "./images/Staeldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -554,7 +554,7 @@
             "name": "Ståldæk 250 mm (CC900)",
             "shortDescription": "Tyk udgave med stor spændvidde",
             "longDescription": "Etagedæk - ES3 A1 C250-2,5 74/66 900 GF25/FF S45. Robust konstruktion til store sektioner med høj vægtbæreevne.",
-            "image": "./images/Ståldæk.png",
+            "image": "./images/Staeldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -590,7 +590,7 @@
             "name": "Ståldæk 300 mm (CC900)",
             "shortDescription": "Premium udgave med maksimal kapacitet",
             "longDescription": "Etagedæk - ES1 A1 C300-2,0 97/88 900 GF25-TZ45/FF S45. Top-tier konstruktion til ekstraordinært krævende projekter.",
-            "image": "./images/Ståldæk.png",
+            "image": "./images/Staeldæk.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "over",
@@ -1100,6 +1100,191 @@
                 "Størrelse installation i dæk": "0",
                 "samletTykkelse": "490",
                 "Vægt (kg/m2)": "280"
+            }
+        },
+        {
+            "id": "prod-062",
+            "name": "Direkte monteret loft",
+            "shortDescription": "ET 2 Knauf LD S25 450 AA M0 direkte monteret loft",
+            "longDescription": "Stålophæng\nSpartel\nMonteringsprofil\nGipsloft\n\nLuftlyd: 50 dB\nTrinlyd: 74 dB",
+            "image": "",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "under",
+                "brandmodstand": "D1-s2-d2",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Under-55dB",
+                "trinlydKlasseC": "Over-53dB",
+                "spaendvidde": [
+                    "CC450"
+                ],
+                "Max længde": "12000",
+                "Størrelse installation i dæk": "0",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "enfamiliehus",
+                "etagebolig"
+            ],
+            "data": {
+                "LCA": "0,100927506",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "0",
+                "samletTykkelse": "50",
+                "Vægt (kg/m2)": ""
+            }
+        },
+        {
+            "id": "prod-063",
+            "name": "Frithængende loft",
+            "shortDescription": "ET 4 LF MR70 450 AA Classic 1 Board",
+            "longDescription": "Stål:FSK70\nStål: FR70\nSpartel\nMonteringsprofil\nMineraluld\nGipsloft\n\nLuftlyd: 56 dB\nTrinlyd: 53 dB",
+            "image": "",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "under",
+                "brandmodstand": "D1-s2-d2",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Over-55dB",
+                "trinlydKlasseC": "Under-53dB",
+                "spaendvidde": [
+                    "CC450"
+                ],
+                "Max længde": "3800",
+                "Størrelse installation i dæk": "0",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "enfamiliehus",
+                "etagebolig"
+            ],
+            "data": {
+                "LCA": "0,37254454",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "0",
+                "samletTykkelse": "120",
+                "Vægt (kg/m2)": ""
+            }
+        },
+        {
+            "id": "prod-064",
+            "name": "Frithængende loft",
+            "shortDescription": "ET 4 LF MR70 450 AA Classic 1 Board",
+            "longDescription": "Stål:FSK70\nStål: FR70\nSpartel\nMonteringsprofil\nMineraluld\nGipsloft\n\nLuftlyd: 56 dB\nTrinlyd: 53 dB",
+            "image": "",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "under",
+                "brandmodstand": "D1-s2-d2",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Over-55dB",
+                "trinlydKlasseC": "Under-53dB",
+                "spaendvidde": [
+                    "CC450"
+                ],
+                "Max længde": "5600",
+                "Størrelse installation i dæk": "0",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "enfamiliehus",
+                "etagebolig"
+            ],
+            "data": {
+                "LCA": "0,37138",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "0",
+                "samletTykkelse": "150",
+                "Vægt (kg/m2)": ""
+            }
+        },
+        {
+            "id": "prod-065",
+            "name": "Påmonteret loft",
+            "shortDescription": "Påmonterede lofter - LL LB-S25 450 AA Classic 1 Board",
+            "longDescription": "Stålophæng\nSpartel\nOphæng\nMonteringsprofil\nMineraluld\nGipsloft\n\nLuftlyd: 53 dB\nTrinlyd: 60 dB",
+            "image": "",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "under",
+                "brandmodstand": "D1-s2-d2",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Under-55dB",
+                "trinlydKlasseC": "Over-53dB",
+                "spaendvidde": [
+                    "CC450"
+                ],
+                "Max længde": "8000",
+                "Størrelse installation i dæk": "0",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "enfamiliehus",
+                "etagebolig"
+            ],
+            "data": {
+                "LCA": "0,12",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "0",
+                "samletTykkelse": "75",
+                "Vægt (kg/m2)": ""
+            }
+        },
+        {
+            "id": "prod-066",
+            "name": "Påmonteret loft og gulvmåtte",
+            "shortDescription": "ET3 LL LB-S25 450 AA M45",
+            "longDescription": "Brio\nStålophæng\nSpartel\nOphæng\nMonteringsprofil\nMineraluld\nGipsloft\n\nLuftlyd: 53 dB\nTrinlyd: 60 dB",
+            "image": "",
+            "specs": {
+                "brandkrav": "R60",
+                "brandsektion": "under",
+                "brandmodstand": "D1-s2-d2",
+                "hojdeOversteEtage": "under-22",
+                "luftlydKlasseC": "Under-55dB",
+                "trinlydKlasseC": "Over-53dB",
+                "spaendvidde": [
+                    "CC450"
+                ],
+                "Max længde": "8000",
+                "Størrelse installation i dæk": "0",
+                "minEtager": 1,
+                "maxEtager": 8
+            },
+            "brandklasser": {
+                "enfamiliehus": "BK1",
+                "etagebolig": "BK2"
+            },
+            "anvendelse": [
+                "enfamiliehus",
+                "etagebolig"
+            ],
+            "data": {
+                "LCA": "0,38104464",
+                "prisindeks": "",
+                "Størrelse installation i dæk": "0",
+                "samletTykkelse": "98",
+                "Vægt (kg/m2)": ""
             }
         }
     ]

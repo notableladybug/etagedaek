@@ -58,10 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return [...products].sort((a, b) => {
       let aValue, bValue;
 
-      if (field === 'pris') {
-        aValue = parseFloat(a.pris?.replace(/[^0-9,]/g, '').replace(',', '.')) || 0;
-        bValue = parseFloat(b.pris?.replace(/[^0-9,]/g, '').replace(',', '.')) || 0;
-      } else if (field === 'vaegt') {
+      if (field === 'vaegt') {
         aValue = parseFloat(a.data?.['Vægt (kg/m2)']?.replace(/[^0-9,]/g, '').replace(',', '.')) || 0;
         bValue = parseFloat(b.data?.['Vægt (kg/m2)']?.replace(/[^0-9,]/g, '').replace(',', '.')) || 0;
       } else {
@@ -571,6 +568,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const formatLabel = (raw) => {
         if (typeof raw !== 'string') return raw;
+        const lowered = raw.toLowerCase();
+        const ascii = lowered.replace(/æ/g, 'ae').replace(/ø/g, 'o').replace(/å/g, 'a');
+        // Map any variant of 'spaendvidde' / 'spændvidde' (case/diacritics) to 'Afstand'
+        if (ascii === 'spaendvidde' || lowered === 'spaendvidde' || lowered === 'spændvidde') return 'Afstand';
         if (raw === raw.toUpperCase() && /[A-Z]{2,}/.test(raw)) return raw;
         const withSpaces = raw.replace(/([A-Z])/g, ' $1').replace(/_/g, ' ');
         return withSpaces.charAt(0).toUpperCase() + withSpaces.slice(1);
