@@ -1218,7 +1218,7 @@
             "name": "Påmonteret loft",
             "shortDescription": "Påmonterede lofter - LL LB-S25 450 AA Classic 1 Board",
             "longDescription": "Stålophæng\nSpartel\nOphæng\nMonteringsprofil\nMineraluld\nGipsloft\n\nLuftlyd: 53 dB\nTrinlyd: 60 dB",
-            "image": "./images/LL LB--S25 450 AA.png",
+            "image": "./images/LL LB-S25 450 AA Classic 1 Board.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -1253,9 +1253,9 @@
         {
             "id": "prod-066",
             "name": "Påmonteret loft og gulvmåtte",
-            "shortDescription": "ET3 LL LB-S25 450 AA M45",
+            "shortDescription": "ET 3 LL LB-S25 450 AA M45",
             "longDescription": "Brio\nStålophæng\nSpartel\nOphæng\nMonteringsprofil\nMineraluld\nGipsloft\n\nLuftlyd: 53 dB\nTrinlyd: 60 dB",
-            "image": "./images/ET3.png",
+            "image": "./images/ET 3.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
