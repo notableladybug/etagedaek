@@ -162,8 +162,8 @@
                 "brandsektion": "over",
                 "brandmodstand": "A2-s1-d0",
                 "hojdeOversteEtage": "under-22",
-                "luftlydKlasseC": "Over-63dB",
-                "trinlydKlasseC": "under-46dB",
+                "luftlydKlasseC": "Over-55dB",
+                "trinlydKlasseC": "under-53dB",
                 "spaendvidde": [
                     "CC1200mm"
                 ],
@@ -200,7 +200,7 @@
                 "brandsektion": "over",
                 "brandmodstand": "A2-s1-d0",
                 "hojdeOversteEtage": "under-22",
-                "luftlydKlasseC": "Over-60dB",
+                "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
                 "spaendvidde": [
                     "CC300mm"
@@ -236,7 +236,7 @@
                 "brandsektion": "over",
                 "brandmodstand": "A2-s1-d0",
                 "hojdeOversteEtage": "under-22",
-                "luftlydKlasseC": "Over-60dB",
+                "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
                 "spaendvidde": [
                     "CC300mm"
@@ -272,7 +272,7 @@
                 "brandsektion": "over",
                 "brandmodstand": "A2-s1-d0",
                 "hojdeOversteEtage": "under-22",
-                "luftlydKlasseC": "Over-60dB",
+                "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
                 "spaendvidde": [
                     "CC300mm"
@@ -308,7 +308,7 @@
                 "brandsektion": "over",
                 "brandmodstand": "A2-s1-d0",
                 "hojdeOversteEtage": "under-22",
-                "luftlydKlasseC": "Over-60dB",
+                "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
                 "spaendvidde": [
                     "CC300mm"
@@ -344,7 +344,7 @@
                 "brandsektion": "over",
                 "brandmodstand": "A2-s1-d0",
                 "hojdeOversteEtage": "under-22",
-                "luftlydKlasseC": "Over-60dB",
+                "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
                 "spaendvidde": [
                     "CC600mm"
@@ -380,7 +380,7 @@
                 "brandsektion": "over",
                 "brandmodstand": "A2-s1-d0",
                 "hojdeOversteEtage": "under-22",
-                "luftlydKlasseC": "Over-60dB",
+                "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
                 "spaendvidde": [
                     "CC600mm"
@@ -416,7 +416,7 @@
                 "brandsektion": "over",
                 "brandmodstand": "A2-s1-d0",
                 "hojdeOversteEtage": "under-22",
-                "luftlydKlasseC": "Over-60dB",
+                "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
                 "spaendvidde": [
                     "CC600mm"
@@ -452,7 +452,7 @@
                 "brandsektion": "over",
                 "brandmodstand": "A2-s1-d0",
                 "hojdeOversteEtage": "under-22",
-                "luftlydKlasseC": "Over-60dB",
+                "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
                 "spaendvidde": [
                     "CC600mm"
@@ -488,7 +488,7 @@
                 "brandsektion": "over",
                 "brandmodstand": "A2-s1-d0",
                 "hojdeOversteEtage": "under-22",
-                "luftlydKlasseC": "Over-60dB",
+                "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
                 "spaendvidde": [
                     "CC900mm"
@@ -524,7 +524,7 @@
                 "brandsektion": "over",
                 "brandmodstand": "A2-s1-d0",
                 "hojdeOversteEtage": "under-22",
-                "luftlydKlasseC": "Over-60dB",
+                "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
                 "spaendvidde": [
                     "CC900mm"
@@ -560,7 +560,7 @@
                 "brandsektion": "over",
                 "brandmodstand": "A2-s1-d0",
                 "hojdeOversteEtage": "under-22",
-                "luftlydKlasseC": "Over-60dB",
+                "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
                 "spaendvidde": [
                     "CC900mm"
@@ -596,7 +596,7 @@
                 "brandsektion": "over",
                 "brandmodstand": "A2-s1-d0",
                 "hojdeOversteEtage": "under-22",
-                "luftlydKlasseC": "Over-60dB",
+                "luftlydKlasseC": "Over-55dB",
                 "trinlydKlasseC": "under-53dB",
                 "spaendvidde": [
                     "CC900mm"
