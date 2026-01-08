@@ -1107,7 +1107,7 @@
             "name": "Direkte monteret loft",
             "shortDescription": "ET 2 Knauf LD S25 450 AA M0 direkte monteret loft",
             "longDescription": "Stålophæng\nSpartel\nMonteringsprofil\nGipsloft\n\nLuftlyd: 50 dB\nTrinlyd: 74 dB",
-            "image": "",
+            "image": "./images/ET 2.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -1144,7 +1144,7 @@
             "name": "Frithængende loft",
             "shortDescription": "ET 4 LF MR70 450 AA Classic 1 Board",
             "longDescription": "Stål:FSK70\nStål: FR70\nSpartel\nMonteringsprofil\nMineraluld\nGipsloft\n\nLuftlyd: 56 dB\nTrinlyd: 53 dB",
-            "image": "",
+            "image": "./images/ET 4.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -1218,7 +1218,7 @@
             "name": "Påmonteret loft",
             "shortDescription": "Påmonterede lofter - LL LB-S25 450 AA Classic 1 Board",
             "longDescription": "Stålophæng\nSpartel\nOphæng\nMonteringsprofil\nMineraluld\nGipsloft\n\nLuftlyd: 53 dB\nTrinlyd: 60 dB",
-            "image": "",
+            "image": "./images/LL LB--S25 450 AA.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
@@ -1255,7 +1255,7 @@
             "name": "Påmonteret loft og gulvmåtte",
             "shortDescription": "ET3 LL LB-S25 450 AA M45",
             "longDescription": "Brio\nStålophæng\nSpartel\nOphæng\nMonteringsprofil\nMineraluld\nGipsloft\n\nLuftlyd: 53 dB\nTrinlyd: 60 dB",
-            "image": "",
+            "image": "./images/ET3.png",
             "specs": {
                 "brandkrav": "R60",
                 "brandsektion": "under",
