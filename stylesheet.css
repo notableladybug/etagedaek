@@ -245,8 +245,8 @@ details[open] summary.filter-summary .chev{transform:rotate(90deg);color:var(--a
   .spec-grid{grid-template-columns:repeat(3,1fr)}
 }
 .spec-grid .spec-row{display:flex;gap:8px;align-items:flex-start;padding:6px 4px;border-radius:6px;flex-wrap:wrap}
-.spec-grid .spec-label{width:45%;font-weight:700;color:#334;word-break:break-word}
-.spec-grid .spec-value{flex:1;min-width:50%;color:#222;word-break:break-word}
+.spec-grid .spec-label{width:45%;font-weight:700;color:#334;word-break:break-word;hyphens:auto}
+.spec-grid .spec-value{flex:1;min-width:50%;color:#222;word-break:break-word;hyphens:auto}
 .spec-features .spec-list{margin:6px 0 0 18px}
 
 /* Collapsible more details */

@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Constants
   const DATA_URL = 'products.json';
-  const ADMIN_MODE = true; // TÆND/SLUK ADMIN FUNKTIONALITET HER
+  const ADMIN_MODE = false; // TÆND/SLUK ADMIN FUNKTIONALITET HER
   let products = [];
 
   // DOM Elements
@@ -573,8 +573,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Map any variant of 'spaendvidde' / 'spændvidde' (case/diacritics) to 'Afstand'
         if (ascii === 'spaendvidde' || lowered === 'spaendvidde' || lowered === 'spændvidde') return 'Afstand';
         if (raw === raw.toUpperCase() && /[A-Z]{2,}/.test(raw)) return raw;
-        const withSpaces = raw.replace(/([A-Z])/g, ' $1').replace(/_/g, ' ');
-        return withSpaces.charAt(0).toUpperCase() + withSpaces.slice(1);
+        let withSpaces = raw.replace(/([A-Z])/g, ' $1').replace(/_/g, ' ');
+        withSpaces = withSpaces.charAt(0).toUpperCase() + withSpaces.slice(1);
+        // Add soft hyphens for long labels to prevent cutoff
+        if (withSpaces === 'Brandsektion') return 'Brand&shy;sektion';
+        if (withSpaces === 'Størrelse installation i dæk') return 'Størrelse installa&shy;tion i dæk';
+        return withSpaces;
       };
 
       const specValue = (k) => {
@@ -623,7 +627,10 @@ document.addEventListener('DOMContentLoaded', () => {
         html += '<details class="spec-toggle"><summary>Data</summary><div class="spec-section spec-data">';
         html += '<div class="spec-grid">';
         Object.entries(product.data).forEach(([k, v]) => {
-          const label = formatLabel(k);
+          let label = formatLabel(k);
+          if (k === 'LCA') {
+            label = 'LCA (kg CO₂-eq / m²/ år)';
+          }
           html += `<div class="spec-row"><div class="spec-label">${label}</div><div class="spec-value">${v}</div></div>`;
         });
         html += '</div></div></details>';
